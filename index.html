@@ -1,1 +1,1005 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmadullah Mukhlis · Full‑stack Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #07070d;
+      color: #e8edf5;
+      overflow-x: hidden;
+    }
+    .bg-mesh {
+      background: radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+                  #07070d;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 30px 50px -18px rgba(0, 0, 0, 0.9);
+    }
+    .shimmer-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .shimmer-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #a78bfa, #38bdf8);
+      background-size: 200% 100%;
+      border-radius: 12px;
+      animation: shimmerSlide 3.5s ease-in-out infinite;
+    }
+    @keyframes shimmerSlide {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .float-soft { animation: floatY 5s ease-in-out infinite; }
+    @keyframes floatY {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+    .pulse-ring {
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.3); }
+      50% { box-shadow: 0 0 0 22px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+    .skill-tag {
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .skill-tag:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: #38bdf8;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 24px -12px rgba(56, 189, 248, 0.3);
+      color: #ffffff;
+    }
+    .social-icon {
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #94a3b8;
+    }
+    .social-icon:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: #38bdf8;
+      color: #f1f5f9;
+      transform: translateY(-6px) scale(1.08);
+      box-shadow: 0 12px 24px -12px rgba(56, 189, 248, 0.3);
+    }
+    .timeline-dot {
+      animation: dotPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+    .fade-section {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
+    .category-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .category-pill:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+    .category-pill.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #14141c; }
+    ::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 12px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4a5568; }
+    .glitch { text-shadow: 0 0 16px rgba(56, 189, 248, 0.15); }
+    .nav-link {
+      transition: all 0.2s;
+      position: relative;
+      cursor: pointer;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #a78bfa);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .project-card { 
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .project-card.hidden-project { display: none; }
+    .download-btn { transition: all 0.2s ease; }
+    .download-btn:hover {
+      transform: scale(1.05);
+      background: rgba(56, 189, 248, 0.2);
+    }
+    .testimonial-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.08);
+      transition: all 0.3s ease;
+    }
+    .testimonial-card {
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .testimonial-card:hover .testimonial-img {
+      border-color: #38bdf8;
+      transform: scale(1.05);
+    }
+    .testimonial-name { font-weight: 600; color: #e8edf5; }
+    .testimonial-role { font-size: 0.75rem; color: #94a3b8; }
+    .testimonial-company { color: #38bdf8; font-weight: 500; }
+    .stars { color: #fbbf24; letter-spacing: 2px; }
+    
+    /* Project detail overlay */
+    .project-detail-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 7, 13, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 30px 20px;
+      overflow-y: auto;
+    }
+    .project-detail-overlay.active { display: flex; }
+    .project-detail-content {
+      max-width: 1000px;
+      width: 100%;
+      animation: fadeUp 0.4s ease;
+    }
+    .detail-close-btn {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      width: 48px;
+      height: 48px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      margin-bottom: 10px;
+    }
+    .detail-close-btn:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      transform: rotate(90deg);
+    }
+    .detail-tech-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 4px 16px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      transition: all 0.2s;
+    }
+    .detail-tech-tag:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+    .detail-image {
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .detail-image:hover {
+      transform: scale(1.01);
+      border-color: rgba(56, 189, 248, 0.2);
+    }
+    .detail-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .detail-gallery .detail-image:first-child {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 640px) {
+      .detail-gallery {
+        grid-template-columns: 1fr;
+      }
+      .detail-gallery .detail-image:first-child {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body class="bg-mesh antialiased">
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#07070d]/90 backdrop-blur-xl border-b border-white/5 py-3 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="#hero" class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+      <i class="fas fa-code mr-2 text-cyan-400"></i>A.M.
+    </a>
+    <div class="hidden md:flex gap-6 text-sm font-medium text-slate-400">
+      <a href="#hero" class="nav-link hover:text-white">Home</a>
+      <a href="#skills" class="nav-link hover:text-white">Skills</a>
+      <a href="#projects" class="nav-link hover:text-white">Projects</a>
+      <a href="#experience" class="nav-link hover:text-white">Experience</a>
+      <a href="#cv" class="nav-link hover:text-white">CV</a>
+      <a href="#contact" class="nav-link hover:text-white">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="text-sm px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 rounded-full border border-cyan-500/20 transition-all">Hire me</a>
+      <button id="menuToggle" class="md:hidden text-slate-400 hover:text-white text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden mt-3 pt-3 border-t border-white/5 flex flex-col gap-3 text-sm text-slate-400">
+    <a href="#hero" class="hover:text-white px-2 py-1">Home</a>
+    <a href="#skills" class="hover:text-white px-2 py-1">Skills</a>
+    <a href="#projects" class="hover:text-white px-2 py-1">Projects</a>
+    <a href="#experience" class="hover:text-white px-2 py-1">Experience</a>
+    <a href="#cv" class="hover:text-white px-2 py-1">CV</a>
+    <a href="#contact" class="hover:text-white px-2 py-1">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div id="mainContent" class="pt-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative z-10">
+
+  <!-- HERO -->
+  <section id="hero" class="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 mb-20 fade-section delay-1">
+    <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+      <div class="relative">
+        <div class="w-40 h-40 md:w-52 md:h-52 rounded-full p-1 pulse-ring bg-gradient-to-br from-cyan-400 to-violet-500">
+          <div class="w-full h-full rounded-full bg-[#0f0f1a] flex items-center justify-center text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-violet-400">
+            <span>A</span>
+          </div>
+        </div>
+        <div class="absolute -bottom-2 -right-2 bg-emerald-500 rounded-full p-2 shadow-lg shadow-emerald-500/30 border-2 border-[#07070d] float-soft">
+          <i class="fas fa-check text-white text-xs"></i>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold mt-6 tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent glitch">
+        Ahmadullah Mukhlis
+      </h1>
+      <p class="text-lg text-slate-400 font-medium flex items-center gap-2 mt-1">
+        <span class="inline-block w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+        full‑stack · creative technologist
+      </p>
+    </div>
+    <div class="flex-1 text-center lg:text-left">
+      <p class="text-xl md:text-2xl font-light leading-relaxed text-slate-300 max-w-2xl">
+        <span class="font-semibold text-white">Engineering</span> with purpose · 
+        <span class="shimmer-underline font-medium text-cyan-300">design & code</span> in harmony
+      </p>
+      <p class="mt-4 text-slate-400 max-w-xl">
+        I architect scalable systems and pixel-perfect interfaces. 
+        Passionate about AI, open-source, and human-centered innovation. 
+        Based in Kabul · working worldwide.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
+        <a href="#projects" class="group px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-full shadow-lg shadow-cyan-500/20 transition-all duration-300 flex items-center gap-2 transform hover:scale-105 hover:shadow-cyan-500/40">
+          <i class="fas fa-rocket group-hover:translate-x-1 transition-transform"></i> 
+          <span>Explore work</span>
+        </a>
+        <a href="#cv" class="group px-7 py-3.5 bg-white/5 hover:bg-white/10 text-slate-200 rounded-full border border-white/10 hover:border-cyan-400/30 transition-all duration-300 flex items-center gap-2 transform hover:scale-105 backdrop-blur-sm">
+          <i class="fas fa-file-alt group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+          <span>View CV</span>
+        </a>
+      </div>
+      <div class="flex gap-3 mt-8 justify-center lg:justify-start">
+        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="mb-16 fade-section delay-2">
+    <div class="flex items-center gap-3 mb-6">
+      <i class="fas fa-cube text-cyan-400 text-xl"></i>
+      <h2 class="text-2xl font-bold text-slate-200">Toolbox</h2>
+      <span class="h-px flex-1 bg-gradient-to-r from-cyan-500/30 to-transparent"></span>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">JavaScript · TypeScript</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">React · Next.js</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Node.js · Express</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Tailwind · CSS3</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Python · FastAPI</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">MongoDB · PostgreSQL</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Docker · Kubernetes</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">AWS · GCP</span>
+      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Figma · UI/UX</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS with FILTER -->
+  <section id="projects" class="mb-16 fade-section delay-3">
+    <div class="flex items-center gap-3 mb-6">
+      <i class="fas fa-layer-group text-violet-400 text-xl"></i>
+      <h2 class="text-2xl font-bold text-slate-200">Projects</h2>
+      <span class="h-px flex-1 bg-gradient-to-r from-violet-500/30 to-transparent"></span>
+    </div>
+    <div class="flex flex-wrap gap-3 mb-6">
+      <button class="category-pill px-5 py-2.5 rounded-full text-sm font-medium text-slate-300 active" data-filter="all"><i class="fas fa-th-list mr-2"></i>All</button>
+      <button class="category-pill px-5 py-2.5 rounded-full text-sm font-medium text-slate-300" data-filter="mobile"><i class="fas fa-mobile-alt mr-2 text-rose-400"></i>Mobile</button>
+      <button class="category-pill px-5 py-2.5 rounded-full text-sm font-medium text-slate-300" data-filter="laravel"><i class="fab fa-laravel mr-2 text-red-400"></i>Laravel</button>
+      <button class="category-pill px-5 py-2.5 rounded-full text-sm font-medium text-slate-300" data-filter="react"><i class="fab fa-react mr-2 text-cyan-400"></i>React</button>
+      <button class="category-pill px-5 py-2.5 rounded-full text-sm font-medium text-slate-300" data-filter="ai"><i class="fas fa-brain mr-2 text-amber-400"></i>AI · ML</button>
+      <button class="category-pill px-5 py-2.5 rounded-full text-sm font-medium text-slate-300" data-filter="fullstack"><i class="fas fa-server mr-2 text-emerald-400"></i>Full‑stack</button>
+    </div>
+    <div id="projectGrid" class="grid md:grid-cols-2 gap-6">
+      <!-- 6 project cards -->
+      <div class="glass-card rounded-2xl p-6 project-card" data-category="mobile react" data-project="weatherdash">
+        <div class="flex items-start justify-between">
+          <div class="p-3 bg-rose-500/10 rounded-xl text-rose-400 border border-rose-500/10"><i class="fas fa-mobile-alt text-2xl"></i></div>
+          <span class="text-xs font-medium bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/10">live</span>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-white">WeatherDash Mobile</h3>
+        <p class="text-slate-400 text-sm mt-1">React Native app with real‑time weather & air quality, offline maps.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">React Native</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Tailwind</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Mapbox</span>
+        </div>
+        <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+          <span class="category-pill px-3 py-1 rounded-full text-[10px]"><i class="fas fa-mobile-alt mr-1"></i>Mobile</span>
+          <span class="text-cyan-400 text-xs">Click for details →</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 project-card" data-category="laravel fullstack" data-project="shopvault">
+        <div class="flex items-start justify-between">
+          <div class="p-3 bg-red-500/10 rounded-xl text-red-400 border border-red-500/10"><i class="fab fa-laravel text-2xl"></i></div>
+          <span class="text-xs font-medium bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/10">prototype</span>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-white">ShopVault API</h3>
+        <p class="text-slate-400 text-sm mt-1">Laravel REST API with real‑time inventory, AI recommendations.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Laravel</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">MySQL</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Redis</span>
+        </div>
+        <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+          <span class="category-pill px-3 py-1 rounded-full text-[10px]"><i class="fab fa-laravel mr-1"></i>Laravel</span>
+          <span class="text-cyan-400 text-xs">Click for details →</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 project-card" data-category="react fullstack" data-project="podcast">
+        <div class="flex items-start justify-between">
+          <div class="p-3 bg-cyan-500/10 rounded-xl text-cyan-400 border border-cyan-500/10"><i class="fab fa-react text-2xl"></i></div>
+          <span class="text-xs font-medium bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-500/10">open source</span>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-white">Podcast Studio</h3>
+        <p class="text-slate-400 text-sm mt-1">React SPA with live editing, WebRTC, and real‑time collaboration.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">React</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">WebRTC</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Socket.io</span>
+        </div>
+        <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+          <span class="category-pill px-3 py-1 rounded-full text-[10px]"><i class="fab fa-react mr-1"></i>React</span>
+          <span class="text-cyan-400 text-xs">Click for details →</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 project-card" data-category="ai fullstack" data-project="documind">
+        <div class="flex items-start justify-between">
+          <div class="p-3 bg-amber-500/10 rounded-xl text-amber-400 border border-amber-500/10"><i class="fas fa-brain text-2xl"></i></div>
+          <span class="text-xs font-medium bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full border border-purple-500/10">research</span>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-white">DocuMind AI</h3>
+        <p class="text-slate-400 text-sm mt-1">NLP document analysis with semantic search & summarization.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Python</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">FastAPI</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">HuggingFace</span>
+        </div>
+        <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+          <span class="category-pill px-3 py-1 rounded-full text-[10px]"><i class="fas fa-brain mr-1"></i>AI · ML</span>
+          <span class="text-cyan-400 text-xs">Click for details →</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 project-card" data-category="mobile" data-project="givebridge">
+        <div class="flex items-start justify-between">
+          <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-400 border border-indigo-500/10"><i class="fas fa-mobile-alt text-2xl"></i></div>
+          <span class="text-xs font-medium bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/10">live</span>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-white">GiveBridge Mobile</h3>
+        <p class="text-slate-400 text-sm mt-1">Flutter app for donations, real‑time impact tracking & NGO matching.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Flutter</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Firebase</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Chart.js</span>
+        </div>
+        <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+          <span class="category-pill px-3 py-1 rounded-full text-[10px]"><i class="fas fa-mobile-alt mr-1"></i>Mobile</span>
+          <span class="text-cyan-400 text-xs">Click for details →</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 project-card" data-category="laravel react fullstack" data-project="insightflow">
+        <div class="flex items-start justify-between">
+          <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/10"><i class="fas fa-server text-2xl"></i></div>
+          <span class="text-xs font-medium bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full border border-cyan-500/10">enterprise</span>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-white">InsightFlow</h3>
+        <p class="text-slate-400 text-sm mt-1">Laravel + React dashboard with real‑time analytics & KPI tracking.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">Laravel</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">React</span>
+          <span class="text-xs bg-white/5 px-3 py-1 rounded-full text-slate-300">WebSocket</span>
+        </div>
+        <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+          <span class="category-pill px-3 py-1 rounded-full text-[10px]"><i class="fas fa-server mr-1"></i>Full‑stack</span>
+          <span class="text-cyan-400 text-xs">Click for details →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="mb-16 fade-section delay-4">
+    <div class="flex items-center gap-3 mb-6">
+      <i class="fas fa-briefcase text-slate-400 text-xl"></i>
+      <h2 class="text-2xl font-bold text-slate-200">Career path</h2>
+      <span class="h-px flex-1 bg-gradient-to-r from-slate-500/30 to-transparent"></span>
+    </div>
+    <div class="relative pl-6 border-l-2 border-cyan-500/30 space-y-8">
+      <div class="relative">
+        <div class="absolute -left-8 top-1 w-5 h-5 bg-cyan-500 rounded-full border-2 border-[#07070d] shadow-lg timeline-dot"></div>
+        <div class="glass-card p-5 rounded-2xl">
+          <div class="flex flex-wrap items-start justify-between">
+            <h3 class="text-lg font-bold text-white">Senior Full-stack Engineer</h3>
+            <span class="text-sm text-slate-400 bg-white/5 px-3 py-1 rounded-full">2022 – present</span>
+          </div>
+          <p class="text-cyan-300/80 text-sm">TechVista · Remote</p>
+          <p class="text-slate-400 text-sm mt-2">Architected microservices handling 1M+ requests/min. Led 6 engineers, cut deployment time 40%.</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -left-8 top-1 w-5 h-5 bg-violet-500 rounded-full border-2 border-[#07070d] shadow-lg timeline-dot" style="animation-delay: 0.5s;"></div>
+        <div class="glass-card p-5 rounded-2xl">
+          <div class="flex flex-wrap items-start justify-between">
+            <h3 class="text-lg font-bold text-white">Software Developer</h3>
+            <span class="text-sm text-slate-400 bg-white/5 px-3 py-1 rounded-full">2020 – 2022</span>
+          </div>
+          <p class="text-violet-300/80 text-sm">Codelogic · Kabul</p>
+          <p class="text-slate-400 text-sm mt-2">Built internal dashboards & design system. Reduced dev‑design handoff by 50%.</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -left-8 top-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-[#07070d] shadow-lg timeline-dot" style="animation-delay: 1s;"></div>
+        <div class="glass-card p-5 rounded-2xl">
+          <div class="flex flex-wrap items-start justify-between">
+            <h3 class="text-lg font-bold text-white">Junior Developer · Intern</h3>
+            <span class="text-sm text-slate-400 bg-white/5 px-3 py-1 rounded-full">2019 – 2020</span>
+          </div>
+          <p class="text-emerald-300/80 text-sm">StartupHub · Remote</p>
+          <p class="text-slate-400 text-sm mt-2">Developed REST APIs, admin panels, delivered 5+ client projects in agile teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv" class="mb-16 fade-section delay-5">
+    <div class="flex items-center gap-3 mb-6">
+      <i class="fas fa-file-pdf text-rose-400 text-xl"></i>
+      <h2 class="text-2xl font-bold text-slate-200">Curriculum Vitae</h2>
+      <span class="h-px flex-1 bg-gradient-to-r from-rose-500/30 to-transparent"></span>
+    </div>
+    <div class="glass-card rounded-2xl p-6 md:p-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider">Profile</h3>
+          <p class="text-slate-300 text-sm mt-2">Full‑stack engineer with 5+ years of experience in building scalable web applications and leading cross‑functional teams.</p>
+          <div class="mt-4 space-y-2 text-sm text-slate-400">
+            <p><i class="fas fa-map-pin mr-2 text-cyan-400"></i>Kabul, Afghanistan</p>
+            <p><i class="fas fa-globe mr-2 text-cyan-400"></i>Remote · Worldwide</p>
+            <p><i class="fas fa-envelope mr-2 text-cyan-400"></i>ahmadullah@dev.me</p>
+            <p><i class="fab fa-github mr-2 text-cyan-400"></i>github.com/ahmadullah</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-violet-400 uppercase tracking-wider">Education</h3>
+          <div class="mt-2 space-y-3">
+            <div><p class="text-sm font-medium text-white">M.Sc. Computer Science</p><p class="text-xs text-slate-400">Kabul University · 2017 – 2019</p><p class="text-xs text-slate-500">Thesis: AI-driven optimization for distributed systems.</p></div>
+            <div><p class="text-sm font-medium text-white">B.E. Software Engineering</p><p class="text-xs text-slate-400">Kabul Polytechnic · 2013 – 2017</p><p class="text-xs text-slate-500">Full scholarship, graduated with honors.</p></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider">Certifications</h3>
+          <ul class="mt-2 space-y-2 text-sm text-slate-300">
+            <li><i class="fas fa-check-circle text-emerald-400 mr-2"></i>AWS Certified Solutions Architect</li>
+            <li><i class="fas fa-check-circle text-emerald-400 mr-2"></i>Google Professional Cloud Developer</li>
+            <li><i class="fas fa-check-circle text-emerald-400 mr-2"></i>Meta Backend Developer Certificate</li>
+            <li><i class="fas fa-check-circle text-emerald-400 mr-2"></i>TensorFlow Developer Certificate</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 pt-6 border-t border-white/5 flex flex-wrap gap-4 justify-between items-center">
+        <div class="flex flex-wrap gap-4 text-sm">
+          <span class="bg-white/5 px-3 py-1 rounded-full text-slate-300"><i class="fas fa-award text-amber-400 mr-1"></i> 3× Hackathon winner</span>
+          <span class="bg-white/5 px-3 py-1 rounded-full text-slate-300"><i class="fas fa-users text-cyan-400 mr-1"></i> 15+ team projects</span>
+          <span class="bg-white/5 px-3 py-1 rounded-full text-slate-300"><i class="fas fa-globe text-violet-400 mr-1"></i> 4 languages</span>
+        </div>
+        <a href="#" class="text-sm px-5 py-2 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-400 hover:to-pink-500 text-white rounded-full shadow-lg shadow-rose-500/20 transition-all hover:shadow-rose-500/40 flex items-center gap-2">
+          <i class="fas fa-download"></i> Download CV (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="mb-16 fade-section delay-6">
+    <div class="flex items-center gap-3 mb-6">
+      <i class="fas fa-quote-right text-amber-400 text-xl"></i>
+      <h2 class="text-2xl font-bold text-slate-200">Testimonials</h2>
+      <span class="h-px flex-1 bg-gradient-to-r from-amber-500/30 to-transparent"></span>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card rounded-2xl p-6 text-center">
+        <div class="flex flex-col items-center">
+          <img src="https://ui-avatars.com/api/?name=Sarah+Chen&background=2563eb&color=fff&size=72&font-size=0.4&bold=true" alt="Sarah Chen" class="testimonial-img mb-3" />
+          <div class="stars text-sm mb-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-slate-300 text-sm italic mt-2">“Ahmadullah delivers exceptional code with a designer’s eye. A true full‑stack professional.”</p>
+          <div class="mt-3"><p class="testimonial-name text-sm">Sarah Chen</p><p class="testimonial-role">Chief Technology Officer <span class="testimonial-company">· TechVista</span></p></div>
+        </div>
+      </div>
+      <div class="testimonial-card rounded-2xl p-6 text-center">
+        <div class="flex flex-col items-center">
+          <img src="https://ui-avatars.com/api/?name=Michael+Rodriguez&background=7c3aed&color=fff&size=72&font-size=0.4&bold=true" alt="Michael Rodriguez" class="testimonial-img mb-3" />
+          <div class="stars text-sm mb-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-slate-300 text-sm italic mt-2">“His ability to bridge frontend and backend is rare. He elevated our entire platform.”</p>
+          <div class="mt-3"><p class="testimonial-name text-sm">Michael Rodriguez</p><p class="testimonial-role">Product Lead <span class="testimonial-company">· Codelogic</span></p></div>
+        </div>
+      </div>
+      <div class="testimonial-card rounded-2xl p-6 text-center">
+        <div class="flex flex-col items-center">
+          <img src="https://ui-avatars.com/api/?name=Emily+Park&background=059669&color=fff&size=72&font-size=0.4&bold=true" alt="Emily Park" class="testimonial-img mb-3" />
+          <div class="stars text-sm mb-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-slate-300 text-sm italic mt-2">“Fast, clean, and thoughtful. Ahmadullah is the engineer you want on your team.”</p>
+          <div class="mt-3"><p class="testimonial-name text-sm">Emily Park</p><p class="testimonial-role">Founder & CEO <span class="testimonial-company">· StartupHub</span></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-section delay-7">
+    <div class="glass-card rounded-3xl p-8 md:p-12 border border-white/5 relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl"></div>
+      <div class="relative flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+            <i class="fas fa-paper-plane text-cyan-400"></i> Let’s connect
+          </h2>
+          <p class="text-slate-400 max-w-sm mt-1">Got a project or just want to chat? Reach out anytime.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-slate-200 rounded-full border border-white/10 hover:border-cyan-400/30 transition-all duration-300 backdrop-blur-sm">
+            <i class="fas fa-envelope text-cyan-400"></i> ahmadullah@dev.me
+          </a>
+          <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-full shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/40">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="border-t border-white/5 bg-[#07070d]/80 backdrop-blur-xl mt-12 py-8 px-4">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+    <div class="flex items-center gap-4">
+      <span>© 2026 Ahmadullah Mukhlis</span>
+      <span class="hidden md:inline">·</span>
+      <span class="flex items-center gap-1"><i class="fas fa-heart text-rose-400/70"></i> built with Tailwind</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-slate-300 transition"><i class="fab fa-github"></i></a>
+      <a href="#" class="hover:text-slate-300 transition"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="hover:text-slate-300 transition"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="hover:text-slate-300 transition"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="hover:text-slate-300 transition"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="flex gap-4">
+      <a href="#" class="hover:text-slate-300 transition">Privacy</a>
+      <a href="#" class="hover:text-slate-300 transition">Imprint</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== PROJECT DETAIL OVERLAY ===== -->
+<div id="projectDetailOverlay" class="project-detail-overlay">
+  <div class="project-detail-content">
+    <button id="closeDetail" class="detail-close-btn"><i class="fas fa-times text-xl"></i></button>
+    <div id="projectDetailContent" class="glass-card rounded-3xl p-6 md:p-10">
+      <!-- dynamic content -->
+    </div>
+  </div>
+</div>
+
+<!-- floating decor -->
+<div class="fixed bottom-10 right-10 opacity-20 pointer-events-none text-7xl text-cyan-400/20 rotate-12 hidden xl:block float-soft">
+  <i class="fas fa-cube"></i>
+</div>
+<div class="fixed top-20 left-10 opacity-10 pointer-events-none text-7xl text-violet-400/20 -rotate-12 hidden xl:block float-soft" style="animation-delay: 2s;">
+  <i class="fas fa-circle-nodes"></i>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.add('hidden'));
+    });
+  }
+
+  // Project filter
+  const filterButtons = document.querySelectorAll('.category-pill[data-filter]');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      projectCards.forEach(card => {
+        const categories = card.dataset.category.split(' ');
+        if (filter === 'all' || categories.includes(filter)) {
+          card.classList.remove('hidden-project');
+        } else {
+          card.classList.add('hidden-project');
+        }
+      });
+    });
+  });
+
+  // ===== PROJECT DATA with IMAGES =====
+  const projectData = {
+    weatherdash: {
+      title: 'WeatherDash Mobile',
+      icon: 'fa-mobile-alt',
+      color: 'text-rose-400',
+      bg: 'bg-rose-500/10',
+      status: 'live',
+      statusColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/10',
+      description: 'A feature-rich React Native application that provides hyperlocal weather forecasts, real-time air quality index (AQI), and interactive map views.',
+      longDescription: 'WeatherDash Mobile was built with React Native and leverages the OpenWeather API, Mapbox for interactive maps, and Firebase for real-time data sync. The app includes a 7-day forecast, hourly predictions, and a beautiful dark-mode interface that adapts to weather conditions. Users can save favorite locations and receive push notifications for severe weather alerts. The offline mode allows users to access cached maps and recent forecasts without an internet connection.',
+      tech: ['React Native', 'Tailwind CSS', 'Mapbox', 'Firebase', 'OpenWeather API', 'Expo'],
+      category: 'Mobile',
+      categoryIcon: 'fa-mobile-alt',
+      link: '#',
+      github: '#',
+      download: '#',
+      features: ['Offline maps', 'Push notifications', '7-day forecast', 'AQI monitoring', 'Dark mode', 'Favorite locations'],
+      images: [
+        'https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1523482580672-f109ba8cb9c7?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=400&fit=crop'
+      ]
+    },
+    shopvault: {
+      title: 'ShopVault API',
+      icon: 'fa-laravel',
+      color: 'text-red-400',
+      bg: 'bg-red-500/10',
+      status: 'prototype',
+      statusColor: 'bg-amber-500/20 text-amber-300 border-amber-500/10',
+      description: 'A robust Laravel REST API powering a headless e-commerce platform with real-time inventory management and AI-driven product recommendations.',
+      longDescription: 'ShopVault API is built with Laravel 11, MySQL, and Redis for caching. It features a modular architecture with JWT authentication, rate limiting, and comprehensive API documentation using Swagger. The AI recommendation engine uses collaborative filtering to suggest products based on user behavior and purchase history. The API supports webhooks for third-party integrations and provides real-time inventory updates via WebSocket connections.',
+      tech: ['Laravel', 'MySQL', 'Redis', 'JWT', 'Swagger', 'Stripe', 'WebSocket'],
+      category: 'Backend',
+      categoryIcon: 'fa-server',
+      link: '#',
+      github: '#',
+      download: '#',
+      features: ['AI recommendations', 'Real-time inventory', 'JWT auth', 'API rate limiting', 'Webhook support', 'Swagger docs'],
+      images: [
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop'
+      ]
+    },
+    podcast: {
+      title: 'Podcast Studio',
+      icon: 'fa-react',
+      color: 'text-cyan-400',
+      bg: 'bg-cyan-500/10',
+      status: 'open source',
+      statusColor: 'bg-blue-500/20 text-blue-300 border-blue-500/10',
+      description: 'A collaborative React SPA for podcast production with live editing, WebRTC streaming, and real-time collaboration features.',
+      longDescription: 'Podcast Studio is a full-featured production suite built with React, Node.js, and WebRTC. It enables remote teams to record, edit, and publish podcasts in real-time. Features include multi-track audio editing, noise reduction, automatic transcription, and seamless integration with major podcast platforms. The collaborative workspace allows multiple editors to work simultaneously with live preview and version control.',
+      tech: ['React', 'WebRTC', 'Node.js', 'Socket.io', 'FFmpeg', 'MongoDB', 'Redis'],
+      category: 'Frontend',
+      categoryIcon: 'fa-code',
+      link: '#',
+      github: '#',
+      download: '#',
+      features: ['Live editing', 'WebRTC streaming', 'Multi-track audio', 'Auto-transcription', 'Platform integration', 'Version control'],
+      images: [
+        'https://images.unsplash.com/photo-1590602847861-f357a9332f40?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1590602847861-f357a9332f40?w=800&h=400&fit=crop'
+      ]
+    },
+    documind: {
+      title: 'DocuMind AI',
+      icon: 'fa-brain',
+      color: 'text-amber-400',
+      bg: 'bg-amber-500/10',
+      status: 'research',
+      statusColor: 'bg-purple-500/20 text-purple-300 border-purple-500/10',
+      description: 'An NLP-powered document analysis platform providing semantic search, automatic summarization, and intelligent document classification.',
+      longDescription: 'DocuMind AI leverages HuggingFace transformers, FastAPI, and Elasticsearch to deliver enterprise-grade document intelligence. The system can process PDFs, Word documents, and text files, extracting key information, generating summaries, and enabling semantic search across large document repositories. The platform includes a user-friendly dashboard for document management and advanced analytics on document patterns.',
+      tech: ['Python', 'FastAPI', 'HuggingFace', 'Elasticsearch', 'Docker', 'React', 'PostgreSQL'],
+      category: 'AI · ML',
+      categoryIcon: 'fa-brain',
+      link: '#',
+      github: '#',
+      download: '#',
+      features: ['Semantic search', 'Auto-summarization', 'Document classification', 'PDF processing', 'REST API', 'Analytics dashboard'],
+      images: [
+        'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=400&fit=crop'
+      ]
+    },
+    givebridge: {
+      title: 'GiveBridge Mobile',
+      icon: 'fa-mobile-alt',
+      color: 'text-indigo-400',
+      bg: 'bg-indigo-500/10',
+      status: 'live',
+      statusColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/10',
+      description: 'A Flutter-based donation platform connecting NGOs with donors, featuring real-time impact tracking and transparent fund allocation.',
+      longDescription: 'GiveBridge Mobile is built with Flutter and Firebase, providing a seamless donation experience with real-time impact tracking. The app features a dynamic dashboard with charts showing donation distribution, project progress, and NGO performance metrics. Users can donate via multiple payment methods and receive updates on project milestones. The platform also includes a social feed where users can share their impact stories.',
+      tech: ['Flutter', 'Firebase', 'Chart.js', 'Stripe', 'Node.js', 'MongoDB'],
+      category: 'Mobile',
+      categoryIcon: 'fa-mobile-alt',
+      link: '#',
+      github: '#',
+      download: '#',
+      features: ['Real-time tracking', 'Impact visualization', 'Multiple payment methods', 'Project updates', 'NGO profiles', 'Social feed'],
+      images: [
+        'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=400&fit=crop'
+      ]
+    },
+    insightflow: {
+      title: 'InsightFlow',
+      icon: 'fa-server',
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-500/10',
+      status: 'enterprise',
+      statusColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/10',
+      description: 'An enterprise-grade business intelligence dashboard delivering real-time analytics, KPI tracking, and interactive data visualization.',
+      longDescription: 'InsightFlow is a comprehensive BI solution that combines Laravel\'s robust backend with React\'s interactive frontend. It features real-time WebSocket updates, customizable dashboards, and a powerful reporting engine. The platform supports multiple data sources including PostgreSQL, MySQL, and MongoDB. Advanced features include predictive analytics, anomaly detection, and automated report generation with email scheduling.',
+      tech: ['Laravel', 'React', 'WebSocket', 'D3.js', 'PostgreSQL', 'Redis', 'Docker'],
+      category: 'Full‑stack',
+      categoryIcon: 'fa-server',
+      link: '#',
+      github: '#',
+      download: '#',
+      features: ['Real-time analytics', 'Custom dashboards', 'KPI tracking', 'Data visualization', 'Role-based access', 'Predictive analytics'],
+      images: [
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop'
+      ]
+    }
+  };
+
+  // ===== OPEN PROJECT DETAIL =====
+  const overlay = document.getElementById('projectDetailOverlay');
+  const detailContent = document.getElementById('projectDetailContent');
+  const closeBtn = document.getElementById('closeDetail');
+
+  function openProjectDetail(projectId) {
+    const data = projectData[projectId];
+    if (!data) return;
+
+    // Build gallery images
+    let galleryHTML = '';
+    if (data.images && data.images.length > 0) {
+      galleryHTML = `<div class="detail-gallery">`;
+      data.images.forEach((img, index) => {
+        galleryHTML += `
+          <img src="${img}" alt="${data.title} screenshot ${index + 1}" class="detail-image" />
+        `;
+      });
+      galleryHTML += `</div>`;
+    }
+
+    detailContent.innerHTML = `
+      <div class="flex items-start justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div class="p-4 ${data.bg} rounded-2xl border ${data.bg.replace('/10', '/20')}">
+            <i class="fas ${data.icon} text-3xl ${data.color}"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white">${data.title}</h2>
+            <span class="text-xs font-medium ${data.statusColor} px-3 py-1 rounded-full border inline-block mt-1">${data.status}</span>
+          </div>
+        </div>
+      </div>
+
+      ${galleryHTML}
+
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="category-pill px-4 py-1.5 rounded-full text-xs font-medium text-slate-300">
+          <i class="fas ${data.categoryIcon} mr-1"></i>${data.category}
+        </span>
+      </div>
+
+      <p class="text-lg text-slate-300 mt-4 mb-3">${data.description}</p>
+      <p class="text-slate-400 text-sm leading-relaxed mb-6">${data.longDescription}</p>
+
+      <div class="mb-6">
+        <h4 class="text-sm font-semibold text-slate-200 mb-3">Tech Stack</h4>
+        <div class="flex flex-wrap gap-2">
+          ${data.tech.map(t => `<span class="detail-tech-tag">${t}</span>`).join('')}
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-sm font-semibold text-slate-200 mb-3">Key Features</h4>
+        <div class="grid grid-cols-2 gap-2">
+          ${data.features.map(f => `
+            <div class="flex items-center gap-2 text-sm text-slate-400">
+              <i class="fas fa-check-circle text-cyan-400 text-xs"></i>
+              <span>${f}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 pt-4 border-t border-white/5">
+        <a href="${data.link}" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-full text-sm shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/40 flex items-center gap-2">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+        <a href="${data.github}" class="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-slate-200 rounded-full border border-white/10 hover:border-cyan-400/30 transition-all text-sm flex items-center gap-2">
+          <i class="fab fa-github"></i> Source Code
+        </a>
+        <a href="${data.download}" class="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-slate-200 rounded-full border border-white/10 hover:border-cyan-400/30 transition-all text-sm flex items-center gap-2">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    `;
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectDetail() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeProjectDetail);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) closeProjectDetail();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeProjectDetail();
+  });
+
+  // Click on project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const projectId = this.dataset.project;
+      if (projectId && projectData[projectId]) {
+        openProjectDetail(projectId);
+      }
+    });
+  });
+
+  // Smooth nav
+  document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        const target = document.querySelector(targetId);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
