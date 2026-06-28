@@ -327,75 +327,140 @@
 <div id="mainContent" class="pt-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative z-10">
 
   <!-- HERO -->
-  <section id="hero" class="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 mb-20 fade-section delay-1">
-    <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
-      <div class="relative">
-        <div class="w-40 h-40 md:w-52 md:h-52 rounded-full p-1 pulse-ring bg-gradient-to-br from-cyan-400 to-violet-500">
-          <div class="w-full h-full rounded-full bg-[#0f0f1a] flex items-center justify-center text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-violet-400">
-            <span>A</span>
-          </div>
+ <section id="hero" class="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 mb-20 fade-section delay-1">
+
+  <!-- LEFT SIDE -->
+  <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+
+    <!-- Avatar -->
+    <div class="relative">
+      <div class="w-40 h-40 md:w-52 md:h-52 rounded-full p-1 pulse-ring bg-gradient-to-br from-cyan-400 to-violet-500">
+
+        <!-- Image container -->
+        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#07070d]">
+          <img 
+            src="./images/ahmadullah.jpg" 
+            alt="Ahmadullah Mukhlis"
+            class="w-full h-full object-cover"
+          />
         </div>
-        <div class="absolute -bottom-2 -right-2 bg-emerald-500 rounded-full p-2 shadow-lg shadow-emerald-500/30 border-2 border-[#07070d] float-soft">
-          <i class="fas fa-check text-white text-xs"></i>
-        </div>
+
       </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold mt-6 tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent glitch">
-        Ahmadullah Mukhlis
-      </h1>
-      <p class="text-lg text-slate-400 font-medium flex items-center gap-2 mt-1">
-        <span class="inline-block w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-        full‑stack · creative technologist
-      </p>
-    </div>
-    <div class="flex-1 text-center lg:text-left">
-      <p class="text-xl md:text-2xl font-light leading-relaxed text-slate-300 max-w-2xl">
-        <span class="font-semibold text-white">Engineering</span> with purpose · 
-        <span class="shimmer-underline font-medium text-cyan-300">design & code</span> in harmony
-      </p>
-      <p class="mt-4 text-slate-400 max-w-xl">
-        I architect scalable systems and pixel-perfect interfaces. 
-        Passionate about AI, open-source, and human-centered innovation. 
-        Based in Kabul · working worldwide.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-        <a href="#projects" class="group px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-full shadow-lg shadow-cyan-500/20 transition-all duration-300 flex items-center gap-2 transform hover:scale-105 hover:shadow-cyan-500/40">
-          <i class="fas fa-rocket group-hover:translate-x-1 transition-transform"></i> 
-          <span>Explore work</span>
-        </a>
-        <a href="#cv" class="group px-7 py-3.5 bg-white/5 hover:bg-white/10 text-slate-200 rounded-full border border-white/10 hover:border-cyan-400/30 transition-all duration-300 flex items-center gap-2 transform hover:scale-105 backdrop-blur-sm">
-          <i class="fas fa-file-alt group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-          <span>View CV</span>
-        </a>
-      </div>
-      <div class="flex gap-3 mt-8 justify-center lg:justify-start">
-        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+
+      <!-- Verified badge -->
+      <div class="absolute -bottom-2 -right-2 bg-emerald-500 rounded-full p-2 shadow-lg shadow-emerald-500/30 border-2 border-[#07070d] float-soft">
+        <i class="fas fa-check text-white text-xs"></i>
       </div>
     </div>
-  </section>
+
+    <!-- Name -->
+    <h1 class="text-4xl md:text-5xl font-extrabold mt-6 tracking-tight bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent glitch">
+      Ahmadullah Mukhlis
+    </h1>
+
+    <!-- Role -->
+    <p class="text-lg text-slate-400 font-medium flex items-center gap-2 mt-1">
+      <span class="inline-block w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+      full-stack · creative technologist
+    </p>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="flex-1 text-center lg:text-left">
+
+    <!-- Intro text -->
+    <p class="text-xl md:text-2xl font-light leading-relaxed text-slate-300 max-w-2xl">
+      <span class="font-semibold text-white">Engineering</span> with purpose · 
+      <span class="shimmer-underline font-medium text-cyan-300">design & code</span> in harmony
+    </p>
+
+    <!-- Description -->
+    <p class="mt-4 text-slate-400 max-w-xl">
+      I architect scalable systems and pixel-perfect interfaces. 
+      Passionate about AI, open-source, and human-centered innovation. 
+      Based in Kabul · working worldwide.
+    </p>
+
+    <!-- Buttons -->
+    <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
+
+      <a href="#projects" class="group px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-full shadow-lg shadow-cyan-500/20 transition-all duration-300 flex items-center gap-2 transform hover:scale-105 hover:shadow-cyan-500/40">
+        <i class="fas fa-rocket group-hover:translate-x-1 transition-transform"></i> 
+        <span>Explore work</span>
+      </a>
+
+      <a href="#cv" class="group px-7 py-3.5 bg-white/5 hover:bg-white/10 text-slate-200 rounded-full border border-white/10 hover:border-cyan-400/30 transition-all duration-300 flex items-center gap-2 transform hover:scale-105 backdrop-blur-sm">
+        <i class="fas fa-file-alt group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+        <span>View CV</span>
+      </a>
+
+    </div>
+
+    <!-- Socials -->
+    <div class="flex gap-3 mt-8 justify-center lg:justify-start">
+      <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+    </div>
+
+  </div>
+
+</section>
 
   <!-- SKILLS -->
-  <section id="skills" class="mb-16 fade-section delay-2">
-    <div class="flex items-center gap-3 mb-6">
-      <i class="fas fa-cube text-cyan-400 text-xl"></i>
-      <h2 class="text-2xl font-bold text-slate-200">Toolbox</h2>
-      <span class="h-px flex-1 bg-gradient-to-r from-cyan-500/30 to-transparent"></span>
-    </div>
-    <div class="flex flex-wrap gap-3">
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">JavaScript · TypeScript</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">React · Next.js</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Node.js · Express</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Tailwind · CSS3</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Python · FastAPI</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">MongoDB · PostgreSQL</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Docker · Kubernetes</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">AWS · GCP</span>
-      <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Figma · UI/UX</span>
-    </div>
-  </section>
+<section id="skills" class="mb-16 fade-section delay-2">
+
+  <!-- Header -->
+  <div class="flex items-center gap-3 mb-6">
+    <i class="fas fa-cube text-cyan-400 text-xl"></i>
+    <h2 class="text-2xl font-bold text-slate-200">Toolbox</h2>
+    <span class="h-px flex-1 bg-gradient-to-r from-cyan-500/30 to-transparent"></span>
+  </div>
+
+  <!-- Skills Grid -->
+  <div class="flex flex-wrap gap-3">
+
+    <!-- Core Frontend -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">JavaScript · TypeScript</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">React · Next.js</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">HTML5 · CSS3 · Tailwind CSS</span>
+
+    <!-- Backend -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Node.js · Express.js</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Python · FastAPI · Django</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">REST API · GraphQL</span>
+
+    <!-- Databases -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">MongoDB · PostgreSQL · MySQL</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Redis · Firebase</span>
+
+    <!-- DevOps -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Docker · Kubernetes</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">CI/CD · GitHub Actions</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Linux · Nginx</span>
+
+    <!-- Cloud -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">AWS · GCP · Azure</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Serverless · Cloud Functions</span>
+
+    <!-- Mobile -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Flutter · Dart</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">React Native</span>
+
+    <!-- UI/UX -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Figma · UI/UX Design</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">Prototyping · Design Systems</span>
+
+    <!-- AI / Modern -->
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">AI Integration · OpenAI APIs</span>
+    <span class="skill-tag px-5 py-2.5 rounded-full text-sm font-medium text-slate-300">LLMs · Automation</span>
+
+  </div>
+
+</section>
 
   <!-- PROJECTS with FILTER -->
   <section id="projects" class="mb-16 fade-section delay-3">
