@@ -18,6 +18,42 @@
       color: #e8edf5;
       overflow-x: hidden;
     }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at var(--page-mx, 50%) var(--page-my, 50%), rgba(56, 189, 248, 0.18), transparent 18%),
+        linear-gradient(115deg, transparent 0%, rgba(56, 189, 248, 0.08) 22%, transparent 42%),
+        linear-gradient(245deg, transparent 8%, rgba(16, 185, 129, 0.07) 34%, transparent 58%),
+        radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08), transparent 38%);
+      background-size: 220% 220%, 200% 200%, 160% 160%;
+      animation: pageAura 18s ease-in-out infinite alternate;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, transparent, black 16%, black 84%, transparent);
+      animation: pageGridDrift 28s linear infinite;
+    }
+    @keyframes pageAura {
+      0% { background-position: 0% 20%, 100% 40%, 50% 50%; filter: hue-rotate(0deg); }
+      100% { background-position: 100% 80%, 0% 60%, 58% 42%; filter: hue-rotate(18deg); }
+    }
+    @keyframes pageGridDrift {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 96px 48px, 96px 48px; }
+    }
     .bg-mesh {
       background: radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
                   radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
@@ -434,7 +470,7 @@
   <div class="flex-1 text-center lg:text-left">
 
     <!-- Intro text -->
-    <p class="text-xl md:text-2xl font-light leading-relaxed text-slate-300 max-w-2xl">
+    <p class="text-xl md:text-2xl font-light leading-relaxed text-slate-300 max-w-3xl lg:whitespace-nowrap">
       <span class="font-semibold text-white">Engineering</span> with purpose · 
       <span class="shimmer-underline font-medium text-cyan-300">design & code</span> in harmony
     </p>
@@ -750,6 +786,1230 @@
   <i class="fas fa-circle-nodes"></i>
 </div>
 
+<script type="application/json" id="projectsJson">
+[
+  {
+    "id": "api-gateway",
+    "repo": "api_gateway-",
+    "title": "API Gateway",
+    "privacy": "Private",
+    "language": "Kotlin",
+    "updated": "Nov 20, 2025",
+    "categories": [
+      "spring",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/development/api_gateway-",
+    "summary": "Spring Boot gateway for a microservices platform.",
+    "details": "API Gateway is the entry point for backend microservices. It centralizes routing, service discovery, cross-service authentication, rate control, and request forwarding so internal services can stay focused on domain logic while the gateway handles platform concerns.",
+    "tech": [
+      "Kotlin",
+      "Spring Boot",
+      "Spring Cloud Gateway",
+      "Microservices",
+      "REST API"
+    ],
+    "features": [
+      "Central service routing",
+      "Authentication boundary",
+      "Microservice gateway pattern",
+      "Configurable route rules",
+      "Backend integration layer"
+    ]
+  },
+  {
+    "id": "applicans-website",
+    "repo": "applicans-website",
+    "title": "Applicans Website",
+    "privacy": "Public",
+    "language": "Vue",
+    "updated": "Aug 31, 2025",
+    "categories": [
+      "vue",
+      "website"
+    ],
+    "summary": "Published software company website built with Vue.",
+    "details": "A polished public website for presenting company services, product information, and contact paths. The project focuses on clear content sections, responsive layouts, and maintainable Vue components for easy future content updates.",
+    "tech": [
+      "Vue.js",
+      "JavaScript",
+      "CSS",
+      "Responsive UI"
+    ],
+    "features": [
+      "Company profile pages",
+      "Service presentation",
+      "Responsive web layout",
+      "Reusable Vue components",
+      "Public deployment ready"
+    ]
+  },
+  {
+    "id": "hr-vue",
+    "repo": "hr-vue",
+    "title": "HR Vue",
+    "privacy": "Private",
+    "language": "Vue",
+    "updated": "Apr 23, 2025",
+    "categories": [
+      "vue",
+      "fullstack"
+    ],
+    "summary": "Vue frontend for a human resources management system.",
+    "details": "The HR Vue application provides the staff-facing interface for employee records, attendance workflows, department data, and HR operations. It is designed as the frontend layer for the related Laravel backend.",
+    "tech": [
+      "Vue.js",
+      "JavaScript",
+      "REST API",
+      "HR Management"
+    ],
+    "features": [
+      "Employee profile screens",
+      "Attendance workflows",
+      "Department views",
+      "Backend API integration",
+      "Admin dashboard UI"
+    ]
+  },
+  {
+    "id": "hr-laravel",
+    "repo": "hr-laravel",
+    "title": "HR Laravel",
+    "privacy": "Private",
+    "language": "Blade",
+    "updated": "Apr 21, 2025",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "summary": "Laravel backend and Blade screens for HR operations.",
+    "details": "HR Laravel manages server-side HR workflows such as employee data, departments, permissions, attendance records, and administrative reporting. It pairs with the Vue frontend for a complete HR management platform.",
+    "tech": [
+      "Laravel",
+      "Blade",
+      "PHP",
+      "MySQL",
+      "Authentication"
+    ],
+    "features": [
+      "Employee records",
+      "Role-based access",
+      "Attendance data",
+      "Admin reporting",
+      "Database-backed workflows"
+    ]
+  },
+  {
+    "id": "master-dashboard",
+    "repo": "master-dashboard",
+    "title": "Master Dashboard",
+    "privacy": "Private",
+    "language": "Vue",
+    "updated": "Apr 2, 2025",
+    "categories": [
+      "vue",
+      "fullstack"
+    ],
+    "summary": "Central Vue dashboard for monitoring and administration.",
+    "details": "Master Dashboard is a control panel for high-level system visibility. It brings operational views, summary metrics, management screens, and quick navigation into one Vue application for administrators.",
+    "tech": [
+      "Vue.js",
+      "Dashboard UI",
+      "Charts",
+      "REST API"
+    ],
+    "features": [
+      "Admin overview",
+      "Metric cards",
+      "Management screens",
+      "Reusable dashboard layout",
+      "API-driven data"
+    ]
+  },
+  {
+    "id": "sarafi-vue",
+    "repo": "sarafi-vue",
+    "title": "Sarafi Vue",
+    "privacy": "Private",
+    "language": "JavaScript",
+    "updated": "Mar 23, 2025",
+    "categories": [
+      "vue",
+      "fullstack"
+    ],
+    "summary": "Frontend for online currency exchange software.",
+    "details": "Sarafi Vue is the client interface for an online currency exchange system. It supports rate display, exchange operations, account workflows, and the day-to-day screens a currency exchange business needs.",
+    "tech": [
+      "Vue.js",
+      "JavaScript",
+      "Currency Exchange",
+      "REST API"
+    ],
+    "features": [
+      "Exchange rate UI",
+      "Transaction screens",
+      "Customer workflows",
+      "Dashboard views",
+      "Sarafi backend integration"
+    ]
+  },
+  {
+    "id": "sarafi-laravel",
+    "repo": "sarafi-laravel",
+    "title": "Sarafi Laravel",
+    "privacy": "Private",
+    "language": "Blade",
+    "updated": "Mar 19, 2025",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "summary": "Backend for online currency exchange software.",
+    "details": "Sarafi Laravel provides the business logic and persistence layer for the online currency system. It handles customers, currency rates, exchange transactions, balances, and administrative controls.",
+    "tech": [
+      "Laravel",
+      "Blade",
+      "PHP",
+      "MySQL",
+      "Accounting Logic"
+    ],
+    "features": [
+      "Currency management",
+      "Exchange transactions",
+      "Customer accounts",
+      "Admin controls",
+      "Financial records"
+    ]
+  },
+  {
+    "id": "donor-project",
+    "repo": "donor-project",
+    "title": "Donor Project",
+    "privacy": "Public",
+    "language": "TypeScript",
+    "updated": "Jan 17, 2025",
+    "categories": [
+      "website",
+      "fullstack"
+    ],
+    "summary": "Blood donor project with TypeScript implementation.",
+    "details": "Donor Project helps connect blood donors with donation needs. The system focuses on donor registration, availability, matching, and public access to donation information in a structured web experience.",
+    "tech": [
+      "TypeScript",
+      "Web App",
+      "Blood Donation",
+      "MIT License"
+    ],
+    "features": [
+      "Donor registration",
+      "Donation request flow",
+      "Searchable donor data",
+      "Public project structure",
+      "Open-source codebase"
+    ]
+  },
+  {
+    "id": "examination",
+    "repo": "examination",
+    "title": "Examination",
+    "privacy": "Public",
+    "language": "HTML",
+    "updated": "Dec 28, 2024",
+    "categories": [
+      "website"
+    ],
+    "summary": "HTML-based examination and assessment project.",
+    "details": "Examination is a lightweight web project for presenting exam content, assessment pages, or academic workflows. Its simple HTML structure makes it easy to host, review, and extend.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "Static Website"
+    ],
+    "features": [
+      "Exam page structure",
+      "Simple hosting",
+      "Fast loading",
+      "Easy customization",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "pkg-data-migration",
+    "repo": "pkg-data-migration",
+    "title": "PKG Data Migration",
+    "privacy": "Public",
+    "language": "PHP",
+    "updated": "Dec 6, 2024",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "summary": "PHP tooling for PKG data migration.",
+    "details": "PKG Data Migration is a utility project for moving, transforming, and validating package-related data between systems. It is built to make migration work more repeatable and easier to audit.",
+    "tech": [
+      "PHP",
+      "Data Migration",
+      "ETL",
+      "Database Scripts"
+    ],
+    "features": [
+      "Data import logic",
+      "Migration workflow",
+      "Transformation rules",
+      "Validation steps",
+      "Repeatable scripts"
+    ]
+  },
+  {
+    "id": "single-page-portfolio",
+    "repo": "single-page-portfolio",
+    "title": "Single Page Portfolio",
+    "privacy": "Public",
+    "language": "TypeScript",
+    "updated": "Aug 18, 2024",
+    "categories": [
+      "website"
+    ],
+    "summary": "Single page portfolio built with Tailwind CSS and Next.js.",
+    "details": "A compact personal portfolio that presents profile, projects, and contact content in a single-page layout. It uses modern frontend tooling and Tailwind CSS for fast styling.",
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Portfolio"
+    ],
+    "features": [
+      "Single-page layout",
+      "Responsive sections",
+      "Project showcase",
+      "Modern frontend stack",
+      "Clean personal branding"
+    ]
+  },
+  {
+    "id": "blood-bank-system",
+    "repo": "blood-bank-system",
+    "title": "Blood Bank System",
+    "privacy": "Private",
+    "language": "Blade",
+    "updated": "Aug 3, 2024",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "summary": "Laravel blood bank management system.",
+    "details": "Blood Bank System manages blood donors, blood groups, stock, requests, and donation workflows for a blood bank environment. It provides administrative screens and database-backed operations.",
+    "tech": [
+      "Laravel",
+      "Blade",
+      "PHP",
+      "MySQL",
+      "Healthcare"
+    ],
+    "features": [
+      "Donor management",
+      "Blood stock tracking",
+      "Request handling",
+      "Admin dashboard",
+      "Healthcare workflow support"
+    ]
+  },
+  {
+    "id": "transaction-system",
+    "repo": "transaction-system",
+    "title": "Transaction System",
+    "privacy": "Public",
+    "language": "JavaScript",
+    "updated": "May 9, 2024",
+    "categories": [
+      "website",
+      "fullstack"
+    ],
+    "summary": "JavaScript transaction management project.",
+    "details": "Transaction System focuses on recording and managing transaction data through a web interface. It demonstrates practical account, ledger, or payment-flow logic in JavaScript.",
+    "tech": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Transactions"
+    ],
+    "features": [
+      "Transaction records",
+      "Interactive UI",
+      "Financial workflow model",
+      "Public source code",
+      "Browser-based interface"
+    ]
+  },
+  {
+    "id": "hotel-mis",
+    "repo": "hotel-Mis",
+    "title": "Hotel MIS",
+    "privacy": "Public",
+    "language": "CSS",
+    "updated": "Jan 27, 2024",
+    "categories": [
+      "website"
+    ],
+    "summary": "Hotel management information system interface.",
+    "details": "Hotel MIS presents hotel management screens and styling for operations such as rooms, guests, bookings, and service records. It is a practical UI-focused management system project.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "MIS Design"
+    ],
+    "features": [
+      "Hotel operations UI",
+      "Room and guest views",
+      "Booking-oriented layout",
+      "Responsive styling",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "cv",
+    "repo": "cv",
+    "title": "CV",
+    "privacy": "Public",
+    "language": "HTML",
+    "updated": "Recent",
+    "categories": [
+      "website"
+    ],
+    "summary": "Personal CV and resume repository.",
+    "details": "A focused CV project for presenting personal profile, education, experience, skills, and contact details online. It supports quick sharing through GitHub and static hosting.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "Resume"
+    ],
+    "features": [
+      "Profile summary",
+      "Skills section",
+      "Experience content",
+      "Contact details",
+      "Shareable online CV"
+    ]
+  },
+  {
+    "id": "dr-checkup",
+    "repo": "dr_checkoup",
+    "title": "Dr Checkup",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "1 hour ago",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/dr_checkup",
+    "summary": "Flutter medical checkup application.",
+    "details": "Dr Checkup is a healthcare-focused Flutter app for patient checkup workflows, medical records, appointment-related screens, and doctor/patient interaction patterns.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Healthcare App",
+      "Mobile UI"
+    ],
+    "features": [
+      "Patient-facing screens",
+      "Medical workflow UI",
+      "Mobile-first design",
+      "Cross-platform Flutter build",
+      "Healthcare data structure"
+    ]
+  },
+  {
+    "id": "vidbuddy-web-backend",
+    "repo": "VidBuddy-web-backend",
+    "title": "VidBuddy Web Backend",
+    "privacy": "Public",
+    "language": "Blade",
+    "updated": "Last week",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/VidBuddy-web-backend",
+    "summary": "Laravel backend for the VidBuddy web platform.",
+    "details": "VidBuddy Web Backend powers the server-side features of the VidBuddy ecosystem, including web routes, backend logic, database models, API handling, and content workflows for the public web product.",
+    "tech": [
+      "Laravel",
+      "Blade",
+      "PHP",
+      "MySQL",
+      "Web Backend"
+    ],
+    "features": [
+      "Backend routes",
+      "Database models",
+      "Web platform support",
+      "Admin-ready structure",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "vidbuddy",
+    "repo": "VidBuddy",
+    "title": "VidBuddy",
+    "privacy": "Public",
+    "language": "JavaScript",
+    "updated": "2 weeks ago",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/VidBuddy",
+    "summary": "VidBuddy app project for video and media workflows.",
+    "details": "VidBuddy is part of the VidBuddy product family, focused on video-oriented user workflows. The project includes application screens, media handling concepts, and cross-platform product structure.",
+    "tech": [
+      "JavaScript",
+      "Media App",
+      "Video Workflows"
+    ],
+    "features": [
+      "Video-focused experience",
+      "Media browsing flow",
+      "Product app structure",
+      "Public source code",
+      "VidBuddy ecosystem integration"
+    ]
+  },
+  {
+    "id": "vidbuddy-desktop",
+    "repo": "vidbuddy_desktop",
+    "title": "VidBuddy Desktop",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "2 weeks ago",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/vidbuddy_desktop",
+    "summary": "Flutter desktop app for VidBuddy media download and playback.",
+    "details": "VidBuddy Desktop brings the VidBuddy experience to desktop platforms with Flutter. It includes screens for home browsing, music, video, downloads, playback, and additional controls.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Desktop App",
+      "Media Player"
+    ],
+    "features": [
+      "Desktop media interface",
+      "Download screens",
+      "Player UI",
+      "Music and video sections",
+      "Cross-platform Flutter build"
+    ],
+    "images": [
+      "./images/flutter/vidbuddy-desktop/home.png",
+      "./images/flutter/vidbuddy-desktop/video.png",
+      "./images/flutter/vidbuddy-desktop/player.png"
+    ]
+  },
+  {
+    "id": "portfolio-site",
+    "repo": "ahmadullahmukhlis.github.io",
+    "title": "Portfolio Website",
+    "privacy": "Public",
+    "language": "HTML",
+    "updated": "2 weeks ago",
+    "categories": [
+      "website"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/ahmadullahmukhlis.github.io",
+    "summary": "This GitHub Pages personal portfolio.",
+    "details": "The portfolio website presents Ahmadullah Mukhlis, technical skills, projects, CV information, and contact links in one static GitHub Pages site.",
+    "tech": [
+      "HTML",
+      "Tailwind CSS",
+      "JavaScript",
+      "GitHub Pages"
+    ],
+    "features": [
+      "Personal profile",
+      "Project detail pages",
+      "Responsive design",
+      "Contact section",
+      "Static deployment"
+    ]
+  },
+  {
+    "id": "ahmadullahmukhlis-profile",
+    "repo": "ahmadullahmukhlis",
+    "title": "Ahmadullah Mukhlis Profile",
+    "privacy": "Public",
+    "language": "Markdown",
+    "updated": "2 weeks ago",
+    "categories": [
+      "website"
+    ],
+    "summary": "GitHub profile and personal repository.",
+    "details": "A profile repository used to present identity, developer information, pinned project direction, and public GitHub presence.",
+    "tech": [
+      "Markdown",
+      "GitHub Profile"
+    ],
+    "features": [
+      "Profile README",
+      "Developer identity",
+      "GitHub presence",
+      "Project links",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "task-management",
+    "repo": "task-management",
+    "title": "Task Management",
+    "privacy": "Public",
+    "language": "PHP",
+    "updated": "3 weeks ago",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/development/task-management",
+    "summary": "Task management system for organizing work and assignments.",
+    "details": "Task Management provides workflows for creating, assigning, tracking, and updating tasks. The project is structured as a practical management application with backend and frontend parts.",
+    "tech": [
+      "PHP",
+      "Laravel",
+      "Task Workflow",
+      "MySQL"
+    ],
+    "features": [
+      "Task creation",
+      "Status tracking",
+      "Assignment flow",
+      "Project organization",
+      "Management dashboard"
+    ]
+  },
+  {
+    "id": "portfolip",
+    "repo": "portfolip",
+    "title": "Portfolip",
+    "privacy": "Public",
+    "language": "Less",
+    "updated": "3 weeks ago",
+    "categories": [
+      "website"
+    ],
+    "summary": "Personal portfolio project with Less styling.",
+    "details": "Portfolip is another personal portfolio implementation focused on custom styling, profile presentation, and project showcase layout.",
+    "tech": [
+      "Less",
+      "HTML",
+      "CSS",
+      "Portfolio"
+    ],
+    "features": [
+      "Personal branding",
+      "Styled portfolio layout",
+      "Project sections",
+      "Responsive presentation",
+      "Public source code"
+    ]
+  },
+  {
+    "id": "tax-system",
+    "repo": "tax-system",
+    "title": "Tax System",
+    "privacy": "Public",
+    "language": "HTML",
+    "updated": "3 weeks ago",
+    "categories": [
+      "website",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/tax-system",
+    "summary": "Tax system developed around Afghanistan tax law.",
+    "details": "Tax System presents tax-related workflows and interface concepts based on Afghanistan tax law. It is designed for organizing tax information, forms, and calculation-oriented screens.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "Afghanistan Tax Law"
+    ],
+    "features": [
+      "Tax law-focused UI",
+      "Form-oriented screens",
+      "Calculation-ready structure",
+      "Public repository",
+      "Government workflow concept"
+    ]
+  },
+  {
+    "id": "tailor",
+    "repo": "tailor",
+    "title": "Tailor",
+    "privacy": "Private",
+    "language": "PHP",
+    "updated": "3 weeks ago",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "summary": "Tailoring business management application.",
+    "details": "Tailor is a PHP system for managing tailoring business workflows such as customers, measurements, orders, payments, and delivery tracking.",
+    "tech": [
+      "PHP",
+      "Business Management",
+      "MySQL"
+    ],
+    "features": [
+      "Customer records",
+      "Measurement tracking",
+      "Order workflow",
+      "Payment records",
+      "Delivery status"
+    ]
+  },
+  {
+    "id": "dev-scanner",
+    "repo": "dev_scanner",
+    "title": "Dev Scanner",
+    "privacy": "Public",
+    "language": "Dart",
+    "updated": "3 weeks ago",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/dev_scanner",
+    "summary": "Flutter scanner utility for developer workflows.",
+    "details": "Dev Scanner is a Dart/Flutter utility app for scanning and processing codes, documents, or development-related inputs through a mobile interface.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Scanner",
+      "Mobile Utility"
+    ],
+    "features": [
+      "Scanner interface",
+      "Mobile utility flow",
+      "Cross-platform support",
+      "Developer-focused screens",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "angular-dashboard",
+    "repo": "angular-dashboard",
+    "title": "Angular Dashboard",
+    "privacy": "Public",
+    "language": "TypeScript",
+    "updated": "3 weeks ago",
+    "categories": [
+      "website",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/angular-dashboard",
+    "summary": "TypeScript dashboard built with Angular.",
+    "details": "Angular Dashboard is an admin-style frontend for presenting metrics, management screens, and application controls using Angular and TypeScript.",
+    "tech": [
+      "Angular",
+      "TypeScript",
+      "Dashboard UI",
+      "RxJS"
+    ],
+    "features": [
+      "Dashboard layout",
+      "Component-based UI",
+      "TypeScript codebase",
+      "Admin screens",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "starter-kit",
+    "repo": "starter-kit",
+    "title": "Starter Kit",
+    "privacy": "Private",
+    "language": "JavaScript",
+    "updated": "3 weeks ago",
+    "categories": [
+      "website",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/development/starter-kit",
+    "summary": "Reusable starter project for web application development.",
+    "details": "Starter Kit is a reusable foundation for starting new web projects. It includes frontend/backend structure and common setup patterns to speed up delivery.",
+    "tech": [
+      "JavaScript",
+      "Laravel",
+      "Vue.js",
+      "Starter Template"
+    ],
+    "features": [
+      "Reusable structure",
+      "Frontend/backend setup",
+      "Project bootstrap files",
+      "Development conventions",
+      "Faster new project creation"
+    ]
+  },
+  {
+    "id": "ussd-mobile-app",
+    "repo": "ussd_mobile_app",
+    "title": "USSD Mobile App",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "3 weeks ago",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/development/ussd_mobile_app",
+    "summary": "Flutter mobile app for USSD-related workflows.",
+    "details": "USSD Mobile App provides mobile screens for USSD service flows, account actions, history views, and service interaction from a Flutter interface.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "USSD",
+      "Mobile App"
+    ],
+    "features": [
+      "USSD workflow screens",
+      "Mobile service actions",
+      "History views",
+      "Cross-platform app",
+      "Service integration layer"
+    ]
+  },
+  {
+    "id": "cours-mis",
+    "repo": "cours-mis",
+    "title": "Course MIS",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "Jun 14",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/cours-mis",
+    "summary": "Flutter course management information system.",
+    "details": "Course MIS is a mobile management system for course data, students, classes, scheduling, and academic administration workflows.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Education MIS",
+      "Mobile App"
+    ],
+    "features": [
+      "Course records",
+      "Student screens",
+      "Class management",
+      "Academic workflow UI",
+      "Cross-platform build"
+    ]
+  },
+  {
+    "id": "school-management",
+    "repo": "school_management",
+    "title": "School Management",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "Jun 11",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/school_management",
+    "summary": "Flutter school management application.",
+    "details": "School Management supports school administration through mobile screens for students, classes, staff, attendance, and related education workflows.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "School MIS",
+      "Mobile UI"
+    ],
+    "features": [
+      "Student management",
+      "Class records",
+      "Attendance screens",
+      "Staff workflow",
+      "Education dashboard"
+    ]
+  },
+  {
+    "id": "invest-system",
+    "repo": "invest_system",
+    "title": "Invest System",
+    "privacy": "Public",
+    "language": "Dart",
+    "updated": "Jun 3",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/invest_system",
+    "summary": "Investment system mobile application.",
+    "details": "Invest System is a Flutter app for investment tracking, investor views, transaction records, and financial summaries in a mobile-first interface.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Investment Tracking",
+      "Finance App"
+    ],
+    "features": [
+      "Investor dashboard",
+      "Investment records",
+      "Transaction views",
+      "Financial summaries",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "email-send",
+    "repo": "email-send",
+    "title": "Email Send",
+    "privacy": "Private",
+    "language": "JavaScript",
+    "updated": "May 28",
+    "categories": [
+      "website",
+      "fullstack"
+    ],
+    "summary": "Scheduled email sending utility.",
+    "details": "Email Send is a JavaScript project for sending email on scheduled days. It is useful for reminders, notifications, and automated communication workflows.",
+    "tech": [
+      "JavaScript",
+      "Email Automation",
+      "Scheduler"
+    ],
+    "features": [
+      "Scheduled sending",
+      "Notification workflow",
+      "Email configuration",
+      "Automation logic",
+      "Backend utility"
+    ]
+  },
+  {
+    "id": "erp",
+    "repo": "erp",
+    "title": "ERP",
+    "privacy": "Private",
+    "language": "Kotlin",
+    "updated": "May 25",
+    "categories": [
+      "spring",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/erp",
+    "summary": "Enterprise resource planning system across multiple modules.",
+    "details": "ERP is a broad enterprise platform covering business modules and backend services. It is designed around service-based architecture and operational workflows for organization management.",
+    "tech": [
+      "Kotlin",
+      "Spring Boot",
+      "ERP",
+      "Microservices"
+    ],
+    "features": [
+      "Enterprise modules",
+      "Service architecture",
+      "Business operations",
+      "Backend services",
+      "Scalable system design"
+    ]
+  },
+  {
+    "id": "shoping-stocks",
+    "repo": "shoping_stocks",
+    "title": "Shopping Stocks",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "May 22",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/shoping_stocks",
+    "summary": "Shop, sales, and stock management mobile app.",
+    "details": "Shopping Stocks manages shop inventory, sales records, stock movement, and reporting through a Flutter mobile interface for small business operations.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Inventory",
+      "Sales Management"
+    ],
+    "features": [
+      "Stock tracking",
+      "Sales records",
+      "Shop dashboard",
+      "Inventory workflows",
+      "Mobile business app"
+    ]
+  },
+  {
+    "id": "vue-laravel",
+    "repo": "vue-laravel",
+    "title": "Vue Laravel",
+    "privacy": "Private",
+    "language": "Vue/PHP",
+    "updated": "May 13",
+    "categories": [
+      "vue",
+      "laravel",
+      "fullstack"
+    ],
+    "summary": "Full-stack Vue and Laravel application foundation.",
+    "details": "Vue Laravel combines a Vue frontend with a Laravel backend for full-stack web development. It provides a practical base for API-backed interfaces and business workflows.",
+    "tech": [
+      "Vue.js",
+      "Laravel",
+      "PHP",
+      "REST API"
+    ],
+    "features": [
+      "Frontend/backend split",
+      "API integration",
+      "Authentication-ready structure",
+      "Reusable full-stack base",
+      "Business app foundation"
+    ]
+  },
+  {
+    "id": "payslip",
+    "repo": "payslip",
+    "title": "Payslip",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "May 3",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/payslip",
+    "summary": "Mobile payslip application.",
+    "details": "Payslip is a Flutter app for payroll document access and employee payment information. It focuses on viewing pay records, salary breakdowns, and related employee finance data.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Payroll",
+      "Mobile App"
+    ],
+    "features": [
+      "Payslip viewing",
+      "Employee salary records",
+      "Mobile payroll UI",
+      "Secure record access",
+      "Cross-platform support"
+    ]
+  },
+  {
+    "id": "feedback-app",
+    "repo": "feedback_app",
+    "title": "Feedback App",
+    "privacy": "Public",
+    "language": "Vue",
+    "updated": "May 2",
+    "categories": [
+      "vue",
+      "website"
+    ],
+    "summary": "Vue application for collecting and managing feedback.",
+    "details": "Feedback App provides a web interface for users to submit feedback and for administrators to review, organize, and act on those submissions.",
+    "tech": [
+      "Vue.js",
+      "JavaScript",
+      "Feedback Workflow"
+    ],
+    "features": [
+      "Feedback form",
+      "Submission list",
+      "Admin review flow",
+      "Responsive interface",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "authservice",
+    "repo": "authService",
+    "title": "Auth Service",
+    "privacy": "Public",
+    "language": "Kotlin",
+    "updated": "Apr 20",
+    "categories": [
+      "spring",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/authService",
+    "summary": "Kotlin authentication service.",
+    "details": "Auth Service is a backend service for authentication workflows such as login, token handling, account validation, and integration with other platform services.",
+    "tech": [
+      "Kotlin",
+      "Spring Boot",
+      "Authentication",
+      "JWT"
+    ],
+    "features": [
+      "Login flow",
+      "Token-based auth",
+      "Service integration",
+      "Secure backend boundary",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "vidbuddy-app",
+    "repo": "VidBuddy-app",
+    "title": "VidBuddy App",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "Mar 26",
+    "categories": [
+      "mobile"
+    ],
+    "summary": "Flutter mobile app for the VidBuddy ecosystem.",
+    "details": "VidBuddy App is the mobile companion for VidBuddy, focused on media browsing, video workflows, and a mobile-first user experience.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Media App",
+      "Mobile UI"
+    ],
+    "features": [
+      "Mobile media experience",
+      "Video browsing",
+      "Product app flow",
+      "Flutter screens",
+      "VidBuddy integration"
+    ]
+  },
+  {
+    "id": "question-bank",
+    "repo": "question_bank",
+    "title": "Question Bank",
+    "privacy": "Public",
+    "language": "JavaScript",
+    "updated": "Mar 24",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/question_bank",
+    "summary": "Question bank system for education and assessments.",
+    "details": "Question Bank organizes exam questions, categories, answers, and assessment preparation workflows for education platforms.",
+    "tech": [
+      "Laravel",
+      "JavaScript",
+      "PHP",
+      "Education"
+    ],
+    "features": [
+      "Question management",
+      "Category organization",
+      "Assessment support",
+      "Admin workflow",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "document-search",
+    "repo": "documetnt_search",
+    "title": "Document Search",
+    "privacy": "Public",
+    "language": "Dart",
+    "updated": "Mar 18",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/documetnt_search",
+    "summary": "Flutter document search application.",
+    "details": "Document Search is a Dart/Flutter app for indexing, searching, and browsing documents through a clean mobile or desktop interface.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Document Search",
+      "Desktop/Mobile"
+    ],
+    "features": [
+      "Document browsing",
+      "Search interface",
+      "Cross-platform app",
+      "File-oriented workflows",
+      "Public repository"
+    ]
+  },
+  {
+    "id": "course",
+    "repo": "course",
+    "title": "Course",
+    "privacy": "Private",
+    "language": "PHP",
+    "updated": "Mar 4",
+    "categories": [
+      "laravel",
+      "fullstack"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/course",
+    "summary": "Course platform with backend, frontend, and website parts.",
+    "details": "Course is a full-stack education platform with separate backend, frontend, and website folders. It supports course presentation, student-facing flows, and administration.",
+    "tech": [
+      "Laravel",
+      "Vue.js",
+      "PHP",
+      "Education Platform"
+    ],
+    "features": [
+      "Course website",
+      "Backend API",
+      "Frontend app",
+      "Student workflows",
+      "Admin structure"
+    ]
+  },
+  {
+    "id": "callsense",
+    "repo": "callSense",
+    "title": "CallSense",
+    "privacy": "Private",
+    "language": "HTML",
+    "updated": "Feb 26",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/callSense",
+    "summary": "Call-focused mobile project.",
+    "details": "CallSense is a mobile project for call-related features and phone workflow screens. The local project structure shows Flutter platform support and call directory integration work.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Call Features",
+      "Mobile App"
+    ],
+    "features": [
+      "Call workflow screens",
+      "Phone integration",
+      "Mobile UI",
+      "Cross-platform structure",
+      "Service-oriented app design"
+    ]
+  },
+  {
+    "id": "support-app",
+    "repo": "support_app",
+    "title": "Support App",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "Recent",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/development/support_app",
+    "summary": "Flutter support application.",
+    "details": "Support App provides customer or internal support workflows through a mobile interface, including support requests, status views, and communication-oriented screens.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Support Workflow",
+      "Mobile App"
+    ],
+    "features": [
+      "Support request flow",
+      "Ticket status screens",
+      "Mobile support UI",
+      "Cross-platform build",
+      "Service integration"
+    ]
+  }
+]
+</script>
+
 <!-- ===== JAVASCRIPT ===== -->
 <script>
   // Mobile menu
@@ -777,35 +2037,37 @@
     default: ['fa-code', 'text-slate-300', 'bg-white/10', 'Software']
   };
   let projectEntries = [];
+  let projectData = {};
 
-
-  const projectData = Object.fromEntries(projectEntries.map(project => {
-    const primaryType = project.categories[0] || 'default';
-    const [icon, color, bg, category] = typeStyles[primaryType] || typeStyles.default;
-    return [project.id, {
-      ...project,
-      icon,
-      color,
-      bg,
-      category,
-      categoryIcon: icon,
-      status: project.privacy,
-      statusColor: statusStyles[project.privacy] || statusStyles.Public,
-      github: githubBase + project.repo,
-      link: githubBase + project.repo,
-      images: project.images || [
-        `./images/projects/${project.id}/screenshot-1.png`,
-        `./images/projects/${project.id}/screenshot-2.png`,
-        `./images/projects/${project.id}/screenshot-3.png`
-      ]
-    }];
-  }));
+  function buildProjectData(projects) {
+    return Object.fromEntries(projects.map(project => {
+      const primaryType = project.categories[0] || 'default';
+      const [icon, color, bg, category] = typeStyles[primaryType] || typeStyles.default;
+      return [project.id, {
+        ...project,
+        icon,
+        color,
+        bg,
+        category,
+        categoryIcon: icon,
+        status: project.privacy,
+        statusColor: statusStyles[project.privacy] || statusStyles.Public,
+        github: githubBase + project.repo,
+        link: githubBase + project.repo,
+        images: project.images || [
+          `./images/projects/${project.id}/screenshot-1.png`,
+          `./images/projects/${project.id}/screenshot-2.png`,
+          `./images/projects/${project.id}/screenshot-3.png`
+        ]
+      }];
+    }));
+  }
 
   const projectGrid = document.getElementById('projectGrid');
   const projectMoreWrap = document.getElementById('projectMoreWrap');
   const projectMoreBtn = document.getElementById('projectMoreBtn');
   const filterButtons = document.querySelectorAll('.category-pill[data-filter]');
-  const projectsPerPage = 9;
+  const projectsPerPage = 6;
   let activeProjectFilter = 'all';
   let expandedProjectFilters = new Set();
 
@@ -883,7 +2145,31 @@
     renderProjectCards();
   });
 
-  renderProjectCards();
+  async function loadProjects() {
+    try {
+      const inlineJson = document.getElementById('projectsJson');
+      if (window.location.protocol === 'file:') {
+        if (!inlineJson) throw new Error('Inline project JSON is missing.');
+        projectEntries = JSON.parse(inlineJson.textContent);
+      } else {
+        const response = await fetch('./projects.json');
+        if (!response.ok) throw new Error(`Unable to load projects.json (${response.status})`);
+        projectEntries = await response.json();
+      }
+      projectData = buildProjectData(projectEntries);
+      renderProjectCards();
+    } catch (error) {
+      projectGrid.innerHTML = `
+        <div class="glass-card rounded-2xl p-6 md:col-span-2">
+          <p class="text-slate-200 font-semibold">Projects could not be loaded.</p>
+          <p class="text-slate-400 text-sm mt-1">${error.message}</p>
+        </div>
+      `;
+      projectMoreWrap.classList.add('hidden');
+    }
+  }
+
+  loadProjects();
 
   // ===== OPEN PROJECT DETAIL =====
   const overlay = document.getElementById('projectDetailOverlay');
