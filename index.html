@@ -2022,6 +2022,13 @@
     });
   }
 
+  document.addEventListener('mousemove', function(event) {
+    const x = (event.clientX / window.innerWidth) * 100;
+    const y = (event.clientY / window.innerHeight) * 100;
+    document.body.style.setProperty('--page-mx', `${x}%`);
+    document.body.style.setProperty('--page-my', `${y}%`);
+  });
+
   const githubBase = 'https://github.com/ahmadullahmukhlis/';
   const statusStyles = {
     Public: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/10',
