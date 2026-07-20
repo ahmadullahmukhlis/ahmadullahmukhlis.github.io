@@ -198,6 +198,47 @@
       .pdf-cv-page main .gap-4 { gap: 3.5mm !important; }
       .pdf-cv-page main .p-4 { padding: 3.5mm !important; }
 
+
+      /* Compact only the final CV page so every project, education item,
+         reference and footer remains visible inside one A4 landscape page. */
+      .pdf-cv-page.pdf-last-page > main {
+        padding: 7mm 9mm 6mm !important;
+        overflow: hidden !important;
+      }
+      .pdf-cv-page.pdf-last-page main .text-sm {
+        font-size: 9.2pt !important;
+        line-height: 1.26 !important;
+      }
+      .pdf-cv-page.pdf-last-page main .text-xs {
+        font-size: 7.6pt !important;
+        line-height: 1.22 !important;
+      }
+      .pdf-cv-page.pdf-last-page main .text-base {
+        font-size: 10.5pt !important;
+      }
+      .pdf-cv-page.pdf-last-page main .mt-6 { margin-top: 3mm !important; }
+      .pdf-cv-page.pdf-last-page main .mb-4 { margin-bottom: 2.2mm !important; }
+      .pdf-cv-page.pdf-last-page main .gap-4 { gap: 2.3mm !important; }
+      .pdf-cv-page.pdf-last-page main .p-4 { padding: 2.6mm !important; }
+      .pdf-cv-page.pdf-last-page main .mt-2 { margin-top: 1.2mm !important; }
+      .pdf-cv-page.pdf-last-page main .space-y-1 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0.7mm !important;
+      }
+      .pdf-cv-page.pdf-last-page main ul {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+      .pdf-cv-page.pdf-last-page main li {
+        line-height: 1.22 !important;
+      }
+      .pdf-cv-page.pdf-last-page main .grid {
+        align-items: stretch !important;
+      }
+      .pdf-cv-page.pdf-last-page main .mt-6.pt-4 {
+        margin-top: 3mm !important;
+        padding-top: 2.5mm !important;
+      }
+
       .pdf-cover-page {
         width: 210mm;
         min-height: 297mm;
@@ -492,7 +533,18 @@
               <li><strong>TOEFL Preparation</strong> - Rahman Academy, Jalalabad</li>
             </ul>
 
-   
+            <!-- References -->
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-6 mb-4">
+              <i class="fas fa-address-book mr-2"></i> References
+            </div>
+            <div class="text-sm text-slate-700">
+              <p>Available upon request.</p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-400 flex flex-wrap justify-between items-center">
+              <span>&copy; 2026 Ahmadullah Mukhlis</span>
+              <span>Updated: July 2026</span>
+            </div>
           </div>
 
         </main>
@@ -610,6 +662,9 @@
           sections.forEach(function(section, index) {
             const page = document.createElement('div');
             page.className = 'pdf-cv-page';
+            if (index === sections.length - 1) {
+              page.classList.add('pdf-last-page');
+            }
 
             const sidebarPart = index === 0 ? 1 : index === 1 ? 2 : 3;
             const sidebar = buildSidebarPart(sidebarPart);
