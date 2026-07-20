@@ -119,7 +119,7 @@
     /* =========================================================
        PDF / PRINT ENGINE
        Keeps the original UI design and creates one clean A4 page
-       for each CV section, with the sidebar repeated on every page.
+       for each CV section, with the sidebar continued across pages instead of repeated.
        ========================================================= */
     #pdf-print-root { display: none; }
 
@@ -159,6 +159,14 @@
         overflow: hidden !important;
         background: #0f172a !important;
         color: #e2e8f0 !important;
+      }
+
+      .pdf-cv-page > aside.pdf-sidebar-continuation {
+        padding-top: 10mm !important;
+      }
+
+      .pdf-cv-page > aside.pdf-sidebar-empty {
+        padding: 0 !important;
       }
 
       .pdf-cv-page > main {
@@ -484,18 +492,7 @@
               <li><strong>TOEFL Preparation</strong> - Rahman Academy, Jalalabad</li>
             </ul>
 
-            <!-- References -->
-            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-6 mb-4">
-              <i class="fas fa-address-book mr-2"></i> References
-            </div>
-            <div class="text-sm text-slate-700">
-              <p>Available upon request.</p>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-400 flex flex-wrap justify-between items-center">
-              <span>&copy; 2026 Ahmadullah Mukhlis</span>
-              <span>Updated: July 2026</span>
-            </div>
+   
           </div>
 
         </main>
@@ -546,7 +543,7 @@
     // ==========================
     // Professional browser PDF export
     // Uses the browser print engine so text stays sharp/selectable.
-    // The CV sidebar is repeated on every A4 landscape page.
+    // The CV sidebar is split across the first two A4 landscape pages.
     // ==========================
     function downloadActiveTabPDF() {
       const coverTab = document.getElementById('cover-letter-tab');
@@ -584,11 +581,38 @@
           const sourceSidebar = cvTab.querySelector('.cv-grid > aside');
           const sections = Array.from(cvTab.querySelectorAll('.cv-grid > main > .cv-section'));
 
-          sections.forEach(function(section) {
+          // Split the original sidebar into two continuous parts:
+          // Page 1: profile, contact, and domain expertise.
+          // Page 2: tech stack, languages, certifications, and hobbies.
+          // Later pages keep the dark column but do not repeat content.
+          function buildSidebarPart(part) {
+            const sidebar = sourceSidebar.cloneNode(true);
+            const children = Array.from(sidebar.children);
+            const techIndex = children.findIndex(function(child) {
+              return child.textContent.trim().toLowerCase().includes('tech stack');
+            });
+
+            children.forEach(function(child, index) {
+              const shouldKeep = part === 1
+                ? (techIndex === -1 || index < techIndex)
+                : part === 2
+                  ? (techIndex !== -1 && index >= techIndex)
+                  : false;
+
+              if (!shouldKeep) child.remove();
+            });
+
+            if (part === 2) sidebar.classList.add('pdf-sidebar-continuation');
+            if (part > 2) sidebar.classList.add('pdf-sidebar-empty');
+            return sidebar;
+          }
+
+          sections.forEach(function(section, index) {
             const page = document.createElement('div');
             page.className = 'pdf-cv-page';
 
-            const sidebar = sourceSidebar.cloneNode(true);
+            const sidebarPart = index === 0 ? 1 : index === 1 ? 2 : 3;
+            const sidebar = buildSidebarPart(sidebarPart);
             const main = document.createElement('main');
             main.className = 'cv-main-print';
             main.appendChild(section.cloneNode(true));
