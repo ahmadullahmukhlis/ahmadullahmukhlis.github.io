@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmadullah Mukhlis – Cover Letter & CV</title>
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* --- Print Styles --- */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .tab-content {
+        display: block !important;
+      }
+      .cv-grid {
+        display: grid !important;
+      }
+      .sidebar-print {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background-color: #0f172a !important;
+        color: #e2e8f0 !important;
+      }
+      .cv-main-print {
+        padding: 2rem !important;
+      }
+      .break-avoid {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* --- Timeline Styles --- */
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #1e3a8a;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 2px #1e3a8a;
+    }
+
+    /* --- Sidebar --- */
+    .sidebar-bg {
+      background-color: #0f172a;
+    }
+
+    /* --- Tab Bar Download Buttons --- */
+    .download-icon-btn {
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .download-icon-btn:hover {
+      background: #e2e8f0;
+      color: #1e3a8a;
+    }
+    .download-icon-btn.active-download {
+      color: #1e3a8a;
+    }
+    .tab-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-left: auto;
+    }
+    .tab-divider {
+      width: 1px;
+      height: 24px;
+      background: #e2e8f0;
+      margin: 0 0.25rem;
+    }
+    @media (max-width: 640px) {
+      .download-icon-btn span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans bg-slate-100 p-4 md:p-8 antialiased">
+
+  <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+    <!-- ===== TABS with Download Buttons ===== -->
+    <div class="tab-bar flex items-center border-b border-slate-200 bg-slate-50 px-4 md:px-8 no-print" role="tablist">
+      <!-- Left: Tab buttons -->
+      <div class="flex items-center">
+        <button class="tab-btn py-3 px-4 md:px-6 font-semibold text-sm text-blue-800 border-b-2 border-blue-800 hover:bg-slate-100 transition-colors focus:outline-none cursor-pointer" data-tab="cover-letter-tab" role="tab">
+          <i class="fas fa-envelope mr-2"></i>Cover Letter
+        </button>
+        <button class="tab-btn py-3 px-4 md:px-6 font-semibold text-sm text-slate-600 border-b-2 border-transparent hover:bg-slate-100 transition-colors focus:outline-none cursor-pointer" data-tab="cv-tab" role="tab">
+          <i class="fas fa-user mr-2"></i>CV / Resume
+        </button>
+      </div>
+
+      <!-- Right: Download Buttons -->
+      <div class="tab-bar-right">
+        <button onclick="downloadPDF('cover')" class="download-icon-btn" title="Download Cover Letter as PDF">
+          <i class="fas fa-file-pdf text-red-500"></i>
+          <span>PDF</span>
+        </button>
+        <span class="tab-divider"></span>
+        <button onclick="downloadPDF('cv')" class="download-icon-btn" title="Download CV as PDF">
+          <i class="fas fa-file-pdf text-red-500"></i>
+          <span>PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== COVER LETTER TAB ===== -->
+    <div id="cover-letter-tab" class="tab-content block p-6 md:p-10" role="tabpanel">
+      <div class="max-w-3xl mx-auto text-slate-800 text-sm leading-relaxed">
+
+        <div class="flex flex-wrap justify-between items-baseline mb-8 border-b border-slate-200 pb-4">
+          <div>
+            <div class="font-semibold text-base">Ahmadullah Mukhlis</div>
+            <div class="text-sm text-slate-500">Kabul, Afghanistan</div>
+          </div>
+          <div class="text-sm text-slate-500">
+            <span id="current-date"></span>
+          </div>
+        </div>
+
+        <div>
+          <p class="mb-4"><strong>Dear Hiring Manager,</strong></p>
+
+          <p class="mb-4">
+            I am writing to express my enthusiasm for joining your company as a developer. With a strong foundation in full‑stack engineering and a genuine passion for building clean, scalable, and secure applications, I am confident that my skills and experience would be a valuable asset to your team.
+          </p>
+
+          <p class="mb-4">
+            <strong>Over five years</strong> of professional experience have equipped me with deep expertise across the entire development lifecycle. I have designed and delivered enterprise‑grade solutions for banking systems, payment platforms, financial applications, and large‑scale business systems using technologies such as Angular, React, Vue.js, Laravel, Spring Boot, ASP.NET Core, Python, and Flutter. I thrive in collaborative, cross‑functional environments and enjoy architecting microservices, integrating APIs, and optimising for high performance and security.
+          </p>
+
+          <p class="mb-4">
+            I am a quick learner who stays current with industry trends, and I bring strong problem‑solving and communication skills to every project. I am excited about the opportunity to contribute my technical leadership and development expertise to your organisation.
+          </p>
+
+          <p class="mb-6">
+            I would welcome the chance to discuss how my background aligns with your needs. Thank you for considering my application.
+          </p>
+
+          <div class="font-medium mt-8 pt-4 border-t border-slate-200">
+            Sincerely,<br />
+            <span class="text-base">Ahmadullah Mukhlis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CV / RESUME TAB ===== -->
+    <div id="cv-tab" class="tab-content hidden p-0" role="tabpanel">
+      <div class="cv-grid grid grid-cols-1 md:grid-cols-[300px,1fr]">
+
+        <!-- Sidebar -->
+        <aside class="sidebar-bg text-slate-200 p-6 md:p-8 sidebar-print">
+          <!-- Profile Image -->
+          <div class="flex justify-center mb-4">
+            <img src="images/ahmadullah.jpg" alt="Ahmadullah Mukhlis" class="w-24 h-24 rounded-full border-4 border-slate-600 object-cover" />
+          </div>
+
+          <div class="text-center md:text-left">
+            <div class="text-2xl  font-bold text-white leading-tight">
+              Ahmadullah Mukhlis
+            </div>
+            <div class="text-sm text-sky-400 font-medium border-b border-slate-700 pb-4 mt-1">
+              Full‑Stack Software Developer
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mt-6 mb-3 border-b border-slate-700 pb-1">
+            <i class="fas fa-address-card mr-2"></i> Contact
+          </div>
+          <div class="flex items-center gap-3 text-xs text-slate-300 mb-2">
+            <i class="fas fa-map-marker-alt w-4 text-sky-400"></i>
+            <span>Dehmazang, Kabul, Afghanistan</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-300 mb-2">
+            <i class="fas fa-phone-alt w-4 text-sky-400"></i>
+            <span>(+93) 07784069777</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-300 mb-2">
+            <i class="fas fa-envelope w-4 text-sky-400"></i>
+            <a href="mailto:ahmadullahmukhlis2019@gmail.com" class="hover:text-white transition">ahmadullahmukhlis2019@gmail.com</a>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-300 mb-2">
+            <i class="fab fa-github w-4 text-sky-400"></i>
+            <a href="https://github.com/ahmadullahmukhlis/" target="_blank" class="hover:text-white transition">github.com/ahmadullahmukhlis</a>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-300 mb-2">
+            <i class="fab fa-linkedin-in w-4 text-sky-400"></i>
+            <a href="https://www.linkedin.com/in/ahmadullahmukhlis/" target="_blank" class="hover:text-white transition">linkedin.com/in/ahmadullahmukhlis</a>
+          </div>
+
+          <!-- Domain Expertise -->
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mt-6 mb-3 border-b border-slate-700 pb-1">
+            <i class="fas fa-bullseye mr-2"></i> Domain Expertise
+          </div>
+          <div class="flex flex-wrap gap-1">
+            <span class="bg-slate-700 text-sky-300 text-xs px-3 py-1 rounded-full border border-slate-600">Digital Payments</span>
+            <span class="bg-slate-700 text-sky-300 text-xs px-3 py-1 rounded-full border border-slate-600">Offline Banking</span>
+            <span class="bg-slate-700 text-sky-300 text-xs px-3 py-1 rounded-full border border-slate-600">Financial Systems</span>
+            <span class="bg-slate-700 text-sky-300 text-xs px-3 py-1 rounded-full border border-slate-600">Enterprise Solutions</span>
+          </div>
+
+          <!-- Core Skills -->
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mt-6 mb-3 border-b border-slate-700 pb-1">
+            <i class="fas fa-code mr-2"></i> Tech Stack
+          </div>
+          <div>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Angular</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">React</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Vue.js</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Next.js</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Laravel</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Spring Boot</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">ASP.NET Core</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Python</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Flutter</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Microservices</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">RESTful APIs</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">GraphQL</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">MySQL</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">PostgreSQL</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">SQL Server</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">MongoDB</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Docker</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">AWS</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">CI/CD</span>
+            <span class="inline-block bg-slate-700 text-slate-100 text-xs px-3 py-1 rounded-full border border-slate-600 m-0.5">Git</span>
+          </div>
+
+          <!-- Languages -->
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mt-6 mb-3 border-b border-slate-700 pb-1">
+            <i class="fas fa-language mr-2"></i> Languages
+          </div>
+          <div class="text-sm text-slate-300 py-0.5">
+            <i class="fas fa-check-circle text-green-400 w-5"></i> Pashto <span class="text-slate-400 text-xs">(Native)</span>
+          </div>
+          <div class="text-sm text-slate-300 py-0.5">
+            <i class="fas fa-check-circle text-green-400 w-5"></i> Dari <span class="text-slate-400 text-xs">(C1)</span>
+          </div>
+          <div class="text-sm text-slate-300 py-0.5">
+            <i class="fas fa-check-circle text-sky-400 w-5"></i> English <span class="text-slate-400 text-xs">(B2/C1)</span>
+          </div>
+
+          <!-- Certifications -->
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mt-6 mb-3 border-b border-slate-700 pb-1">
+            <i class="fas fa-certificate mr-2"></i> Certifications
+          </div>
+          <div>
+            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-0.5 rounded-full border border-indigo-200 m-0.5">MCSE</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-0.5 rounded-full border border-indigo-200 m-0.5">Adv. Web Dev</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-0.5 rounded-full border border-indigo-200 m-0.5">Adv. Database</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-0.5 rounded-full border border-indigo-200 m-0.5">Software Management</span>
+          </div>
+
+          <!-- Hobbies -->
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mt-6 mb-3 border-b border-slate-700 pb-1">
+            <i class="fas fa-heart mr-2"></i> Hobbies
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-sm text-slate-300"><i class="fas fa-pen-fancy w-5 text-sky-400"></i> Writing</span>
+            <span class="text-sm text-slate-300"><i class="fas fa-book-open w-5 text-sky-400"></i> Reading</span>
+            <span class="text-sm text-slate-300"><i class="fas fa-walking w-5 text-sky-400"></i> Walking</span>
+            <span class="text-sm text-slate-300"><i class="fas fa-palette w-5 text-sky-400"></i> Design</span>
+          </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="p-6 md:p-8 cv-main-print">
+
+          <!-- About Myself -->
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-0 mb-4">
+            <i class="fas fa-user mr-2"></i> About Myself
+          </div>
+          <div class="text-sm text-slate-700 leading-relaxed space-y-3">
+            <p>
+              Highly skilled and results‑driven <strong>Full‑Stack Software Engineer</strong> with over 5 years of professional experience in designing, developing, and maintaining scalable enterprise applications, financial systems, payment platforms, banking systems, and modern web/mobile applications. Strong expertise in frontend and backend development using Angular, React, Vue.js, Laravel, Spring Boot, ASP.NET Core, Python, Flutter, and enterprise microservices architecture.
+            </p>
+            <p>
+              Experienced in developing secure and high‑performance solutions for banking, digital payment systems, enterprise management platforms, healthcare systems, MIS platforms, e‑commerce applications, and multi‑country digital platforms. Strong understanding of software architecture, API integrations, DevOps practices, CI/CD pipelines, cloud deployment, database optimization, and modern UI/UX principles.
+            </p>
+            <p>
+              Passionate about building reliable systems, solving complex technical challenges, leading development initiatives, and continuously learning modern technologies to deliver world‑class software solutions suitable for international and European‑level organizations.
+            </p>
+            <p class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-slate-800">
+              <i class="fas fa-rocket text-blue-600 mr-2"></i> Currently contributing to <strong>APS (Afghanistan Payment System)</strong> and banking gateway integrations, including offline banking integrations, digital payment infrastructure, enterprise APIs, and secure financial transaction systems.
+            </p>
+          </div>
+
+          <!-- Experience -->
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-6 mb-4">
+            <i class="fas fa-briefcase mr-2"></i> Experience
+          </div>
+
+          <!-- APS -->
+          <div class="timeline-item break-avoid">
+            <div class="flex flex-wrap justify-between items-baseline">
+              <span class="font-bold text-base text-slate-900">Full‑Stack Developer Manager</span>
+              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Aug 2025 – Present</span>
+            </div>
+            <div class="font-semibold text-slate-800 text-sm">Afghanistan Payments Systems – Kabul</div>
+            <ul class="text-sm text-slate-700 list-disc list-inside mt-1 space-y-0.5">
+              <li>Leading full‑stack development of enterprise banking and payment applications for web and mobile platforms.</li>
+              <li>Designing secure payment gateways and enterprise integration solutions for financial institutions.</li>
+              <li>Working on EMI integrations, payment switching systems, and banking transaction platforms.</li>
+              <li>Developing scalable applications using Angular, React, Vue.js, Laravel, Spring Boot, ASP.NET Core, and Flutter.</li>
+              <li>Architecting secure APIs, interoperable payment systems, and offline banking integrations.</li>
+              <li>Implementing microservices, high‑availability infrastructure, secure authentication, and transaction monitoring systems.</li>
+            </ul>
+          </div>
+
+          <!-- Da Afghanistan Bank -->
+          <div class="timeline-item break-avoid">
+            <div class="flex flex-wrap justify-between items-baseline">
+              <span class="font-bold text-base text-slate-900">Web Developer</span>
+              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Nov 2024 – Aug 2025</span>
+            </div>
+            <div class="font-semibold text-slate-800 text-sm">Da Afghanistan Bank – Kabul</div>
+            <ul class="text-sm text-slate-700 list-disc list-inside mt-1 space-y-0.5">
+              <li>Led development of enterprise banking and financial applications using Laravel, Vue.js, React, Next.js, .NET, and Spring Boot Microservices.</li>
+              <li>Designed scalable and secure microservice architectures for high‑performance systems.</li>
+              <li>Developed RESTful APIs and integrated frontend‑backend enterprise solutions.</li>
+              <li>Collaborated with cross‑functional teams to ensure security, quality, and scalability.</li>
+              <li>Conducted code reviews, system optimization, and mentoring for junior developers.</li>
+              <li>Worked on digital payment systems, internal platforms, and secure financial applications.</li>
+            </ul>
+          </div>
+
+          <!-- Baheer Group -->
+          <div class="timeline-item break-avoid">
+            <div class="flex flex-wrap justify-between items-baseline">
+              <span class="font-bold text-base text-slate-900">Web Developer</span>
+              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Nov 2022 – Nov 2024</span>
+            </div>
+            <div class="font-semibold text-slate-800 text-sm">Baheer Group of Companies – Kabul</div>
+            <ul class="text-sm text-slate-700 list-disc list-inside mt-1 space-y-0.5">
+              <li>Developed enterprise web applications using PHP, Laravel, MySQL, and JavaScript frameworks.</li>
+              <li>Integrated payment gateways and secure transaction processing systems.</li>
+              <li>Implemented authentication and authorization mechanisms.</li>
+              <li>Integrated Google Maps APIs and third‑party services.</li>
+              <li>Collaborated with clients to deliver scalable and responsive business solutions.</li>
+            </ul>
+          </div>
+
+          <!-- Projects (Updated) -->
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-6 mb-4">
+            <i class="fas fa-folder-open mr-2"></i> Selected Projects
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <!-- Offline Mobile Banking -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">Offline Mobile Banking <span class="font-normal text-slate-500 text-xs">(2025)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Flutter, Laravel, Spring Boot. Offline transaction support, banking gateway integration, secure authentication, and mobile-first UX for Da Afghanistan Bank.</div>
+              <div class="mt-2"><span class="text-xs text-slate-400"><i class="fas fa-building"></i> APS / DAB</span></div>
+            </div>
+
+            <!-- PKG System -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">PKG System <span class="font-normal text-slate-500 text-xs">(2024)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Laravel, React, MySQL. Payment gateways, Passport.js auth, Google Maps &amp; Facebook APIs – custom management solution for Baheer Group.</div>
+              <div class="mt-2"><a href="#" class="text-xs text-blue-600 hover:underline"><i class="fab fa-github"></i> Repository</a></div>
+            </div>
+
+            <!-- ERP for Baheer Group -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">ERP for Baheer Group <span class="font-normal text-slate-500 text-xs">(2023)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Laravel, Vue.js, MySQL. Enterprise resource planning including HR, inventory, procurement, and financial modules with role-based access.</div>
+              <div class="mt-2"><span class="text-xs text-slate-400"><i class="fas fa-building"></i> Baheer Group</span></div>
+            </div>
+
+            <!-- Payslip for Rushan - UPDATED to Flutter -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">Payslip System <span class="font-normal text-slate-500 text-xs">(2023)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Flutter. Automated payslip generation, PDF export, email delivery, and payroll management for Rushan Afghanistan.</div>
+              <div class="mt-2"><span class="text-xs text-slate-400"><i class="fas fa-building"></i> Rushan Afghanistan</span></div>
+            </div>
+
+            <!-- Cash Renewal System - UPDATED to Vue.js & .NET -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">Cash Renewal System <span class="font-normal text-slate-500 text-xs">(2024)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Vue.js, .NET, PostgreSQL. Track and manage currency renewal, distribution, and inventory for Da Afghanistan Bank.</div>
+              <div class="mt-2"><span class="text-xs text-slate-400"><i class="fas fa-building"></i> Da Afghanistan Bank</span></div>
+            </div>
+
+            <!-- E-commerce Platform -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">E‑commerce Platform <span class="font-normal text-slate-500 text-xs">(2022)</span></div>
+              <div class="text-xs text-slate-600 mt-1">React, Node.js, MongoDB, Stripe. Full-featured online store with product catalog, cart, payment processing, order tracking, and admin dashboard.</div>
+              <div class="mt-2"><a href="#" class="text-xs text-blue-600 hover:underline"><i class="fab fa-github"></i> Repository</a></div>
+            </div>
+
+            <!-- CV MIS -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">CV MIS <span class="font-normal text-slate-500 text-xs">(2020)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Bootstrap, jQuery, Vue.js, Laravel Inertia. Caching optimizations.</div>
+              <div class="mt-2"><a href="#" class="text-xs text-blue-600 hover:underline"><i class="fab fa-github"></i> Repository</a></div>
+            </div>
+
+            <!-- Teacher MIS -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 break-avoid">
+              <div class="font-bold text-sm text-slate-900">Teacher MIS <span class="font-normal text-slate-500 text-xs">(2022)</span></div>
+              <div class="text-xs text-slate-600 mt-1">Responsive website using Bootstrap, HTML, CSS, JavaScript, and WordPress themes.</div>
+              <div class="mt-2"><a href="#" class="text-xs text-blue-600 hover:underline"><i class="fab fa-github"></i> Repository</a></div>
+            </div>
+
+          </div>
+
+          <!-- Education -->
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-6 mb-4">
+            <i class="fas fa-graduation-cap mr-2"></i> Education &amp; Training
+          </div>
+          <ul class="text-sm text-slate-700 space-y-1 leading-relaxed list-disc list-inside">
+            <li><strong>Bachelor in Computer Science</strong> – Nangarhar University, Jalalabad (2019–2023)</li>
+            <li><strong>Digital Payment Implementation</strong> – Da Afghanistan Bank (central bank)</li>
+            <li><strong>12th Grade</strong> – Imam Abu Hanifa High School, Kohat, Pakistan (2017)</li>
+            <li><strong>English Diploma</strong> – BELI, Jalalabad (2023) – Talk &amp; Talk Program</li>
+            <li><strong>SQL Server Special Course</strong> – Nangarhar University</li>
+            <li><strong>M&amp;E Planning – From Data Collection to Data Use</strong> – Philanthropy University</li>
+            <li><strong>TOEFL Preparation</strong> – Rahman Academy, Jalalabad</li>
+          </ul>
+
+          <!-- References -->
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-200 pb-1 mt-6 mb-4">
+            <i class="fas fa-address-book mr-2"></i> References
+          </div>
+          <div class="text-sm text-slate-700">
+            <p>Available upon request.</p>
+            <p class="text-xs text-slate-500 mt-1">Professional references can be provided during the interview process.</p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-400 flex flex-wrap justify-between items-center">
+            <span>© 2026 Ahmadullah Mukhlis</span>
+            <span>Updated: July 2026</span>
+          </div>
+
+        </main>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- html2pdf.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    // ---- Tab switching ----
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        tabBtns.forEach(b => {
+          b.classList.remove('text-blue-800', 'border-blue-800');
+          b.classList.add('text-slate-600', 'border-transparent');
+        });
+        this.classList.remove('text-slate-600', 'border-transparent');
+        this.classList.add('text-blue-800', 'border-blue-800');
+
+        const targetId = this.dataset.tab;
+        tabContents.forEach(c => c.classList.add('hidden'));
+        document.getElementById(targetId).classList.remove('hidden');
+      });
+    });
+
+    // ---- Set current date in cover letter (dynamic) ----
+    const dateSpan = document.getElementById('current-date');
+    if (dateSpan) {
+      const now = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      dateSpan.textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    // ---- Download PDF function ----
+    function downloadPDF(type) {
+      const coverTab = document.getElementById('cover-letter-tab');
+      const cvTab = document.getElementById('cv-tab');
+      const tabBar = document.querySelector('.tab-bar');
+
+      // Hide tab bar and download buttons
+      tabBar.style.display = 'none';
+
+      // Show only the target tab content
+      let elementToConvert;
+      let fileName;
+      if (type === 'cover') {
+        cvTab.style.display = 'none';
+        coverTab.style.display = 'block';
+        coverTab.classList.remove('hidden');
+        elementToConvert = coverTab;
+        fileName = 'Ahmadullah_Mukhlis_Cover_Letter.pdf';
+      } else {
+        coverTab.style.display = 'none';
+        cvTab.style.display = 'block';
+        cvTab.classList.remove('hidden');
+        elementToConvert = cvTab;
+        fileName = 'Ahmadullah_Mukhlis_CV.pdf';
+      }
+
+      // Use html2pdf.js to generate and download PDF
+      html2pdf()
+        .set({
+          margin: 0,
+          filename: fileName,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: type === 'cv' ? 'landscape' : 'portrait' }
+        })
+        .from(elementToConvert)
+        .save()
+        .then(() => {
+          // Revert changes after PDF generation
+          if (type === 'cover') {
+            cvTab.style.display = '';
+            coverTab.style.display = '';
+          } else {
+            coverTab.style.display = '';
+            cvTab.style.display = '';
+          }
+          tabBar.style.display = '';
+        });
+    }
+  </script>
+
+</body>
+</html>
