@@ -189,7 +189,7 @@ export default function CvPage() {
                         {p.title}
                       </p>
                       <span className="font-mono text-[11px] text-muted">
-                        {p.language} · {p.updated}
+                        {p.privacy} · {p.updated}
                       </span>
                     </div>
                     <p className="text-xs leading-relaxed text-muted">{p.summary}</p>

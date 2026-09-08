@@ -16,12 +16,12 @@ export interface Project {
 
 export const PROJECT_CATEGORIES = [
   { key: "all", label: "All" },
-  { key: "mobile", label: "Flutter App" },
-  { key: "spring", label: "Spring Boot" },
-  { key: "vue", label: "Vue.js" },
-  { key: "laravel", label: "Laravel" },
+  { key: "mobile", label: "Mobile products" },
+  { key: "spring", label: "Platform services" },
+  { key: "vue", label: "Interactive web apps" },
+  { key: "laravel", label: "Business systems" },
   { key: "website", label: "Website" },
-  { key: "fullstack", label: "Full-stack" },
+  { key: "fullstack", label: "Full-stack platforms" },
 ] as const;
 
 export type CategoryKey = (typeof PROJECT_CATEGORIES)[number]["key"];

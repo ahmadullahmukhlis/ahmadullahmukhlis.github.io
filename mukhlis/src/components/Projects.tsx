@@ -132,7 +132,7 @@ export function Projects() {
                         />
                       </div>
                       <div>
-                        <p className="font-mono text-xs text-gold">{p.repo}</p>
+                        <p className="font-mono text-xs text-gold">Case study</p>
                         <p className="mt-2 max-w-sm text-xl font-bold text-ink">{p.title}</p>
                       </div>
                     </div>
@@ -151,9 +151,7 @@ export function Projects() {
                       />
                       {p.privacy}
                     </span>
-                    <span className="font-mono text-xs text-muted">
-                      {p.language}
-                    </span>
+                    <span className="font-mono text-xs text-muted">Case study</span>
                   </div>
 
                   <h3 className="mt-4 font-sans text-xl font-bold text-ink transition-colors group-hover:text-gold">
@@ -239,7 +237,7 @@ function ProjectModal({
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs text-gold">{project.language}</span>
+              <span className="font-mono text-xs text-gold">Project detail</span>
               <span className="font-mono text-xs text-muted">·</span>
               <span className="font-mono text-xs text-muted">{project.privacy}</span>
               <span className="font-mono text-xs text-muted">·</span>
