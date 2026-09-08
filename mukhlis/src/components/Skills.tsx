@@ -18,11 +18,11 @@ export function Skills() {
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           <RevealOnScroll>
             <div className="big-card hover-tilt h-full p-6 md:p-8">
-              <p className="mono-label text-gold">Operating style</p>
-              <h3 className="mt-4 text-2xl font-bold leading-tight text-ink">
+              <p className="motion-line mono-label text-gold">Operating style</p>
+              <h3 className="motion-line mt-4 text-2xl font-bold leading-tight text-ink" style={{ "--line-delay": "90ms" } as CSSProperties}>
                 Product sense with production engineering discipline.
               </h3>
-              <p className="mt-4 text-sm leading-7 text-muted">
+              <p className="motion-line mt-4 text-sm leading-7 text-muted" style={{ "--line-delay": "170ms" } as CSSProperties}>
                 I keep interfaces clean, APIs predictable, and deployments repeatable. The goal is software that looks refined and behaves reliably after launch.
               </p>
 

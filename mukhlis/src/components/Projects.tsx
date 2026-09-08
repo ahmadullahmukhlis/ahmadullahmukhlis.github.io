@@ -11,8 +11,6 @@ import projectsData from "@/data/projects.json";
 
 const PROJECTS = projectsData as Project[];
 const PAGE_SIZE = 8;
-const PUBLIC_COUNT = PROJECTS.filter((p) => p.privacy === "Public").length;
-const PRIVATE_COUNT = PROJECTS.length - PUBLIC_COUNT;
 
 export function Projects() {
   const [filter, setFilter] = useState<string>("all");
@@ -51,32 +49,9 @@ export function Projects() {
         />
       </RevealOnScroll>
 
-      <div className="mt-10 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
-        <RevealOnScroll>
-          <div className="big-card hover-tilt h-full p-6">
-            <p className="mono-label text-gold">Portfolio index</p>
-            <dl className="mt-6 grid grid-cols-3 gap-4">
-              <div>
-                <dt className="font-mono text-[11px] text-muted">Total</dt>
-                <dd className="mt-1 font-mono text-2xl font-bold text-ink">{PROJECTS.length}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[11px] text-muted">Public</dt>
-                <dd className="mt-1 font-mono text-2xl font-bold text-mint">{PUBLIC_COUNT}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[11px] text-muted">Private</dt>
-                <dd className="mt-1 font-mono text-2xl font-bold text-soft">{PRIVATE_COUNT}</dd>
-              </div>
-            </dl>
-            <p className="mt-6 border-t border-white/10 pt-5 text-sm leading-7 text-muted">
-              Work spans regulated banking systems, internal operations tools, public websites, and product experiments.
-            </p>
-          </div>
-        </RevealOnScroll>
-
+      <div className="mt-10">
         <RevealOnScroll delay={80}>
-          <div className="card-line stagger-card p-4" style={{ "--card-delay": "120ms" } as CSSProperties}>
+          <div className="motion-panel stagger-card p-4" style={{ "--card-delay": "120ms" } as CSSProperties}>
             <p className="mb-3 font-mono text-xs text-muted">Filter work</p>
             <div className="flex flex-wrap gap-2.5">
               {PROJECT_CATEGORIES.map((c) => (

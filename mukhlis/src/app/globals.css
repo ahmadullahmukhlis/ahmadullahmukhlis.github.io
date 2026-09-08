@@ -32,6 +32,19 @@ body.aura-bg {
   background-size: 100% 100%, 180% 180%, auto;
 }
 
+.page-shell {
+  animation: shellFade 0.55s ease-out both;
+}
+
+.nav-enter {
+  animation: navDrop 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.menu-drop {
+  animation: menuDrop 0.28s ease-out both;
+  transform-origin: top;
+}
+
 ::selection {
   background: var(--color-gold);
   color: #16120a;
@@ -91,6 +104,14 @@ body.aura-bg {
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg, rgba(240, 184, 92, 0.5), rgba(121, 167, 255, 0.18), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on .section-line::after,
+.rise .section-line::after {
+  transform: scaleX(1);
 }
 
 .card-line {
@@ -117,6 +138,20 @@ body.aura-bg {
   isolation: isolate;
   position: relative;
   transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+}
+
+.motion-panel {
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  transition: border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+}
+
+.motion-panel:hover {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(240, 184, 92, 0.32);
+  box-shadow: 0 18px 34px -28px rgba(240, 184, 92, 0.45);
+  transform: translateY(-3px);
 }
 
 .card-line::before,
@@ -176,7 +211,8 @@ body.aura-bg {
 
 .btn-solid-gold:hover {
   background: #ffd68c;
-  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -18px rgba(240, 184, 92, 0.9);
+  transform: translateY(-3px);
 }
 
 .btn-ghost {
@@ -189,7 +225,8 @@ body.aura-bg {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(240, 184, 92, 0.55);
   color: var(--color-gold);
-  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -22px rgba(240, 184, 92, 0.7);
+  transform: translateY(-3px);
 }
 
 .tag-pill {
@@ -255,6 +292,11 @@ body.aura-bg {
 
 .nav-sweep {
   position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-sweep:hover {
+  transform: translateY(-2px);
 }
 
 .nav-sweep::after {
@@ -327,7 +369,7 @@ body.aura-bg {
 }
 
 .rise {
-  animation: rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
 }
 
@@ -340,20 +382,20 @@ body.aura-bg {
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(34px) scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .reveal-init {
   opacity: 0;
-  transform: translateY(26px) scale(0.985);
-  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(42px) scale(0.965);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -362,8 +404,33 @@ body.aura-bg {
   transform: translateY(0) scale(1);
 }
 
+.motion-line {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--line-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.page-shell .motion-line {
+  animation: lineRise 0.78s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--line-delay, 0ms);
+}
+
+.reveal-init .motion-line {
+  animation: none;
+}
+
+.reveal-on .motion-line,
+.rise .motion-line,
+.motion-line.reveal-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .stagger-card {
-  animation: cardSettle 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: cardSettle 0.82s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: var(--card-delay, 0ms);
 }
 
@@ -394,6 +461,52 @@ body.aura-bg {
   }
 }
 
+@keyframes shellFade {
+  from {
+    opacity: 0.92;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menuDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes lineRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes gridDrift {
   from {
     background-position: 0 0, 0 0;
@@ -407,7 +520,7 @@ body.aura-bg {
 @keyframes cardSettle {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.985);
+    transform: translateY(32px) scale(0.955);
   }
 
   to {
@@ -483,7 +596,10 @@ body.aura-bg {
   .big-card,
   .tag-pill,
   .link-arrow,
-  .image-zoom {
+  .image-zoom,
+  .nav-enter,
+  .menu-drop,
+  .motion-panel {
     transform: none !important;
     transition: none !important;
   }

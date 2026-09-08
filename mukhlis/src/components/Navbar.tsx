@@ -24,7 +24,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`no-print fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+      className={`nav-enter no-print fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         scrolled
           ? "border-white/10 bg-charcoal/90 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.85)] backdrop-blur-xl"
           : "border-white/5 bg-charcoal/55 backdrop-blur"
@@ -70,7 +70,7 @@ export function Navbar() {
       </nav>
 
       {open ? (
-        <div className="border-t border-white/10 bg-charcoal/95 px-5 py-4 shadow-[0_22px_48px_-32px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden">
+        <div className="menu-drop border-t border-white/10 bg-charcoal/95 px-5 py-4 shadow-[0_22px_48px_-32px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4">
             {LINKS.map((l) => (
               <a

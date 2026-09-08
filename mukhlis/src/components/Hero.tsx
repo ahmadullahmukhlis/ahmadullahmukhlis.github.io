@@ -22,32 +22,36 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 md:grid-cols-[1.05fr_0.95fr] md:pb-24">
         <div className="rise">
-          <p className="mono-label flex max-w-fit items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-3 py-2">
+          <p className="motion-line mono-label flex max-w-fit items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-3 py-2">
             <span className="inline-block h-2 w-2 rounded-full bg-mint pulsate" />
             Available for remote and on-site work
           </p>
 
-          <h1 className="mt-6 max-w-4xl font-sans text-4xl font-bold leading-[1.02] text-soft sm:text-5xl md:text-6xl">
+          <h1 className="motion-line mt-6 max-w-4xl font-sans text-4xl font-bold leading-[1.02] text-soft sm:text-5xl md:text-6xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
             Ahmadullah Mukhlis
           </h1>
 
-          <p className="mt-4 max-w-2xl text-xl font-semibold leading-snug text-gold md:text-2xl">
+          <p className="motion-line mt-4 max-w-2xl text-xl font-semibold leading-snug text-gold md:text-2xl" style={{ "--line-delay": "170ms" } as CSSProperties}>
             Full-stack engineer for secure systems and polished product interfaces.
           </p>
 
-          <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
+          <p className="motion-line mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg" style={{ "--line-delay": "250ms" } as CSSProperties}>
             {PROFILE.blurb}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2.5">
-            {SPECIALTIES.map((item) => (
-              <span key={item} className="tag-pill">
+            {SPECIALTIES.map((item, i) => (
+              <span
+                key={item}
+                className="motion-line tag-pill"
+                style={{ "--line-delay": `${320 + i * 60}ms` } as CSSProperties}
+              >
                 {item}
               </span>
             ))}
           </div>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="motion-line mt-9 flex flex-wrap items-center gap-3" style={{ "--line-delay": "580ms" } as CSSProperties}>
             <a href="#projects" className="btn-solid-gold">
               Explore work
               <span aria-hidden="true">→</span>
@@ -58,14 +62,15 @@ export function Hero() {
           </div>
 
           <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3">
-            {SOCIALS.map((s) => (
+            {SOCIALS.map((s, i) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="link-arrow"
+                className="motion-line link-arrow"
+                style={{ "--line-delay": `${660 + i * 55}ms` } as CSSProperties}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d={s.d} />

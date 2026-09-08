@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="page-shell">
         <Hero />
         <Ticker />
         <Skills />
