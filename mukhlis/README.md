@@ -63,14 +63,14 @@ docker compose -f /path/to/mukhlis/docker-compose.yml up --build -d
 After it starts, open:
 
 ```text
-http://SERVER_IP:3000
+http://SERVER_IP
 ```
 
 Useful commands:
 
 ```bash
 docker compose ps
-docker compose logs -f nextjs
+docker compose logs -f nginx nextjs
 docker compose down
 ```
 
@@ -104,7 +104,7 @@ Then try again:
 ```bash
 docker compose up --build -d
 docker compose ps
-docker compose logs -f nextjs
+docker compose logs -f nginx nextjs
 ```
 
 If `systemctl --user` fails on a remote server, enable lingering for the user and reconnect:
