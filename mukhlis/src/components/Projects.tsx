@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -52,7 +53,7 @@ export function Projects() {
 
       <div className="mt-10 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
         <RevealOnScroll>
-          <div className="big-card h-full p-6">
+          <div className="big-card hover-tilt h-full p-6">
             <p className="mono-label text-gold">Portfolio index</p>
             <dl className="mt-6 grid grid-cols-3 gap-4">
               <div>
@@ -75,7 +76,7 @@ export function Projects() {
         </RevealOnScroll>
 
         <RevealOnScroll delay={80}>
-          <div className="card-line p-4">
+          <div className="card-line stagger-card p-4" style={{ "--card-delay": "120ms" } as CSSProperties}>
             <p className="mb-3 font-mono text-xs text-muted">Filter work</p>
             <div className="flex flex-wrap gap-2.5">
               {PROJECT_CATEGORIES.map((c) => (
@@ -105,7 +106,8 @@ export function Projects() {
               <button
                 type="button"
                 onClick={() => setSelected(p)}
-                className="card-line glow-card group flex h-full w-full flex-col overflow-hidden text-left"
+                className="card-line glow-card stagger-card group flex h-full w-full flex-col overflow-hidden text-left"
+                style={{ "--card-delay": `${120 + i * 55}ms` } as CSSProperties}
                 aria-label={`Open details for ${p.title}`}
               >
                 <div className="relative aspect-[16/9] overflow-hidden border-b border-white/10 bg-panel">
@@ -115,7 +117,7 @@ export function Projects() {
                       alt={`${p.title} preview`}
                       fill
                       sizes="(max-width: 768px) 100vw, 560px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                      className="image-zoom object-cover"
                     />
                   ) : (
                     <div className="project-visual flex h-full flex-col justify-between p-5">
@@ -230,7 +232,8 @@ function ProjectModal({
       onClick={onClose}
     >
       <div
-        className="card-line max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-b-none p-6 md:rounded-lg md:p-8"
+        className="card-line stagger-card max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-b-none p-6 md:rounded-lg md:p-8"
+        style={{ "--card-delay": "40ms" } as CSSProperties}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -261,8 +264,8 @@ function ProjectModal({
         {project.images && project.images.length > 0 ? (
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {project.images.map((src) => (
-              <div key={src} className="relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-panel">
-                <Image src={src} alt={`${project.title} screenshot`} fill sizes="256px" className="object-cover" />
+              <div key={src} className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-panel">
+                <Image src={src} alt={`${project.title} screenshot`} fill sizes="256px" className="image-zoom object-cover" />
               </div>
             ))}
           </div>

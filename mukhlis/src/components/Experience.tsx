@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { EXPERIENCE } from "@/lib/data";
@@ -32,7 +33,10 @@ export function Experience() {
       <div className="mt-10 grid gap-4">
         {EXPERIENCE.map((role, i) => (
           <RevealOnScroll key={role.key} delay={i * 80}>
-            <div className="card-line glow-card group grid gap-5 p-5 md:grid-cols-[160px_1fr] md:p-6">
+            <div
+              className="card-line glow-card stagger-card group grid gap-5 p-5 md:grid-cols-[160px_1fr] md:p-6"
+              style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
+            >
               <div className="flex items-center gap-3 md:block">
                 <span
                   className={`block h-3 w-3 rounded-full ${ACCENT_DOT[role.accent] ?? "bg-gold"}`}

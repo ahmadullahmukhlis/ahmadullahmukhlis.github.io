@@ -133,7 +133,7 @@ export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 Then try again:
 
 ```bash
-docker compose up --build -d
+./scripts/init-letsencrypt.sh
 docker compose ps
 docker compose logs -f nginx nextjs
 ```
@@ -150,7 +150,7 @@ Log in again, then run:
 ```bash
 systemctl --user enable --now podman.socket
 export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
-docker compose up --build -d
+./scripts/init-letsencrypt.sh
 ```
 
 The `npm: command not found` message is not required for Docker deployment because the Docker image runs `npm ci` and `npm run build` inside the container.

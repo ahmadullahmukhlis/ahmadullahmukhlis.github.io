@@ -9,6 +9,24 @@ if [ -z "${LETSENCRYPT_EMAIL:-}" ]; then
   exit 1
 fi
 
+if ! docker compose version >/dev/null 2>&1; then
+  echo "Docker Compose is not available or the Docker/Podman daemon is not running."
+  echo
+  echo "If this server shows a Podman socket error like:"
+  echo "  unix:///run/user/1000/podman/podman.sock: no such file or directory"
+  echo
+  echo "Use Docker Engine instead:"
+  echo "  sudo apt remove -y podman-docker"
+  echo "  sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
+  echo "  sudo systemctl enable --now docker"
+  echo "  sudo usermod -aG docker $(id -un)"
+  echo "  exit"
+  echo
+  echo "Then log in again and rerun:"
+  echo "  ./scripts/init-letsencrypt.sh"
+  exit 1
+fi
+
 cert_path="./certbot/conf/live/${NGINX_HOST}"
 
 mkdir -p "${cert_path}" ./certbot/www

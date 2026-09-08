@@ -5,7 +5,7 @@ export function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:py-20">
       <RevealOnScroll>
-        <div className="big-card overflow-hidden">
+        <div className="big-card hover-tilt overflow-hidden">
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="p-7 md:p-10 lg:p-12">
               <p className="mono-label flex items-center gap-3">

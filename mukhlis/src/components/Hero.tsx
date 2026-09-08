@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { PROFILE, SOCIALS } from "@/lib/data";
 
 const STATS = [
@@ -75,8 +76,12 @@ export function Hero() {
           </div>
 
           <dl className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
-            {STATS.map((s) => (
-              <div key={s.label} className="card-line p-4">
+            {STATS.map((s, i) => (
+              <div
+                key={s.label}
+                className="card-line stagger-card p-4"
+                style={{ "--card-delay": `${220 + i * 80}ms` } as CSSProperties}
+              >
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="font-mono text-3xl font-bold text-gold">{s.value}</dd>
                 <dd className="mt-2 text-xs leading-5 text-muted">{s.label}</dd>
@@ -86,7 +91,7 @@ export function Hero() {
         </div>
 
         <div className="rise rise-2 relative mx-auto w-full max-w-[460px] md:justify-self-end">
-          <div className="corners big-card overflow-hidden p-3">
+          <div className="corners big-card hover-tilt overflow-hidden p-3">
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-panel">
               <Image
                 src={PROFILE.avatar}
@@ -94,7 +99,7 @@ export function Hero() {
                 fill
                 sizes="(max-width: 768px) 100vw, 460px"
                 priority
-                className="object-cover"
+                className="image-zoom object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-charcoal/90 p-5 backdrop-blur">
                 <p className="font-mono text-xs text-gold">{PROFILE.location}</p>
@@ -114,7 +119,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="absolute -right-2 top-6 hidden rounded-lg border border-white/10 bg-charcoal/90 px-4 py-3 shadow-2xl backdrop-blur sm:block md:-right-8">
+          <div className="stagger-card absolute -right-2 top-6 hidden rounded-lg border border-white/10 bg-charcoal/90 px-4 py-3 shadow-2xl backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:border-gold/40 sm:block md:-right-8">
             <p className="font-mono text-xs text-muted">Production systems</p>
             <p className="mt-1 text-sm font-semibold text-ink">Microservices, APIs, UI</p>
           </div>

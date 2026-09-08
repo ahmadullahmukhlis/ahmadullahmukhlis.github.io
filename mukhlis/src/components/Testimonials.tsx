@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { TESTIMONIALS } from "@/lib/data";
@@ -17,7 +18,10 @@ export function Testimonials() {
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {TESTIMONIALS.map((t, i) => (
           <RevealOnScroll key={t.name} delay={i * 90}>
-            <figure className="card-line glow-card relative flex h-full flex-col overflow-hidden p-6">
+            <figure
+              className="card-line glow-card stagger-card relative flex h-full flex-col overflow-hidden p-6"
+              style={{ "--card-delay": `${120 + i * 80}ms` } as CSSProperties}
+            >
               <span
                 className="pointer-events-none absolute right-5 top-4 font-mono text-5xl font-bold leading-none text-gold/10"
                 aria-hidden="true"

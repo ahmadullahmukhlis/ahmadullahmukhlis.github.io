@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SKILL_GROUPS } from "@/lib/data";
@@ -16,7 +17,7 @@ export function Skills() {
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           <RevealOnScroll>
-            <div className="big-card h-full p-6 md:p-8">
+            <div className="big-card hover-tilt h-full p-6 md:p-8">
               <p className="mono-label text-gold">Operating style</p>
               <h3 className="mt-4 text-2xl font-bold leading-tight text-ink">
                 Product sense with production engineering discipline.
@@ -26,8 +27,12 @@ export function Skills() {
               </p>
 
               <div className="mt-8 grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-3 lg:grid-cols-1">
-                {["Design systems", "Secure backends", "Cloud deployment"].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
+                {["Design systems", "Secure backends", "Cloud deployment"].map((item, i) => (
+                  <div
+                    key={item}
+                    className="stagger-card flex items-center gap-3"
+                    style={{ "--card-delay": `${140 + i * 70}ms` } as CSSProperties}
+                  >
                     <span className="h-2.5 w-2.5 rounded-full bg-mint" aria-hidden="true" />
                     <span className="font-mono text-xs text-soft">{item}</span>
                   </div>
@@ -39,7 +44,10 @@ export function Skills() {
           <div className="grid gap-4 md:grid-cols-2">
             {SKILL_GROUPS.map((group, gi) => (
               <RevealOnScroll key={group.id} delay={gi * 70}>
-                <div className="card-line glow-card h-full p-5">
+                <div
+                  className="card-line glow-card stagger-card h-full p-5"
+                  style={{ "--card-delay": `${120 + gi * 70}ms` } as CSSProperties}
+                >
                   <div className="flex items-center justify-between gap-3">
                     <h3 className="font-sans text-base font-semibold text-ink">
                       {group.title}
@@ -58,7 +66,7 @@ export function Skills() {
             ))}
 
             <RevealOnScroll delay={350}>
-              <div className="card-line flex h-full flex-col justify-between gap-6 border-dashed p-5">
+              <div className="card-line stagger-card flex h-full flex-col justify-between gap-6 border-dashed p-5">
                 <p className="font-mono text-sm leading-7 text-muted">
                   {"// actively sharpening"}
                   <br />
