@@ -20,9 +20,32 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Run with Docker Compose
+## Run with Docker Compose on Ubuntu/AWS
 
 The `docker-compose.yml` file is in this project directory. If you run `docker compose up --build -d` from another directory, Docker/Podman returns `no configuration file provided: not found`.
+
+On a fresh Ubuntu server, install and start Docker Engine first:
+
+```bash
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker ubuntu
+exit
+```
+
+Log in to the server again after `usermod`, then verify Docker:
+
+```bash
+docker version
+docker compose version
+```
 
 On the server, go to the project directory first:
 
@@ -53,12 +76,15 @@ docker compose down
 
 ### Podman/Docker troubleshooting
 
-If the server prints `Cannot connect to the Docker daemon at unix:///run/user/1000/podman/podman.sock`, the Podman socket is not running for the current user.
+If the server prints `Emulate Docker CLI using podman`, the `docker` command is being handled by Podman instead of Docker Engine. The recommended fix on this server is to install Docker Engine using the commands above.
+
+If you want to keep Podman instead, the error `Cannot connect to the Docker daemon at unix:///run/user/1000/podman/podman.sock` means the Podman socket is not running for the current user.
 
 Start it with:
 
 ```bash
 systemctl --user enable --now podman.socket
+export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 ```
 
 Then try again:
@@ -80,6 +106,7 @@ Log in again, then run:
 
 ```bash
 systemctl --user enable --now podman.socket
+export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 docker compose up --build -d
 ```
 
