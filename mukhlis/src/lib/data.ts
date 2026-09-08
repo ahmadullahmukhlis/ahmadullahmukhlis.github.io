@@ -3,10 +3,10 @@ export const PROFILE = {
   firstName: "Ahmadullah",
   lastName: "Mukhlis",
   initials: "AM",
-  role: "full-stack · creative technologist",
-  tagline: "Engineering with purpose — design & code in harmony",
+  role: "full-stack engineer · product-minded developer",
+  tagline: "Secure systems, clean interfaces, and production-ready delivery",
   blurb:
-    "I architect scalable systems and pixel-perfect interfaces. Passionate about AI, open-source, and human-centered innovation. Based in Kabul · working worldwide.",
+    "I build full-stack platforms, payment-system integrations, dashboards, and polished web experiences for teams that need reliable software shipped with care.",
   location: "Kabul, Afghanistan",
   email: "ahmadullahmukhlis2025@gmail.com",
   avatar: "/ahmadullah.jpg",

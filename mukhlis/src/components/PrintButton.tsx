@@ -7,7 +7,7 @@ export function PrintButton() {
       onClick={() => window.print()}
       className="btn-solid-gold no-print !px-4 !py-2 !text-xs"
     >
-      Print / Save as PDF
+      Print CV
     </button>
   );
 }

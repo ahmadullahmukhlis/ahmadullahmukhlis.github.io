@@ -30,7 +30,7 @@ const featured = FEATURED_PROJECT_IDS.map(
 function CvSection({ title }: { title: string }) {
   return (
     <div className="section-line mb-4">
-      <h2 className="font-sans text-sm font-bold tracking-[0.2em] text-gold uppercase">
+      <h2 className="font-sans text-sm font-bold uppercase text-gold">
         {title}
       </h2>
     </div>
@@ -49,26 +49,25 @@ export default function CvPage() {
           <PrintButton />
         </div>
 
-        <div className="big-card grid overflow-hidden p-0 md:grid-cols-[300px_1fr]">
-          {/* sidebar */}
-          <aside className="border-b border-white/8 bg-charcoal/40 p-8 md:border-r md:border-b-0">
-            <div className="mx-auto h-24 w-24 overflow-hidden rounded-full border-2 border-gold/60">
+        <div className="big-card grid overflow-hidden p-0 md:grid-cols-[310px_1fr]">
+          <aside className="border-b border-white/8 bg-charcoal/35 p-7 md:border-b-0 md:border-r md:p-8">
+            <div className="mx-auto h-32 w-24 overflow-hidden rounded-lg border border-gold/60 bg-panel">
               <Image
                 src={PROFILE.avatar}
                 alt={PROFILE.name}
-                width={96}
-                height={96}
+                width={144}
+                height={180}
                 className="h-full w-full object-cover"
               />
             </div>
-            <h1 className="mt-5 text-center font-sans text-xl font-bold text-ink">
+            <h1 className="mt-5 text-center font-sans text-2xl font-bold leading-tight text-ink">
               {PROFILE.name}
             </h1>
-            <p className="mt-1 text-center font-mono text-xs text-gold">
+            <p className="mt-2 text-center font-mono text-xs text-gold">
               {PROFILE.role}
             </p>
             <p className="mt-3 text-center font-mono text-xs text-muted">
-              {PROFILE.location} · working worldwide
+              {PROFILE.location} · Working worldwide
             </p>
 
             <div className="mt-8">
@@ -89,7 +88,7 @@ export default function CvPage() {
                       className="hover:text-gold"
                       aria-label={s.label}
                     >
-                      ↗{s.label}
+                      {s.label}
                     </a>
                   ))}
                 </li>
@@ -122,8 +121,14 @@ export default function CvPage() {
             </div>
           </aside>
 
-          {/* main */}
-          <div className="p-8 md:p-10">
+          <div className="p-7 md:p-10">
+            <div className="mb-9 border-b border-white/10 pb-7">
+              <p className="mono-label text-gold">Resume</p>
+              <h2 className="mt-3 text-3xl font-bold leading-tight text-ink">
+                Full-stack engineer focused on secure platforms, modern interfaces, and reliable delivery.
+              </h2>
+            </div>
+
             <CvSection title="Profile" />
             <p className="text-sm leading-relaxed text-muted">
               Experienced in developing secure and high-performance solutions for
@@ -145,7 +150,7 @@ export default function CvPage() {
               <CvSection title="Experience" />
               <div className="space-y-7">
                 {EXPERIENCE.map((r) => (
-                  <div key={r.role} className="border-l border-gold/25 pl-5">
+                  <div key={r.role} className="border-l border-gold/35 pl-5">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <h3 className="font-sans text-base font-bold text-ink">
                         {r.role}
@@ -167,9 +172,9 @@ export default function CvPage() {
 
             <div className="mt-10">
               <CvSection title="Selected projects" />
-              <ul className="space-y-4">
+              <ul className="grid gap-4">
                 {featured.map((p) => (
-                  <li key={p.id} className="grid gap-1 border-b border-white/5 pb-4 last:border-0">
+                  <li key={p.id} className="card-line grid gap-1 p-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <p className="font-sans text-sm font-semibold text-ink">
                         {p.title}

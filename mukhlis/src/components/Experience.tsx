@@ -20,38 +20,42 @@ const ACCENT_TEXT: Record<string, string> = {
 
 export function Experience() {
   return (
-    <section id="path" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:py-20">
+    <section id="path" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:py-24">
       <RevealOnScroll>
         <SectionHeading
           index="03"
           title="Career path"
-          hint="Where I've been and what I've been building."
+          hint="Experience across banking infrastructure, enterprise dashboards, client platforms, and freelance product delivery."
         />
       </RevealOnScroll>
 
-      <div className="mt-10">
+      <div className="mt-10 grid gap-4">
         {EXPERIENCE.map((role, i) => (
           <RevealOnScroll key={role.key} delay={i * 80}>
-            <div className="group relative border-l border-white/10 pb-10 pl-8 last:pb-0 md:pl-12">
-              <span
-                className={`absolute -left-[7px] top-1.5 h-[13px] w-[13px] rounded-full border-2 border-charcoal transition-transform duration-300 group-hover:scale-125 ${ACCENT_DOT[role.accent] ?? "bg-gold"}`}
-                aria-hidden="true"
-              />
-
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="font-sans text-lg font-bold text-ink transition-colors duration-300 group-hover:text-gold">
-                  {role.role}
-                </h3>
-                <span className="font-mono text-xs tracking-wide text-muted">
-                  {role.period}
+            <div className="card-line glow-card group grid gap-5 p-5 md:grid-cols-[160px_1fr] md:p-6">
+              <div className="flex items-center gap-3 md:block">
+                <span
+                  className={`block h-3 w-3 rounded-full ${ACCENT_DOT[role.accent] ?? "bg-gold"}`}
+                  aria-hidden="true"
+                />
+                <span className="font-mono text-xs text-muted md:mt-4 md:block">
+                  {String(i + 1).padStart(2, "0")} / {role.period}
                 </span>
               </div>
-              <p className={`mt-1 font-mono text-sm ${ACCENT_TEXT[role.accent] ?? "text-gold/80"}`}>
-                {role.org}
-              </p>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                {role.detail}
-              </p>
+
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-3">
+                  <h3 className="font-sans text-lg font-bold text-ink transition-colors duration-300 group-hover:text-gold">
+                    {role.role}
+                  </h3>
+                  <p className={`font-mono text-sm ${ACCENT_TEXT[role.accent] ?? "text-gold/80"}`}>
+                    {role.org}
+                  </p>
+                </div>
+                <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
+                  {role.detail}
+                </p>
+              </div>
             </div>
           </RevealOnScroll>
         ))}
