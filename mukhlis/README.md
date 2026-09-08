@@ -78,6 +78,18 @@ docker compose down
 
 If the server prints `Emulate Docker CLI using podman`, the `docker` command is being handled by Podman instead of Docker Engine. The recommended fix on this server is to install Docker Engine using the commands above.
 
+If `docker version` still shows `Client: Podman Engine`, remove the Podman Docker compatibility package and reinstall Docker Engine:
+
+```bash
+sudo apt remove -y podman-docker
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker ubuntu
+exit
+```
+
+Log in again and check that `docker version` shows Docker Engine, not Podman.
+
 If you want to keep Podman instead, the error `Cannot connect to the Docker daemon at unix:///run/user/1000/podman/podman.sock` means the Podman socket is not running for the current user.
 
 Start it with:
