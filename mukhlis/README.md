@@ -20,6 +20,37 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Run with Docker Compose
+
+The `docker-compose.yml` file is in this project directory. If you run `docker compose up --build -d` from another directory, Docker/Podman returns `no configuration file provided: not found`.
+
+On the server, go to the project directory first:
+
+```bash
+cd /path/to/mukhlis
+docker compose up --build -d
+```
+
+Or run Compose from anywhere by passing the compose file path:
+
+```bash
+docker compose -f /path/to/mukhlis/docker-compose.yml up --build -d
+```
+
+After it starts, open:
+
+```text
+http://SERVER_IP:3000
+```
+
+Useful commands:
+
+```bash
+docker compose ps
+docker compose logs -f nextjs
+docker compose down
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
