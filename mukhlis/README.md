@@ -51,6 +51,40 @@ docker compose logs -f nextjs
 docker compose down
 ```
 
+### Podman/Docker troubleshooting
+
+If the server prints `Cannot connect to the Docker daemon at unix:///run/user/1000/podman/podman.sock`, the Podman socket is not running for the current user.
+
+Start it with:
+
+```bash
+systemctl --user enable --now podman.socket
+```
+
+Then try again:
+
+```bash
+docker compose up --build -d
+docker compose ps
+docker compose logs -f nextjs
+```
+
+If `systemctl --user` fails on a remote server, enable lingering for the user and reconnect:
+
+```bash
+sudo loginctl enable-linger ubuntu
+exit
+```
+
+Log in again, then run:
+
+```bash
+systemctl --user enable --now podman.socket
+docker compose up --build -d
+```
+
+The `npm: command not found` message is not required for Docker deployment because the Docker image runs `npm ci` and `npm run build` inside the container.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
