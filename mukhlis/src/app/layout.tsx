@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { AmbientCircles } from "@/components/AmbientCircles";
+import { CursorHalo } from "@/components/CursorHalo";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -29,7 +31,11 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="aura-bg grain min-h-screen antialiased">{children}</body>
+      <body className="aura-bg grain min-h-screen antialiased">
+        <AmbientCircles />
+        <CursorHalo />
+        {children}
+      </body>
     </html>
   );
 }
