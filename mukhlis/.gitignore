@@ -20,6 +20,12 @@
 # production
 /build
 
+# ssl certificates
+/certbot/conf/*
+/certbot/www/*
+!/certbot/conf/.gitkeep
+!/certbot/www/.gitkeep
+
 # misc
 .DS_Store
 *.pem

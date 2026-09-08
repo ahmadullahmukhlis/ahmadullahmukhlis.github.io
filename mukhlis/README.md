@@ -66,6 +66,37 @@ After it starts, open:
 http://SERVER_IP
 ```
 
+## Enable HTTPS with Nginx and Let's Encrypt
+
+Before issuing SSL, make sure your domain DNS `A` record points to this server and ports `80` and `443` are open in the server firewall/security group.
+
+Run this once on the production server:
+
+```bash
+cd /path/to/mukhlis
+./scripts/init-letsencrypt.sh
+```
+
+The script uses `ahmadullahmukhlis.com` and `ahmadullahmukhlis2019@gmail.com` by default. It starts Nginx, serves the Let's Encrypt HTTP challenge, installs the certificate under `certbot/conf`, reloads Nginx, and starts the renewal container.
+
+For later deployments:
+
+```bash
+docker compose --profile ssl up --build -d
+```
+
+After renewing certificates, reload Nginx so it reads the renewed files:
+
+```bash
+docker compose exec -T nginx nginx -s reload
+```
+
+Then open:
+
+```text
+https://ahmadullahmukhlis.com
+```
+
 Useful commands:
 
 ```bash
