@@ -21,13 +21,24 @@ const circles = [
   },
 ];
 
+const stars = Array.from({ length: 18 }, (_, index) => index + 1);
+
 export function AmbientCircles() {
   return (
     <div className="ambient-circles" aria-hidden="true">
+      <span className="ambient-galaxy ambient-galaxy-one" />
+      <span className="ambient-galaxy ambient-galaxy-two" />
+      <div className="ambient-stars">
+        {stars.map((star) => (
+          <span key={star} className={`ambient-star ambient-star-${star}`} />
+        ))}
+      </div>
       {circles.map((circle) => (
         <span key={circle.id} className={`ambient-circle ambient-circle-${circle.id}`}>
           <span className="ambient-circle-eyebrow">{circle.eyebrow}</span>
           <span className="ambient-circle-label">{circle.label}</span>
+          <span className="ambient-orbit ambient-orbit-a" />
+          <span className="ambient-orbit ambient-orbit-b" />
         </span>
       ))}
     </div>

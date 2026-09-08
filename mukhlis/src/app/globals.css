@@ -51,7 +51,7 @@ body {
   border-radius: 9999px;
   box-shadow:
     0 0 32px rgba(240, 184, 92, 0.22),
-    inset 0 0 22px rgba(121, 167, 255, 0.08);
+    inset 0 0 22px rgba(121, 167, 255, 0.04);
   height: 42px;
   margin-left: -21px;
   margin-top: -21px;
@@ -106,25 +106,95 @@ body.aura-bg {
   z-index: 0;
 }
 
+.ambient-circles::before {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(121, 167, 255, 0.04), transparent 24%),
+    radial-gradient(circle at 82% 68%, rgba(240, 184, 92, 0.035), transparent 26%),
+    radial-gradient(circle at 52% 46%, rgba(54, 211, 153, 0.018), transparent 30%);
+  content: "";
+  inset: 0;
+  opacity: 0.75;
+  position: absolute;
+}
+
+.ambient-galaxy {
+  border: 1px solid rgba(245, 247, 251, 0.02);
+  border-left-color: rgba(121, 167, 255, 0.044);
+  border-radius: 9999px;
+  height: 58vh;
+  opacity: 0.5;
+  position: absolute;
+  transform: rotate(-18deg);
+  width: 86vw;
+}
+
+.ambient-galaxy-one {
+  animation: galaxyFloat 38s ease-in-out infinite alternate;
+  left: -18vw;
+  top: 12vh;
+}
+
+.ambient-galaxy-two {
+  animation: galaxyFloatReverse 44s ease-in-out infinite alternate;
+  bottom: 4vh;
+  right: -22vw;
+  transform: rotate(22deg);
+}
+
+.ambient-stars {
+  inset: 0;
+  position: absolute;
+}
+
+.ambient-star {
+  animation: starTwinkle 5.2s ease-in-out infinite;
+  background: rgba(245, 247, 251, 0.5);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px rgba(121, 167, 255, 0.085);
+  height: 2px;
+  opacity: 0.2;
+  position: absolute;
+  width: 3px;
+}
+
+.ambient-star-1 { left: 7%; top: 18%; animation-delay: 0.1s; }
+.ambient-star-2 { left: 14%; top: 72%; animation-delay: 1.4s; }
+.ambient-star-3 { left: 22%; top: 38%; animation-delay: 2.1s; }
+.ambient-star-4 { left: 31%; top: 12%; animation-delay: 0.7s; }
+.ambient-star-5 { left: 39%; top: 78%; animation-delay: 1.9s; }
+.ambient-star-6 { left: 46%; top: 28%; animation-delay: 2.8s; }
+.ambient-star-7 { left: 54%; top: 58%; animation-delay: 0.3s; }
+.ambient-star-8 { left: 61%; top: 16%; animation-delay: 2.4s; }
+.ambient-star-9 { left: 68%; top: 84%; animation-delay: 1.1s; }
+.ambient-star-10 { left: 74%; top: 35%; animation-delay: 3s; }
+.ambient-star-11 { left: 82%; top: 20%; animation-delay: 1.7s; }
+.ambient-star-12 { left: 91%; top: 64%; animation-delay: 0.9s; }
+.ambient-star-13 { left: 11%; top: 49%; animation-delay: 2.9s; }
+.ambient-star-14 { left: 29%; top: 91%; animation-delay: 0.5s; }
+.ambient-star-15 { left: 49%; top: 8%; animation-delay: 1.6s; }
+.ambient-star-16 { left: 66%; top: 47%; animation-delay: 2.6s; }
+.ambient-star-17 { left: 79%; top: 75%; animation-delay: 0.2s; }
+.ambient-star-18 { left: 94%; top: 31%; animation-delay: 2.2s; }
+
 .ambient-circle {
   align-items: center;
   backdrop-filter: blur(10px);
   background:
-    radial-gradient(circle at 32% 26%, var(--circle-core), transparent 32%),
-    radial-gradient(circle at 74% 76%, var(--circle-secondary), transparent 36%),
-    linear-gradient(135deg, var(--circle-wash), rgba(17, 19, 24, 0.08)),
-    rgba(17, 19, 24, 0.16);
+    radial-gradient(circle at 32% 26%, var(--circle-core), transparent 34%),
+    radial-gradient(circle at 74% 76%, var(--circle-secondary), transparent 38%),
+    linear-gradient(135deg, var(--circle-wash), rgba(17, 19, 24, 0.04)),
+    rgba(17, 19, 24, 0.1);
   border: 1px solid var(--circle-border);
   border-radius: 9999px;
   box-shadow:
-    inset 0 0 54px var(--circle-inner),
-    0 0 68px var(--circle-glow);
+    inset 0 0 42px var(--circle-inner),
+    0 0 44px var(--circle-glow);
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
   height: var(--circle-size);
   justify-content: center;
-  opacity: 0.86;
+  opacity: 0.72;
   padding: 2rem;
   position: absolute;
   text-align: center;
@@ -141,7 +211,7 @@ body.aura-bg {
 }
 
 .ambient-circle::before {
-  animation: circleSpin 14s linear infinite;
+  animation: circleSpin 24s linear infinite;
   background:
     conic-gradient(
       from 0deg,
@@ -157,22 +227,54 @@ body.aura-bg {
     );
   filter: blur(0.4px);
   inset: -1px;
-  mask: radial-gradient(circle, transparent 58%, black 59%, black 69%, transparent 70%);
-  opacity: 0.74;
+  mask: radial-gradient(circle, transparent 54%, black 55%, black 69%, transparent 70%);
+  opacity: 0.42;
   z-index: 0;
 }
 
 .ambient-circle::after {
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06), transparent 46%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 42%);
-  opacity: 0.5;
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 46%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02), transparent 42%);
+  opacity: 0.38;
   z-index: 1;
 }
 
 .ambient-circle-two::before,
 .ambient-circle-four::before {
   animation-direction: reverse;
+}
+
+.ambient-orbit {
+  border: 1px solid rgba(245, 247, 251, 0.028);
+  border-radius: 9999px;
+  inset: 14%;
+  position: absolute;
+  z-index: 1;
+}
+
+.ambient-orbit::after {
+  background: var(--circle-text);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px var(--circle-text);
+  content: "";
+  height: 5px;
+  position: absolute;
+  right: 13%;
+  top: 6%;
+  width: 5px;
+}
+
+.ambient-orbit-a {
+  animation: orbitSpin 22s linear infinite;
+  transform: rotate(16deg) scaleX(1.08);
+}
+
+.ambient-orbit-b {
+  animation: orbitSpinReverse 30s linear infinite;
+  inset: 23%;
+  opacity: 0.72;
+  transform: rotate(-34deg) scaleX(1.16);
 }
 
 .ambient-circle > * {
@@ -183,18 +285,18 @@ body.aura-bg {
 .ambient-circle-one {
   --circle-size: 300px;
   --circle-angle: 24deg;
-  --circle-border: rgba(240, 184, 92, 0.36);
-  --circle-core: rgba(240, 184, 92, 0.26);
-  --circle-secondary: rgba(45, 212, 191, 0.13);
-  --circle-wash: rgba(240, 184, 92, 0.075);
-  --circle-inner: rgba(240, 184, 92, 0.13);
-  --circle-glow: rgba(240, 184, 92, 0.16);
+  --circle-border: rgba(240, 184, 92, 0.2);
+  --circle-core: rgba(240, 184, 92, 0.09);
+  --circle-secondary: rgba(45, 212, 191, 0.03);
+  --circle-wash: rgba(240, 184, 92, 0.02);
+  --circle-inner: rgba(240, 184, 92, 0.03);
+  --circle-glow: rgba(240, 184, 92, 0.02);
   --circle-text: rgba(255, 226, 174, 0.92);
-  --spin-a: rgba(240, 184, 92, 0.65);
-  --spin-b: rgba(54, 211, 153, 0.38);
-  --spin-c: rgba(121, 167, 255, 0.36);
-  --spin-d: rgba(255, 120, 107, 0.34);
-  animation: circleLeftToRight 22s ease-in-out infinite alternate, circlePaletteOne 22s ease-in-out infinite alternate;
+  --spin-a: rgba(240, 184, 92, 0.24);
+  --spin-b: rgba(54, 211, 153, 0.12);
+  --spin-c: rgba(121, 167, 255, 0.1);
+  --spin-d: rgba(255, 120, 107, 0.032);
+  animation: circleLeftToRight 32s ease-in-out infinite alternate, circlePaletteOne 32s ease-in-out infinite alternate;
   left: -340px;
   top: 16%;
 }
@@ -202,18 +304,18 @@ body.aura-bg {
 .ambient-circle-two {
   --circle-size: 360px;
   --circle-angle: 118deg;
-  --circle-border: rgba(54, 211, 153, 0.34);
-  --circle-core: rgba(54, 211, 153, 0.22);
-  --circle-secondary: rgba(96, 165, 250, 0.15);
-  --circle-wash: rgba(54, 211, 153, 0.075);
-  --circle-inner: rgba(54, 211, 153, 0.12);
-  --circle-glow: rgba(54, 211, 153, 0.15);
+  --circle-border: rgba(54, 211, 153, 0.18);
+  --circle-core: rgba(54, 211, 153, 0.1);
+  --circle-secondary: rgba(96, 165, 250, 0.032);
+  --circle-wash: rgba(54, 211, 153, 0.02);
+  --circle-inner: rgba(54, 211, 153, 0.028);
+  --circle-glow: rgba(54, 211, 153, 0.032);
   --circle-text: rgba(198, 255, 232, 0.9);
-  --spin-a: rgba(54, 211, 153, 0.58);
-  --spin-b: rgba(14, 165, 233, 0.36);
-  --spin-c: rgba(250, 204, 21, 0.34);
-  --spin-d: rgba(244, 114, 182, 0.28);
-  animation: circleRightToLeft 28s ease-in-out infinite alternate, circlePaletteTwo 28s ease-in-out infinite alternate;
+  --spin-a: rgba(54, 211, 153, 0.22);
+  --spin-b: rgba(121, 167, 255, 0.11);
+  --spin-c: rgba(250, 204, 21, 0.032);
+  --spin-d: rgba(244, 114, 182, 0.028);
+  animation: circleRightToLeft 38s ease-in-out infinite alternate, circlePaletteTwo 38s ease-in-out infinite alternate;
   right: -410px;
   top: 54%;
 }
@@ -221,18 +323,18 @@ body.aura-bg {
 .ambient-circle-three {
   --circle-size: 430px;
   --circle-angle: 210deg;
-  --circle-border: rgba(121, 167, 255, 0.42);
-  --circle-core: rgba(121, 167, 255, 0.28);
-  --circle-secondary: rgba(216, 180, 254, 0.16);
-  --circle-wash: rgba(121, 167, 255, 0.09);
-  --circle-inner: rgba(121, 167, 255, 0.15);
-  --circle-glow: rgba(121, 167, 255, 0.2);
+  --circle-border: rgba(121, 167, 255, 0.22);
+  --circle-core: rgba(121, 167, 255, 0.03);
+  --circle-secondary: rgba(216, 180, 254, 0.02);
+  --circle-wash: rgba(121, 167, 255, 0.04);
+  --circle-inner: rgba(121, 167, 255, 0.02);
+  --circle-glow: rgba(121, 167, 255, 0.044);
   --circle-text: rgba(216, 228, 255, 0.94);
-  --spin-a: rgba(121, 167, 255, 0.68);
-  --spin-b: rgba(168, 85, 247, 0.36);
-  --spin-c: rgba(45, 212, 191, 0.34);
-  --spin-d: rgba(251, 191, 36, 0.3);
-  animation: circleTopToBottom 24s ease-in-out infinite alternate, circlePaletteThree 24s ease-in-out infinite alternate;
+  --spin-a: rgba(121, 167, 255, 0.24);
+  --spin-b: rgba(54, 211, 153, 0.1);
+  --spin-c: rgba(240, 184, 92, 0.11);
+  --spin-d: rgba(251, 191, 36, 0.028);
+  animation: circleTopToBottom 34s ease-in-out infinite alternate, circlePaletteThree 34s ease-in-out infinite alternate;
   left: 6%;
   top: -490px;
   padding: 3rem;
@@ -241,18 +343,18 @@ body.aura-bg {
 .ambient-circle-four {
   --circle-size: 330px;
   --circle-angle: 304deg;
-  --circle-border: rgba(255, 120, 107, 0.34);
-  --circle-core: rgba(255, 120, 107, 0.22);
-  --circle-secondary: rgba(251, 191, 36, 0.16);
-  --circle-wash: rgba(255, 120, 107, 0.075);
-  --circle-inner: rgba(255, 120, 107, 0.12);
-  --circle-glow: rgba(255, 120, 107, 0.15);
+  --circle-border: rgba(255, 120, 107, 0.18);
+  --circle-core: rgba(255, 120, 107, 0.1);
+  --circle-secondary: rgba(251, 191, 36, 0.032);
+  --circle-wash: rgba(255, 120, 107, 0.02);
+  --circle-inner: rgba(255, 120, 107, 0.028);
+  --circle-glow: rgba(255, 120, 107, 0.032);
   --circle-text: rgba(255, 220, 216, 0.9);
-  --spin-a: rgba(255, 120, 107, 0.58);
-  --spin-b: rgba(240, 184, 92, 0.38);
-  --spin-c: rgba(99, 102, 241, 0.32);
-  --spin-d: rgba(34, 197, 94, 0.28);
-  animation: circleBottomToTop 30s ease-in-out infinite alternate, circlePaletteFour 30s ease-in-out infinite alternate;
+  --spin-a: rgba(255, 120, 107, 0.2);
+  --spin-b: rgba(240, 184, 92, 0.12);
+  --spin-c: rgba(99, 102, 241, 0.03);
+  --spin-d: rgba(34, 197, 94, 0.028);
+  animation: circleBottomToTop 40s ease-in-out infinite alternate, circlePaletteFour 40s ease-in-out infinite alternate;
   bottom: -390px;
   right: 14%;
 }
@@ -260,13 +362,13 @@ body.aura-bg {
 .ambient-circle-eyebrow {
   color: var(--circle-text);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .ambient-circle-label {
-  color: rgba(245, 247, 251, 0.84);
+  color: rgba(245, 247, 251, 0.72);
   font-size: clamp(0.88rem, 1.15vw, 1.1rem);
   font-weight: 650;
   line-height: 1.35;
@@ -315,15 +417,15 @@ body.aura-bg {
 
 .aura-bg {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0) 18%),
-    linear-gradient(90deg, rgba(240, 184, 92, 0.08), transparent 26%, transparent 74%, rgba(121, 167, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028) 0%, rgba(255, 255, 255, 0) 18%),
+    linear-gradient(90deg, rgba(240, 184, 92, 0.04), transparent 26%, transparent 74%, rgba(121, 167, 255, 0.04)),
     #08090d;
 }
 
 .grid-faint {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.8) 48%, transparent 100%);
   animation: gridDrift 22s linear infinite;
@@ -347,7 +449,7 @@ body.aura-bg {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(240, 184, 92, 0.5), rgba(121, 167, 255, 0.18), transparent);
+  background: linear-gradient(90deg, rgba(240, 184, 92, 0.5), rgba(121, 167, 255, 0.085), transparent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -360,9 +462,9 @@ body.aura-bg {
 
 .card-line {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.015)),
     var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.044);
   border-radius: 8px;
   isolation: isolate;
   position: relative;
@@ -370,12 +472,12 @@ body.aura-bg {
 }
 
 .card-line:hover {
-  border-color: rgba(240, 184, 92, 0.38);
+  border-color: rgba(240, 184, 92, 0.085);
 }
 
 .big-card {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.018)),
     var(--color-surface);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -386,14 +488,14 @@ body.aura-bg {
 
 .motion-panel {
   background: rgba(255, 255, 255, 0.018);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 8px;
   transition: border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
 }
 
 .motion-panel:hover {
-  background: rgba(255, 255, 255, 0.035);
-  border-color: rgba(240, 184, 92, 0.32);
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(240, 184, 92, 0.02);
   box-shadow: 0 18px 34px -28px rgba(240, 184, 92, 0.45);
   transform: translateY(-3px);
 }
@@ -401,8 +503,8 @@ body.aura-bg {
 .card-line::before,
 .big-card::before {
   background:
-    linear-gradient(120deg, transparent 10%, rgba(240, 184, 92, 0.12), transparent 36%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 48%);
+    linear-gradient(120deg, transparent 10%, rgba(240, 184, 92, 0.028), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 48%);
   border-radius: inherit;
   content: "";
   inset: 0;
@@ -428,10 +530,10 @@ body.aura-bg {
 
 .card-line:hover,
 .big-card:hover {
-  border-color: rgba(240, 184, 92, 0.34);
+  border-color: rgba(240, 184, 92, 0.038);
   box-shadow:
     0 22px 44px -28px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(240, 184, 92, 0.08);
+    0 0 0 1px rgba(240, 184, 92, 0.04);
   transform: translateY(-3px);
 }
 
@@ -461,12 +563,12 @@ body.aura-bg {
 
 .btn-ghost {
   background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.038);
   color: var(--color-ink);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
   border-color: rgba(240, 184, 92, 0.55);
   color: var(--color-gold);
   box-shadow: 0 12px 28px -22px rgba(240, 184, 92, 0.7);
@@ -475,7 +577,7 @@ body.aura-bg {
 
 .tag-pill {
   align-items: center;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
   color: #c9d0dc;
@@ -488,8 +590,8 @@ body.aura-bg {
 }
 
 .tag-pill:hover {
-  background: rgba(240, 184, 92, 0.08);
-  border-color: rgba(240, 184, 92, 0.42);
+  background: rgba(240, 184, 92, 0.04);
+  border-color: rgba(240, 184, 92, 0.052);
   color: var(--color-gold);
   transform: translateY(-1px);
 }
@@ -595,8 +697,8 @@ body.aura-bg {
 
 .project-visual {
   background:
-    linear-gradient(135deg, rgba(240, 184, 92, 0.16), transparent 32%),
-    linear-gradient(315deg, rgba(121, 167, 255, 0.16), transparent 36%),
+    linear-gradient(135deg, rgba(240, 184, 92, 0.038), transparent 32%),
+    linear-gradient(315deg, rgba(121, 167, 255, 0.038), transparent 36%),
     #151821;
   background-size: 150% 150%, 150% 150%, auto;
   transition: background-position 0.45s ease, transform 0.45s ease;
@@ -607,7 +709,7 @@ body.aura-bg {
 }
 
 .metric-rule {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0));
   height: 100%;
   width: 1px;
 }
@@ -718,14 +820,26 @@ body.aura-bg {
 @keyframes cursorPulse {
   0%, 100% {
     box-shadow:
-      0 0 34px rgba(240, 184, 92, 0.22),
-      inset 0 0 22px rgba(121, 167, 255, 0.08);
+      0 0 34px rgba(240, 184, 92, 0.048),
+      inset 0 0 22px rgba(121, 167, 255, 0.04);
   }
 
   50% {
     box-shadow:
-      0 0 48px rgba(240, 184, 92, 0.34),
-      inset 0 0 26px rgba(121, 167, 255, 0.14);
+      0 0 48px rgba(240, 184, 92, 0.038),
+      inset 0 0 26px rgba(121, 167, 255, 0.032);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.18;
+    transform: scale(0.82);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: scale(1.35);
   }
 }
 
@@ -739,103 +853,123 @@ body.aura-bg {
   }
 }
 
+@keyframes orbitSpin {
+  from {
+    transform: rotate(16deg) scaleX(1.08);
+  }
+
+  to {
+    transform: rotate(376deg) scaleX(1.08);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  from {
+    transform: rotate(-34deg) scaleX(1.16);
+  }
+
+  to {
+    transform: rotate(-394deg) scaleX(1.16);
+  }
+}
+
 @keyframes circlePaletteOne {
   0%, 100% {
-    --circle-border: rgba(240, 184, 92, 0.36);
-    --circle-core: rgba(240, 184, 92, 0.26);
-    --circle-secondary: rgba(45, 212, 191, 0.13);
-    --circle-wash: rgba(240, 184, 92, 0.075);
-    --circle-inner: rgba(240, 184, 92, 0.13);
-    --circle-glow: rgba(240, 184, 92, 0.16);
+    --circle-border: rgba(240, 184, 92, 0.085);
+    --circle-core: rgba(240, 184, 92, 0.028);
+    --circle-secondary: rgba(45, 212, 191, 0.03);
+    --circle-wash: rgba(240, 184, 92, 0.038);
+    --circle-inner: rgba(240, 184, 92, 0.03);
+    --circle-glow: rgba(240, 184, 92, 0.038);
     --circle-text: rgba(255, 226, 174, 0.92);
-    --spin-a: rgba(240, 184, 92, 0.65);
-    --spin-b: rgba(54, 211, 153, 0.38);
-    --spin-c: rgba(121, 167, 255, 0.36);
-    --spin-d: rgba(255, 120, 107, 0.34);
+    --spin-a: rgba(240, 184, 92, 0.02);
+    --spin-b: rgba(54, 211, 153, 0.085);
+    --spin-c: rgba(121, 167, 255, 0.085);
+    --spin-d: rgba(255, 120, 107, 0.038);
   }
 
   25% {
-    --circle-border: rgba(45, 212, 191, 0.34);
-    --circle-core: rgba(45, 212, 191, 0.22);
-    --circle-secondary: rgba(96, 165, 250, 0.15);
-    --circle-wash: rgba(45, 212, 191, 0.075);
-    --circle-inner: rgba(45, 212, 191, 0.12);
-    --circle-glow: rgba(45, 212, 191, 0.15);
+    --circle-border: rgba(45, 212, 191, 0.038);
+    --circle-core: rgba(45, 212, 191, 0.048);
+    --circle-secondary: rgba(96, 165, 250, 0.02);
+    --circle-wash: rgba(45, 212, 191, 0.038);
+    --circle-inner: rgba(45, 212, 191, 0.028);
+    --circle-glow: rgba(45, 212, 191, 0.02);
     --circle-text: rgba(207, 250, 254, 0.92);
-    --spin-a: rgba(45, 212, 191, 0.62);
+    --spin-a: rgba(45, 212, 191, 0.032);
     --spin-b: rgba(14, 165, 233, 0.4);
-    --spin-c: rgba(250, 204, 21, 0.34);
-    --spin-d: rgba(168, 85, 247, 0.28);
+    --spin-c: rgba(250, 204, 21, 0.038);
+    --spin-d: rgba(168, 85, 247, 0.03);
   }
 
   50% {
-    --circle-border: rgba(121, 167, 255, 0.36);
-    --circle-core: rgba(121, 167, 255, 0.24);
-    --circle-secondary: rgba(216, 180, 254, 0.15);
-    --circle-wash: rgba(121, 167, 255, 0.08);
-    --circle-inner: rgba(121, 167, 255, 0.13);
-    --circle-glow: rgba(121, 167, 255, 0.16);
+    --circle-border: rgba(121, 167, 255, 0.085);
+    --circle-core: rgba(121, 167, 255, 0.052);
+    --circle-secondary: rgba(216, 180, 254, 0.02);
+    --circle-wash: rgba(121, 167, 255, 0.04);
+    --circle-inner: rgba(121, 167, 255, 0.03);
+    --circle-glow: rgba(121, 167, 255, 0.038);
     --circle-text: rgba(216, 228, 255, 0.94);
-    --spin-a: rgba(121, 167, 255, 0.65);
-    --spin-b: rgba(216, 180, 254, 0.38);
-    --spin-c: rgba(52, 211, 153, 0.32);
+    --spin-a: rgba(121, 167, 255, 0.02);
+    --spin-b: rgba(216, 180, 254, 0.085);
+    --spin-c: rgba(52, 211, 153, 0.02);
     --spin-d: rgba(251, 191, 36, 0.3);
   }
 
   75% {
-    --circle-border: rgba(255, 120, 107, 0.34);
-    --circle-core: rgba(255, 120, 107, 0.22);
-    --circle-secondary: rgba(244, 114, 182, 0.12);
-    --circle-wash: rgba(255, 120, 107, 0.07);
-    --circle-inner: rgba(255, 120, 107, 0.12);
-    --circle-glow: rgba(255, 120, 107, 0.15);
+    --circle-border: rgba(255, 120, 107, 0.038);
+    --circle-core: rgba(255, 120, 107, 0.048);
+    --circle-secondary: rgba(244, 114, 182, 0.028);
+    --circle-wash: rgba(255, 120, 107, 0.02);
+    --circle-inner: rgba(255, 120, 107, 0.028);
+    --circle-glow: rgba(255, 120, 107, 0.02);
     --circle-text: rgba(255, 220, 216, 0.92);
-    --spin-a: rgba(255, 120, 107, 0.62);
-    --spin-b: rgba(244, 114, 182, 0.34);
+    --spin-a: rgba(255, 120, 107, 0.032);
+    --spin-b: rgba(244, 114, 182, 0.038);
     --spin-c: rgba(99, 102, 241, 0.3);
-    --spin-d: rgba(250, 204, 21, 0.32);
+    --spin-d: rgba(250, 204, 21, 0.02);
   }
 }
 
 @keyframes circlePaletteTwo {
   0%, 100% {
-    --circle-border: rgba(54, 211, 153, 0.34);
-    --circle-core: rgba(54, 211, 153, 0.22);
-    --circle-secondary: rgba(96, 165, 250, 0.15);
-    --circle-wash: rgba(54, 211, 153, 0.075);
-    --circle-inner: rgba(54, 211, 153, 0.12);
-    --circle-glow: rgba(54, 211, 153, 0.15);
+    --circle-border: rgba(54, 211, 153, 0.038);
+    --circle-core: rgba(54, 211, 153, 0.048);
+    --circle-secondary: rgba(96, 165, 250, 0.02);
+    --circle-wash: rgba(54, 211, 153, 0.038);
+    --circle-inner: rgba(54, 211, 153, 0.028);
+    --circle-glow: rgba(54, 211, 153, 0.02);
     --circle-text: rgba(198, 255, 232, 0.9);
-    --spin-a: rgba(54, 211, 153, 0.58);
-    --spin-b: rgba(14, 165, 233, 0.36);
-    --spin-c: rgba(250, 204, 21, 0.34);
-    --spin-d: rgba(244, 114, 182, 0.28);
+    --spin-a: rgba(54, 211, 153, 0.03);
+    --spin-b: rgba(14, 165, 233, 0.085);
+    --spin-c: rgba(250, 204, 21, 0.038);
+    --spin-d: rgba(244, 114, 182, 0.03);
   }
 
   33% {
-    --circle-border: rgba(14, 165, 233, 0.34);
-    --circle-core: rgba(14, 165, 233, 0.24);
-    --circle-secondary: rgba(99, 102, 241, 0.14);
-    --circle-wash: rgba(14, 165, 233, 0.075);
-    --circle-inner: rgba(14, 165, 233, 0.12);
-    --circle-glow: rgba(14, 165, 233, 0.15);
+    --circle-border: rgba(14, 165, 233, 0.038);
+    --circle-core: rgba(14, 165, 233, 0.052);
+    --circle-secondary: rgba(99, 102, 241, 0.032);
+    --circle-wash: rgba(14, 165, 233, 0.038);
+    --circle-inner: rgba(14, 165, 233, 0.028);
+    --circle-glow: rgba(14, 165, 233, 0.02);
     --circle-text: rgba(186, 230, 253, 0.92);
-    --spin-a: rgba(14, 165, 233, 0.62);
-    --spin-b: rgba(99, 102, 241, 0.36);
-    --spin-c: rgba(45, 212, 191, 0.32);
+    --spin-a: rgba(14, 165, 233, 0.032);
+    --spin-b: rgba(99, 102, 241, 0.085);
+    --spin-c: rgba(45, 212, 191, 0.02);
     --spin-d: rgba(240, 184, 92, 0.3);
   }
 
   66% {
-    --circle-border: rgba(250, 204, 21, 0.32);
-    --circle-core: rgba(250, 204, 21, 0.22);
-    --circle-secondary: rgba(248, 113, 113, 0.13);
-    --circle-wash: rgba(250, 204, 21, 0.065);
+    --circle-border: rgba(250, 204, 21, 0.02);
+    --circle-core: rgba(250, 204, 21, 0.048);
+    --circle-secondary: rgba(248, 113, 113, 0.03);
+    --circle-wash: rgba(250, 204, 21, 0.032);
     --circle-inner: rgba(250, 204, 21, 0.1);
-    --circle-glow: rgba(250, 204, 21, 0.13);
+    --circle-glow: rgba(250, 204, 21, 0.03);
     --circle-text: rgba(254, 249, 195, 0.9);
-    --spin-a: rgba(250, 204, 21, 0.58);
-    --spin-b: rgba(248, 113, 113, 0.32);
+    --spin-a: rgba(250, 204, 21, 0.03);
+    --spin-b: rgba(248, 113, 113, 0.02);
     --spin-c: rgba(54, 211, 153, 0.3);
     --spin-d: rgba(121, 167, 255, 0.3);
   }
@@ -843,151 +977,151 @@ body.aura-bg {
 
 @keyframes circlePaletteThree {
   0%, 100% {
-    --circle-border: rgba(121, 167, 255, 0.42);
-    --circle-core: rgba(121, 167, 255, 0.28);
-    --circle-secondary: rgba(216, 180, 254, 0.16);
-    --circle-wash: rgba(121, 167, 255, 0.09);
-    --circle-inner: rgba(121, 167, 255, 0.15);
+    --circle-border: rgba(121, 167, 255, 0.052);
+    --circle-core: rgba(121, 167, 255, 0.03);
+    --circle-secondary: rgba(216, 180, 254, 0.038);
+    --circle-wash: rgba(121, 167, 255, 0.044);
+    --circle-inner: rgba(121, 167, 255, 0.02);
     --circle-glow: rgba(121, 167, 255, 0.2);
     --circle-text: rgba(216, 228, 255, 0.94);
-    --spin-a: rgba(121, 167, 255, 0.68);
-    --spin-b: rgba(168, 85, 247, 0.36);
-    --spin-c: rgba(45, 212, 191, 0.34);
+    --spin-a: rgba(121, 167, 255, 0.038);
+    --spin-b: rgba(168, 85, 247, 0.085);
+    --spin-c: rgba(45, 212, 191, 0.038);
     --spin-d: rgba(251, 191, 36, 0.3);
   }
 
   25% {
-    --circle-border: rgba(168, 85, 247, 0.36);
-    --circle-core: rgba(168, 85, 247, 0.22);
-    --circle-secondary: rgba(236, 72, 153, 0.13);
-    --circle-wash: rgba(168, 85, 247, 0.07);
-    --circle-inner: rgba(168, 85, 247, 0.12);
-    --circle-glow: rgba(168, 85, 247, 0.15);
+    --circle-border: rgba(168, 85, 247, 0.085);
+    --circle-core: rgba(168, 85, 247, 0.048);
+    --circle-secondary: rgba(236, 72, 153, 0.03);
+    --circle-wash: rgba(168, 85, 247, 0.02);
+    --circle-inner: rgba(168, 85, 247, 0.028);
+    --circle-glow: rgba(168, 85, 247, 0.02);
     --circle-text: rgba(233, 213, 255, 0.94);
-    --spin-a: rgba(168, 85, 247, 0.62);
-    --spin-b: rgba(236, 72, 153, 0.32);
-    --spin-c: rgba(14, 165, 233, 0.34);
-    --spin-d: rgba(34, 197, 94, 0.28);
+    --spin-a: rgba(168, 85, 247, 0.032);
+    --spin-b: rgba(236, 72, 153, 0.02);
+    --spin-c: rgba(14, 165, 233, 0.038);
+    --spin-d: rgba(34, 197, 94, 0.03);
   }
 
   50% {
-    --circle-border: rgba(45, 212, 191, 0.34);
-    --circle-core: rgba(45, 212, 191, 0.22);
-    --circle-secondary: rgba(34, 197, 94, 0.13);
-    --circle-wash: rgba(45, 212, 191, 0.075);
-    --circle-inner: rgba(45, 212, 191, 0.12);
-    --circle-glow: rgba(45, 212, 191, 0.15);
+    --circle-border: rgba(45, 212, 191, 0.038);
+    --circle-core: rgba(45, 212, 191, 0.048);
+    --circle-secondary: rgba(34, 197, 94, 0.03);
+    --circle-wash: rgba(45, 212, 191, 0.038);
+    --circle-inner: rgba(45, 212, 191, 0.028);
+    --circle-glow: rgba(45, 212, 191, 0.02);
     --circle-text: rgba(204, 251, 241, 0.92);
-    --spin-a: rgba(45, 212, 191, 0.62);
-    --spin-b: rgba(34, 197, 94, 0.32);
-    --spin-c: rgba(240, 184, 92, 0.32);
-    --spin-d: rgba(121, 167, 255, 0.32);
+    --spin-a: rgba(45, 212, 191, 0.032);
+    --spin-b: rgba(34, 197, 94, 0.02);
+    --spin-c: rgba(240, 184, 92, 0.02);
+    --spin-d: rgba(121, 167, 255, 0.02);
   }
 
   75% {
-    --circle-border: rgba(240, 184, 92, 0.34);
-    --circle-core: rgba(240, 184, 92, 0.22);
-    --circle-secondary: rgba(255, 120, 107, 0.14);
-    --circle-wash: rgba(240, 184, 92, 0.07);
-    --circle-inner: rgba(240, 184, 92, 0.12);
-    --circle-glow: rgba(240, 184, 92, 0.15);
+    --circle-border: rgba(240, 184, 92, 0.038);
+    --circle-core: rgba(240, 184, 92, 0.048);
+    --circle-secondary: rgba(255, 120, 107, 0.032);
+    --circle-wash: rgba(240, 184, 92, 0.02);
+    --circle-inner: rgba(240, 184, 92, 0.028);
+    --circle-glow: rgba(240, 184, 92, 0.02);
     --circle-text: rgba(255, 237, 213, 0.92);
-    --spin-a: rgba(240, 184, 92, 0.62);
-    --spin-b: rgba(255, 120, 107, 0.34);
+    --spin-a: rgba(240, 184, 92, 0.032);
+    --spin-b: rgba(255, 120, 107, 0.038);
     --spin-c: rgba(216, 180, 254, 0.3);
-    --spin-d: rgba(14, 165, 233, 0.32);
+    --spin-d: rgba(14, 165, 233, 0.02);
   }
 }
 
 @keyframes circlePaletteFour {
   0%, 100% {
-    --circle-border: rgba(255, 120, 107, 0.34);
-    --circle-core: rgba(255, 120, 107, 0.22);
-    --circle-secondary: rgba(251, 191, 36, 0.16);
-    --circle-wash: rgba(255, 120, 107, 0.075);
-    --circle-inner: rgba(255, 120, 107, 0.12);
-    --circle-glow: rgba(255, 120, 107, 0.15);
+    --circle-border: rgba(255, 120, 107, 0.038);
+    --circle-core: rgba(255, 120, 107, 0.048);
+    --circle-secondary: rgba(251, 191, 36, 0.038);
+    --circle-wash: rgba(255, 120, 107, 0.038);
+    --circle-inner: rgba(255, 120, 107, 0.028);
+    --circle-glow: rgba(255, 120, 107, 0.02);
     --circle-text: rgba(255, 220, 216, 0.9);
-    --spin-a: rgba(255, 120, 107, 0.58);
-    --spin-b: rgba(240, 184, 92, 0.38);
-    --spin-c: rgba(99, 102, 241, 0.32);
-    --spin-d: rgba(34, 197, 94, 0.28);
+    --spin-a: rgba(255, 120, 107, 0.03);
+    --spin-b: rgba(240, 184, 92, 0.085);
+    --spin-c: rgba(99, 102, 241, 0.02);
+    --spin-d: rgba(34, 197, 94, 0.03);
   }
 
   33% {
-    --circle-border: rgba(236, 72, 153, 0.32);
+    --circle-border: rgba(236, 72, 153, 0.02);
     --circle-core: rgba(236, 72, 153, 0.2);
-    --circle-secondary: rgba(168, 85, 247, 0.13);
-    --circle-wash: rgba(236, 72, 153, 0.065);
+    --circle-secondary: rgba(168, 85, 247, 0.03);
+    --circle-wash: rgba(236, 72, 153, 0.032);
     --circle-inner: rgba(236, 72, 153, 0.1);
-    --circle-glow: rgba(236, 72, 153, 0.13);
+    --circle-glow: rgba(236, 72, 153, 0.03);
     --circle-text: rgba(252, 231, 243, 0.9);
-    --spin-a: rgba(236, 72, 153, 0.56);
-    --spin-b: rgba(168, 85, 247, 0.32);
+    --spin-a: rgba(236, 72, 153, 0.27);
+    --spin-b: rgba(168, 85, 247, 0.02);
     --spin-c: rgba(14, 165, 233, 0.3);
-    --spin-d: rgba(250, 204, 21, 0.28);
+    --spin-d: rgba(250, 204, 21, 0.03);
   }
 
   66% {
     --circle-border: rgba(34, 197, 94, 0.3);
     --circle-core: rgba(34, 197, 94, 0.2);
-    --circle-secondary: rgba(45, 212, 191, 0.13);
-    --circle-wash: rgba(34, 197, 94, 0.065);
+    --circle-secondary: rgba(45, 212, 191, 0.03);
+    --circle-wash: rgba(34, 197, 94, 0.032);
     --circle-inner: rgba(34, 197, 94, 0.1);
-    --circle-glow: rgba(34, 197, 94, 0.13);
+    --circle-glow: rgba(34, 197, 94, 0.03);
     --circle-text: rgba(220, 252, 231, 0.9);
-    --spin-a: rgba(34, 197, 94, 0.56);
-    --spin-b: rgba(45, 212, 191, 0.34);
+    --spin-a: rgba(34, 197, 94, 0.27);
+    --spin-b: rgba(45, 212, 191, 0.038);
     --spin-c: rgba(240, 184, 92, 0.3);
-    --spin-d: rgba(121, 167, 255, 0.28);
+    --spin-d: rgba(121, 167, 255, 0.03);
   }
 }
 
 @keyframes circleLeftToRight {
   from {
     filter: hue-rotate(0deg) saturate(1);
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.92);
+    transform: translate3d(0, 0, 0) scale(0.92);
   }
 
   to {
     filter: hue-rotate(18deg) saturate(1.08);
-    transform: translate3d(calc(100vw + 520px), 56px, 0) rotate(24deg) scale(1.08);
+    transform: translate3d(calc(100vw + 520px), 56px, 0) scale(1.08);
   }
 }
 
 @keyframes circleRightToLeft {
   from {
     filter: hue-rotate(0deg) saturate(1);
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1.06);
+    transform: translate3d(0, 0, 0) scale(1.06);
   }
 
   to {
     filter: hue-rotate(-16deg) saturate(1.08);
-    transform: translate3d(calc(-100vw - 650px), -48px, 0) rotate(-28deg) scale(0.92);
+    transform: translate3d(calc(-100vw - 650px), -48px, 0) scale(0.92);
   }
 }
 
 @keyframes circleTopToBottom {
   from {
     filter: hue-rotate(0deg) saturate(1.02);
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   to {
     filter: hue-rotate(22deg) saturate(1.12);
-    transform: translate3d(120px, calc(100vh + 640px), 0) rotate(32deg) scale(1.08);
+    transform: translate3d(120px, calc(100vh + 640px), 0) scale(1.08);
   }
 }
 
 @keyframes circleBottomToTop {
   from {
     filter: hue-rotate(0deg) saturate(1);
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.96);
+    transform: translate3d(0, 0, 0) scale(0.96);
   }
 
   to {
     filter: hue-rotate(-20deg) saturate(1.1);
-    transform: translate3d(-110px, calc(-100vh - 560px), 0) rotate(-30deg) scale(1.08);
+    transform: translate3d(-110px, calc(-100vh - 560px), 0) scale(1.08);
   }
 }
 
@@ -1098,7 +1232,10 @@ body.aura-bg {
   .stagger-card,
   .grid-faint,
   body.aura-bg,
-  .ambient-circle {
+  .ambient-circle,
+  .ambient-circle::before,
+  .ambient-orbit,
+  .ambient-star {
     animation: none !important;
   }
 
@@ -1133,8 +1270,13 @@ body.aura-bg {
     display: none;
   }
 
-  .ambient-circle {
+  .ambient-circle,
+  .ambient-star {
     opacity: 0.24;
+  }
+
+  .ambient-orbit {
+    display: none;
   }
 
   html {
