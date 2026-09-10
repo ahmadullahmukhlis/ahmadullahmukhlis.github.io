@@ -4,11 +4,11 @@ import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:py-20">
-      <RevealOnScroll>
+    <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:py-24">
+      <RevealOnScroll variant="scale">
         <div className="big-card hover-tilt overflow-hidden">
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="p-7 md:p-10 lg:p-12">
+            <div className="p-8 md:p-11 lg:p-12">
               <p className="motion-line mono-label flex items-center gap-3">
                 <span className="inline-block h-2 w-2 rounded-full bg-mint pulsate" />
                 currently available
@@ -21,12 +21,12 @@ export function Contact() {
                 </span>
               </h2>
 
-              <p className="motion-line mt-4 max-w-xl text-muted" style={{ "--line-delay": "170ms" } as CSSProperties}>
+              <p className="motion-line mt-5 max-w-xl leading-7 text-muted" style={{ "--line-delay": "170ms" } as CSSProperties}>
                 Got a project, a role, or just an idea worth exploring? My inbox is
                 always open — I usually reply within a day.
               </p>
 
-              <div className="motion-line mt-9 flex flex-wrap items-center gap-4" style={{ "--line-delay": "260ms" } as CSSProperties}>
+              <div className="motion-line mt-10 flex flex-wrap items-center gap-4" style={{ "--line-delay": "260ms" } as CSSProperties}>
                 <a href={`mailto:${PROFILE.email}`} className="btn-solid-gold max-w-full break-all">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -45,26 +45,26 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="border-t border-white/10 bg-charcoal/35 p-7 md:p-10 lg:border-l lg:border-t-0">
+            <div className="border-t border-white/10 bg-charcoal/35 p-8 md:p-11 lg:border-l lg:border-t-0 lg:p-12">
               <p className="motion-line mono-label text-gold">Contact routes</p>
-              <div className="mt-6 grid gap-4">
+              <div className="mt-7 grid gap-5">
                 <div className="motion-line" style={{ "--line-delay": "90ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Email</p>
-                  <a href={`mailto:${PROFILE.email}`} className="mt-1 block break-all text-sm font-semibold text-ink hover:text-gold">
+                  <a href={`mailto:${PROFILE.email}`} className="mt-1.5 block break-all text-sm font-semibold text-ink transition-colors hover:text-gold">
                     {PROFILE.email}
                   </a>
                 </div>
                 <div className="motion-line" style={{ "--line-delay": "160ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Location</p>
-                  <p className="mt-1 text-sm font-semibold text-ink">{PROFILE.location}</p>
+                  <p className="mt-1.5 text-sm font-semibold text-ink">{PROFILE.location}</p>
                 </div>
                 <div className="motion-line" style={{ "--line-delay": "230ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Response</p>
-                  <p className="mt-1 text-sm font-semibold text-ink">Usually within one day</p>
+                  <p className="mt-1.5 text-sm font-semibold text-ink">Usually within one day</p>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-6">
+              <div className="mt-10 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-7">
                 {SOCIALS.map((s, i) => (
                   <a
                     key={s.label}

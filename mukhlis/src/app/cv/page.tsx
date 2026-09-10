@@ -183,18 +183,20 @@ export default function CvPage() {
                 {featured.map((p, i) => (
                   <li
                     key={p.id}
-                    className="card-line stagger-card grid gap-1 p-4"
+                    className="card-line glow-card stagger-card group grid gap-2 p-5"
                     style={{ "--card-delay": `${180 + i * 55}ms` } as CSSProperties}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="font-sans text-sm font-semibold text-ink">
+                      <p className="font-sans text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-gold">
                         {p.title}
                       </p>
                       <span className="font-mono text-[11px] text-muted">
                         {p.privacy} · {p.updated}
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed text-muted">{p.summary}</p>
+                    <p className="text-xs leading-relaxed text-muted transition-colors duration-300 group-hover:text-soft">
+                      {p.summary}
+                    </p>
                   </li>
                 ))}
               </ul>

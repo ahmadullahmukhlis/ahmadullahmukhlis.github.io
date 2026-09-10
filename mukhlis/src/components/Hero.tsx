@@ -80,16 +80,22 @@ export function Hero() {
             ))}
           </div>
 
-          <dl className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
+          <dl className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
             {STATS.map((s, i) => (
               <div
                 key={s.label}
-                className="card-line stagger-card p-4"
+                className="card-line glow-card stagger-card group relative p-5"
                 style={{ "--card-delay": `${220 + i * 80}ms` } as CSSProperties}
               >
+                <span
+                  className="absolute left-0 top-0 h-0.5 w-0 rounded-full bg-gold/80 transition-all duration-500 group-hover:w-full"
+                  aria-hidden="true"
+                />
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-mono text-3xl font-bold text-gold">{s.value}</dd>
-                <dd className="mt-2 text-xs leading-5 text-muted">{s.label}</dd>
+                <dd className="font-mono text-3xl font-bold text-gold transition-colors duration-300">
+                  {s.value}
+                </dd>
+                <dd className="mt-2 text-[13px] leading-5 text-muted">{s.label}</dd>
               </div>
             ))}
           </dl>
@@ -97,7 +103,7 @@ export function Hero() {
 
         <div className="rise rise-2 relative mx-auto w-full max-w-[460px] md:justify-self-end">
           <div className="corners big-card hover-tilt overflow-hidden p-3">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-panel">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-panel">
               <Image
                 src={PROFILE.avatar}
                 alt={PROFILE.name}
@@ -113,18 +119,18 @@ export function Hero() {
             </div>
 
             <div className="grid grid-cols-2 border-t border-white/10">
-              <div className="p-4">
-                <p className="font-mono text-[11px] uppercase text-muted">Focus</p>
-                <p className="mt-1 text-sm font-semibold text-soft">Banking and SaaS</p>
+              <div className="p-5">
+                <p className="font-mono text-[11px] uppercase tracking-wide text-muted">Focus</p>
+                <p className="mt-1.5 text-sm font-semibold text-soft">Banking and SaaS</p>
               </div>
-              <div className="border-l border-white/10 p-4">
-                <p className="font-mono text-[11px] uppercase text-muted">Delivery</p>
-                <p className="mt-1 text-sm font-semibold text-soft">Design to deploy</p>
+              <div className="border-l border-white/10 p-5">
+                <p className="font-mono text-[11px] uppercase tracking-wide text-muted">Delivery</p>
+                <p className="mt-1.5 text-sm font-semibold text-soft">Design to deploy</p>
               </div>
             </div>
           </div>
 
-          <div className="stagger-card absolute -right-2 top-6 hidden rounded-lg border border-white/10 bg-charcoal/90 px-4 py-3 shadow-2xl backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:border-gold/40 sm:block md:-right-8">
+          <div className="stagger-card absolute -right-2 top-6 hidden rounded-xl border border-white/10 bg-charcoal/90 px-5 py-3.5 shadow-2xl backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/40 sm:block md:-right-8">
             <p className="font-mono text-xs text-muted">Production systems</p>
             <p className="mt-1 text-sm font-semibold text-ink">Microservices, APIs, UI</p>
           </div>

@@ -40,7 +40,7 @@ export function Projects() {
   const shown = filtered.slice(0, visible);
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 md:py-24">
+    <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:py-24">
       <RevealOnScroll>
         <SectionHeading
           index="02"
@@ -49,10 +49,10 @@ export function Projects() {
         />
       </RevealOnScroll>
 
-      <div className="mt-10">
+      <div className="mt-12">
         <RevealOnScroll delay={80}>
-          <div className="motion-panel stagger-card p-4" style={{ "--card-delay": "120ms" } as CSSProperties}>
-            <p className="mb-3 font-mono text-xs text-muted">Filter work</p>
+          <div className="motion-panel stagger-card p-5" style={{ "--card-delay": "120ms" } as CSSProperties}>
+            <p className="mb-4 font-mono text-xs text-muted">Filter work</p>
             <div className="flex flex-wrap gap-2.5">
               {PROJECT_CATEGORIES.map((c) => (
                 <button
@@ -72,12 +72,12 @@ export function Projects() {
         </RevealOnScroll>
       </div>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         {shown.map((p, i) => {
           const dot = languageColor(p.language);
           const preview = p.images?.[0];
           return (
-            <RevealOnScroll key={p.id} delay={(i % 2) * 80}>
+            <RevealOnScroll key={p.id} delay={i % 2 === 0 ? 0 : 90}>
               <button
                 type="button"
                 onClick={() => setSelected(p)}
@@ -101,7 +101,7 @@ export function Projects() {
                           {String(i + 1).padStart(2, "0")}/
                         </span>
                         <span
-                          className="h-2.5 w-2.5 rounded-full"
+                          className="h-2.5 w-2.5 rounded-full transition-transform duration-300 group-hover:scale-125"
                           style={{ backgroundColor: dot }}
                           aria-hidden="true"
                         />
@@ -114,7 +114,7 @@ export function Projects() {
                   )}
                 </div>
 
-                <div className="flex flex-1 flex-col p-5">
+                <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center justify-between gap-3">
                     <span
                       className="flex items-center gap-2 font-mono text-xs"
@@ -129,7 +129,7 @@ export function Projects() {
                     <span className="font-mono text-xs text-muted">Case study</span>
                   </div>
 
-                  <h3 className="mt-4 font-sans text-xl font-bold text-ink transition-colors group-hover:text-gold">
+                  <h3 className="mt-4 font-sans text-xl font-bold text-ink transition-colors duration-300 group-hover:text-gold">
                     {p.title}
                   </h3>
                   <p className="mt-1 font-mono text-xs text-muted">
@@ -169,7 +169,7 @@ export function Projects() {
       </div>
 
       {filtered.length > visible ? (
-        <div className="mt-10 flex justify-center">
+        <div className="mt-12 flex justify-center">
           <button type="button" onClick={() => setVisible((v) => v + PAGE_SIZE)} className="btn-ghost !text-xs">
             Show more ({filtered.length - visible} left)
           </button>
@@ -177,7 +177,7 @@ export function Projects() {
       ) : null}
 
       {filtered.length === 0 ? (
-        <p className="mt-10 text-center font-mono text-sm text-muted">
+        <p className="mt-12 text-center font-mono text-sm text-muted">
           {"// nothing here yet in this category"}
         </p>
       ) : null}
@@ -201,11 +201,11 @@ function ProjectModal({
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
-      className="fixed inset-0 z-[60] flex items-end justify-center bg-charcoal/80 p-0 backdrop-blur-sm md:items-center md:p-6"
+      className="fixed inset-0 z-[60] flex items-end justify-center bg-charcoal/85 p-0 backdrop-blur-md md:items-center md:p-6"
       onClick={onClose}
     >
       <div
-        className="card-line stagger-card max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-b-none p-6 md:rounded-lg md:p-8"
+        className="card-line stagger-card max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-b-none p-6 md:rounded-xl md:p-9"
         style={{ "--card-delay": "40ms" } as CSSProperties}
         onClick={(e) => e.stopPropagation()}
       >
@@ -218,7 +218,7 @@ function ProjectModal({
               <span className="font-mono text-xs text-muted">·</span>
               <span className="font-mono text-xs text-muted">updated {project.updated}</span>
             </div>
-            <h3 className="mt-2 font-sans text-2xl font-bold text-ink">
+            <h3 className="mt-3 font-sans text-2xl font-bold text-ink">
               {project.title}
             </h3>
           </div>
@@ -226,29 +226,29 @@ function ProjectModal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/15 font-mono text-muted transition-colors hover:border-gold hover:text-gold"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 font-mono text-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
           >
             ✕
           </button>
         </div>
 
-        <p className="mt-5 max-w-2xl text-sm leading-7 text-ink/90">{project.details}</p>
+        <p className="mt-6 max-w-2xl text-sm leading-7 text-ink/90">{project.details}</p>
 
         {project.images && project.images.length > 0 ? (
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          <div className="mt-7 grid gap-4 sm:grid-cols-3">
             {project.images.map((src) => (
-              <div key={src} className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-panel">
+              <div key={src} className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-panel">
                 <Image src={src} alt={`${project.title} screenshot`} fill sizes="256px" className="image-zoom object-cover" />
               </div>
             ))}
           </div>
         ) : null}
 
-        <div className="mt-6">
+        <div className="mt-7">
           <p className="mono-label">key features</p>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {project.features.map((f) => (
-              <li key={f} className="flex items-start gap-2 font-mono text-xs text-muted">
+              <li key={f} className="flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] p-3 font-mono text-xs text-muted transition-colors duration-200 hover:border-gold/20 hover:text-soft">
                 <span className="mt-0.5 text-gold" aria-hidden="true">+</span>
                 {f}
               </li>
@@ -256,9 +256,9 @@ function ProjectModal({
           </ul>
         </div>
 
-        <div className="mt-6 border-t border-white/8 pt-5">
+        <div className="mt-7 border-t border-white/8 pt-6">
           <p className="mono-label">stack</p>
-          <ul className="mt-3 flex flex-wrap gap-2">
+          <ul className="mt-4 flex flex-wrap gap-2">
             {project.tech.map((t) => (
               <li key={t} className="tag-pill !text-xs !px-3 !py-1">
                 {t}
