@@ -69,6 +69,7 @@ const PERSON_JSONLD = {
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   email: `mailto:${PROFILE.email}`,
+  telephone: `+${PROFILE.phone.replace(/\s/g, "")}`,
   address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
   knowsAbout: SITE_KEYWORDS,
   sameAs: [

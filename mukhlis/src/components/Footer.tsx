@@ -81,8 +81,16 @@ export function Footer() {
               ))}
             </ul>
             <a
+              href={PROFILE.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 block font-mono text-xs text-muted transition-colors hover:text-gold"
+            >
+              WhatsApp · {PROFILE.phone}
+            </a>
+            <a
               href={`mailto:${PROFILE.email}`}
-              className="mt-5 block break-all font-mono text-xs text-muted transition-colors hover:text-gold"
+              className="mt-2 block break-all font-mono text-xs text-muted transition-colors hover:text-gold"
             >
               {PROFILE.email}
             </a>

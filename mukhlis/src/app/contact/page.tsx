@@ -40,6 +40,7 @@ const CONTACT_JSONLD = {
     "@type": "Person",
     name: SITE_NAME,
     email: `mailto:${PROFILE.email}`,
+    telephone: `+${PROFILE.phone.replace(/\s/g, "")}`,
     jobTitle: "Full Stack, Fintech & Software Engineer",
   },
 };
@@ -64,7 +65,7 @@ export default function ContactPage() {
           title="Let's build something"
           highlight="worth shipping."
           lead="Whether it's a payment system, an enterprise platform, an app, or a role — I'm glad to talk. I usually reply within one day."
-          chips={[PROFILE.location, "Remote · On-site", "Replies within a day"]}
+          chips={[PROFILE.location, "Remote · On-site", "WhatsApp · " + PROFILE.phone, "Replies within a day"]}
         />
 
         <Contact />

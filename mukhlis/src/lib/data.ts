@@ -9,6 +9,8 @@ export const PROFILE = {
     "I build full-stack platforms, payment-system integrations, dashboards, and polished web experiences for teams that need reliable software shipped with care.",
   location: "Kabul, Afghanistan",
   email: "ahmadullahmukhlis2025@gmail.com",
+  phone: "+93 779 404 681",
+  whatsapp: "https://wa.me/93779404681",
   avatar: "/ahmadullah.jpg",
 };
 

@@ -12,16 +12,16 @@ import type { Project } from "@/lib/types";
 const PROJECTS = projectsData as Project[];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Projects & Portfolio | Fintech, Web, Mobile & API Work",
+  title: "Projects & Case Studies | Fintech, Web, Mobile & API Work",
   description:
-    "Explore the portfolio of Ahmadullah Mukhlis: 45+ fintech, payment, web, mobile, desktop, enterprise, and API projects including banking platforms, ERP systems, mobile apps, and more.",
+    "Delivered software by Ahmadullah Mukhlis: 45+ fintech, payment, web, mobile, desktop, enterprise, and API systems — banking platforms, ERP, mobile apps, and more.",
   keywords: [
-    "Full stack developer portfolio",
-    "Fintech projects portfolio",
+    "Full stack developer projects",
+    "Fintech projects",
     "Payment system projects",
     "Banking software projects",
-    "Mobile app portfolio",
-    "Web application portfolio",
+    "Mobile app projects",
+    "Web application projects",
     "ERP developer projects",
     "MIS system projects",
     "Software engineer projects Afghanistan",
@@ -63,13 +63,13 @@ export default function ProjectsPage() {
         <JsonLd data={PROJECTS_JSONLD} />
         <PageHero
           eyebrow="projects"
-          title="A portfolio of"
-          highlight="shipped work."
-          lead={`${PROJECTS.length} projects across fintech, payments, web, mobile, desktop, enterprise systems, APIs, and full-stack platforms — public and private.`}
+          title="Engineering work that"
+          highlight="ships and scales."
+          lead={`${PROJECTS.length} delivered projects across fintech, payments, web, mobile, desktop, enterprise systems, APIs, and full-stack platforms — public and private.`}
           chips={["Fintech & banking", "Web apps", "Mobile & desktop", "APIs & microservices"]}
         />
         <Projects
-          title="Full portfolio"
+          title="All projects"
           index="01"
           hint={`Explore all ${PROJECTS.length} projects. Filter by product type, open any project for full details, stack, and features.`}
         />

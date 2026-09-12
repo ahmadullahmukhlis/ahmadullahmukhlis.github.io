@@ -60,7 +60,7 @@ export default function CvPage() {
       <main className="page-shell mx-auto max-w-5xl px-5 pt-28 pb-20 md:pt-32">
         <div className="motion-line mb-8 flex flex-wrap items-center justify-between gap-4">
           <Link href="/" className="link-arrow text-xs">
-            ← back to portfolio
+            ← back to home
           </Link>
           <PrintButton />
         </div>
@@ -92,6 +92,16 @@ export default function CvPage() {
                 <li className="break-all">
                   <a href={`mailto:${PROFILE.email}`} className="hover:text-gold">
                     {PROFILE.email}
+                  </a>
+                </li>
+                <li className="break-all">
+                  <a
+                    href={PROFILE.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold"
+                  >
+                    WhatsApp · {PROFILE.phone}
                   </a>
                 </li>
                 <li className="flex flex-wrap gap-x-3">

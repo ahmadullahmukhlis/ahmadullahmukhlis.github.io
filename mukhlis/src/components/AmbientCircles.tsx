@@ -1,7 +1,7 @@
 const circles = [
   {
     id: "one",
-    eyebrow: "Portfolio",
+    eyebrow: "Projects",
     label: "Ahmadullah Mukhlis",
   },
   {

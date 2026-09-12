@@ -274,20 +274,20 @@
   {
     "id": "single-page-portfolio",
     "repo": "single-page-portfolio",
-    "title": "Personal Brand Portfolio",
+    "title": "Personal Brand Website",
     "privacy": "Public",
     "language": "TypeScript",
     "updated": "Aug 18, 2024",
     "categories": [
       "website"
     ],
-    "summary": "Compact one-page portfolio for profile, project, and contact presentation.",
-    "details": "A streamlined portfolio experience that presents a professional profile, selected work, and contact information in a single-page flow. It focuses on clear hierarchy, responsive sections, and fast navigation for personal branding.",
+    "summary": "Compact one-page personal brand site for profile, project, and contact presentation.",
+    "details": "A streamlined personal brand website that presents a professional profile, selected work, and contact information in a single-page flow. It focuses on clear hierarchy, responsive sections, and fast navigation for personal branding.",
     "tech": [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
-      "Portfolio"
+      "Personal Branding"
     ],
     "features": [
       "Single-page layout",
@@ -519,7 +519,7 @@
   {
     "id": "portfolio-site",
     "repo": "ahmadullahmukhlis.github.io",
-    "title": "Professional Portfolio Website",
+    "title": "Professional Personal Website",
     "privacy": "Public",
     "language": "HTML",
     "updated": "2 weeks ago",
@@ -528,7 +528,7 @@
     ],
     "local": "/home/mukhlis/Desktop/projects/ahmadullahmukhlis.github.io",
     "summary": "Modern personal website for skills, selected work, CV, and contact conversion.",
-    "details": "A professional portfolio website for presenting Ahmadullah Mukhlis, technical capabilities, selected projects, resume information, and contact routes. It is structured as a polished public presence for clients, employers, and collaborators.",
+    "details": "A professional personal website for presenting Ahmadullah Mukhlis, technical capabilities, selected projects, resume information, and contact routes. It is structured as a polished public presence for clients, employers, and collaborators.",
     "tech": [
       "HTML",
       "Tailwind CSS",
@@ -598,24 +598,24 @@
   {
     "id": "portfolip",
     "repo": "portfolip",
-    "title": "Creative Portfolio Concept",
+    "title": "Creative Personal Brand Concept",
     "privacy": "Public",
     "language": "Less",
     "updated": "3 weeks ago",
     "categories": [
       "website"
     ],
-    "summary": "Alternative portfolio design focused on personal branding and project presentation.",
-    "details": "A custom portfolio concept for experimenting with visual presentation, profile structure, and project showcase layouts. It focuses on personal branding, responsive presentation, and a clear path for visitors to understand work and contact options.",
+    "summary": "Alternative personal brand design focused on profile and project presentation.",
+    "details": "A custom personal brand concept for experimenting with visual presentation, profile structure, and project showcase layouts. It focuses on personal branding, responsive presentation, and a clear path for visitors to understand work and contact options.",
     "tech": [
       "Less",
       "HTML",
       "CSS",
-      "Portfolio"
+      "Personal Branding"
     ],
     "features": [
       "Personal branding",
-      "Styled portfolio layout",
+      "Styled profile layout",
       "Project sections",
       "Responsive presentation",
       "Public source code"
@@ -849,7 +849,7 @@
       "mobile"
     ],
     "local": "/home/mukhlis/Desktop/projects/invest_system",
-    "summary": "Finance app for investor dashboards, transaction records, and portfolio summaries.",
+    "summary": "Finance app for investor dashboards, transaction records, and investment summaries.",
     "details": "A mobile finance application for tracking investments, investor information, transaction records, and financial summaries. It gives users a clear view of investment activity through organized mobile dashboards and record screens.",
     "tech": [
       "Flutter",
