@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { AmbientCircles } from "@/components/AmbientCircles";
 import { CursorHalo } from "@/components/CursorHalo";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, OG_IMAGE, OG_ALT, TWITTER_IMAGE } from "@/lib/seo";
 import { PROFILE } from "@/lib/data";
@@ -105,6 +106,7 @@ export default function RootLayout({
         <AmbientCircles />
         <CursorHalo />
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   );
