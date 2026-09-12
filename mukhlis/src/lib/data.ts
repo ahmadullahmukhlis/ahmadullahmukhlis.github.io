@@ -137,6 +137,128 @@ export const EDUCATION = [
   { title: "M&E Planning", org: "Philanthropy University", period: "Certificate" },
 ];
 
+export const SERVICES: {
+  id: string;
+  num: string;
+  title: string;
+  tagline: string;
+  description: string;
+  deliverables: string[];
+  keywords: string;
+}[] = [
+  {
+    id: "fintech",
+    num: "01",
+    title: "Fintech & Payment Systems",
+    tagline: "Digital money done right",
+    description:
+      "End-to-end payment platforms, digital banking, payment gateways and switch integrations. I build secure financial software for online and offline transactions, including ISO 8583, mobile banking, USSD banking, and payment systems used under real production load.",
+    deliverables: [
+      "Payment gateway & switch integration",
+      "Digital banking and mobile banking platforms",
+      "ISO 8583 financial messaging",
+      "USSD banking channels",
+      "Offline-first payment flows",
+      "Secure transaction processing",
+    ],
+    keywords: "Fintech developer, payment systems, digital banking, ISO 8583, payment gateway integration, mobile banking",
+  },
+  {
+    id: "web",
+    num: "02",
+    title: "Web Applications",
+    tagline: "Interfaces that feel invisible",
+    description:
+      "High-performance web apps and polished marketing sites with React, Next.js, Laravel, and Spring Boot. From design systems to SSR and edge rendering, every interface is built to be fast, accessible, and a pleasure to use.",
+    deliverables: [
+      "React & Next.js applications",
+      "Vue.js and Laravel platforms",
+      "Design systems and component libraries",
+      "Server-side rendering & edge functions",
+      "Accessibility and performance tuning",
+    ],
+    keywords: "web developer, react developer, next.js developer, laravel developer, frontend developer, web application development",
+  },
+  {
+    id: "mobile",
+    num: "03",
+    title: "Mobile & Desktop Applications",
+    tagline: "One codebase, every device",
+    description:
+      "Cross-platform mobile and desktop apps with Flutter and React Native that run offline-first. From Android and iOS to Windows desktop, applications are engineered to work reliably with or without a connection.",
+    deliverables: [
+      "Flutter & React Native apps",
+      "Android and iOS applications",
+      "Windows desktop software",
+      "Offline-first mobile experiences",
+      "Play Store & App Store readiness",
+    ],
+    keywords: "flutter developer, mobile app developer, cross platform developer, android developer, ios developer, desktop application developer",
+  },
+  {
+    id: "enterprise",
+    num: "04",
+    title: "Enterprise Platforms & APIs",
+    tagline: "Systems that scale with you",
+    description:
+      "ERP, MIS, HR, e-commerce, and healthcare platforms backed by clean backend architecture. I design microservices, REST/GraphQL APIs, and internal tools that keep operations reliable, auditable, and ready to grow.",
+    deliverables: [
+      "Custom ERP and MIS platforms",
+      "Microservices architecture",
+      "REST & GraphQL APIs",
+      "E-commerce platforms",
+      "Role-based admin systems",
+      "Legacy system integrations",
+    ],
+    keywords: "enterprise software engineer, erp developer, mis developer, api developer, microservices developer, backend developer",
+  },
+  {
+    id: "cloud",
+    num: "05",
+    title: "Cloud, DevOps & Security",
+    tagline: "Ship safely, deploy often",
+    description:
+      "Cloud deployment on AWS, GCP, and Azure with Docker, Kubernetes, and CI/CD pipelines. I harden infrastructure with secure defaults, monitoring, and automated delivery so releases are repeatable and systems stay resilient.",
+    deliverables: [
+      "AWS, GCP & Azure deployments",
+      "Docker & Kubernetes orchestration",
+      "GitHub Actions & CI/CD pipelines",
+      "Nginx and reverse proxy setup",
+      "Security hardening & auditing",
+      "Monitoring and logging",
+    ],
+    keywords: "cloud developer, aws developer, docker developer, devops engineer, kubernetes, ci/cd, secure software engineer",
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    num: "01",
+    title: "Discover",
+    text: "I dig into the problem, users, constraints, and existing systems before writing a line of code.",
+  },
+  {
+    num: "02",
+    title: "Design",
+    text: "Clear architecture, data models, and interfaces are planned so the product is consistent from day one.",
+  },
+  {
+    num: "03",
+    title: "Build",
+    text: "Small, reviewable increments with tests, security checks, and fast feedback loops.",
+  },
+  {
+    num: "04",
+    title: "Deploy",
+    text: "Automated pipelines ship to staging and production with rollbacks, monitoring, and backups.",
+  },
+  {
+    num: "05",
+    title: "Support",
+    text: "Post-launch maintenance, performance tuning, and iterations keep systems healthy and current.",
+  },
+];
+
 export const CV_SKILLS = [
   "JavaScript / TypeScript",
   "React / Next.js",

@@ -1,12 +1,26 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Ticker } from "@/components/Ticker";
-import { Skills } from "@/components/Skills";
-import { Projects } from "@/components/Projects";
-import { Experience } from "@/components/Experience";
+import { HomeServices } from "@/components/HomeServices";
+import { HomeFeatured } from "@/components/HomeFeatured";
+import { HomeExperience } from "@/components/HomeExperience";
 import { Testimonials } from "@/components/Testimonials";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import { CTABand } from "@/components/CTABand";
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  buildMetadata,
+} from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -15,11 +29,11 @@ export default function Home() {
       <main className="page-shell">
         <Hero />
         <Ticker />
-        <Skills />
-        <Projects />
-        <Experience />
+        <HomeServices />
+        <HomeFeatured />
+        <HomeExperience />
         <Testimonials />
-        <Contact />
+        <CTABand />
       </main>
       <Footer />
     </>

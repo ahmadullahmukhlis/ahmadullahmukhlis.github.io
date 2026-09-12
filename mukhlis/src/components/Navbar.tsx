@@ -1,19 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { PROFILE } from "@/lib/data";
 
 const LINKS = [
-  { href: "#home", label: "Home", num: "00" },
-  { href: "#stack", label: "Stack", num: "01" },
-  { href: "#projects", label: "Work", num: "02" },
-  { href: "#path", label: "Path", num: "03" },
-  { href: "#words", label: "Proof", num: "04" },
+  { href: "/", label: "Home", num: "00" },
+  { href: "/about", label: "About", num: "01" },
+  { href: "/services", label: "Services", num: "02" },
+  { href: "/projects", label: "Work", num: "03" },
+  { href: "/experience", label: "Path", num: "04" },
+  { href: "/contact", label: "Contact", num: "05" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -21,6 +25,8 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const close = () => setOpen(false);
 
   return (
     <header
@@ -31,36 +37,43 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
-        <a href="#home" className="group flex items-center gap-3" aria-label="Home">
+        <Link href="/" onClick={close} className="group flex items-center gap-3" aria-label="Ahmadullah Mukhlis — home">
           <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/50 bg-gold/10 font-mono text-sm font-bold text-gold transition-colors group-hover:bg-gold group-hover:text-charcoal">
             {PROFILE.initials}
           </span>
           <span className="hidden text-left sm:block">
             <span className="block text-sm font-semibold text-ink">{PROFILE.name}</span>
-            <span className="block font-mono text-[11px] text-muted">Full-stack portfolio</span>
+            <span className="block font-mono text-[11px] text-muted">Full-stack · Fintech · Engineer</span>
           </span>
-        </a>
+        </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="nav-sweep group font-mono text-xs text-muted transition-colors hover:text-gold"
-            >
-              <span className="text-ink/35 group-hover:text-gold/50">{l.num}/</span>
-              {l.label}
-            </a>
-          ))}
+        <div className="hidden items-center gap-5 md:flex">
+          {LINKS.map((l) => {
+            const active = pathname === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? "page" : undefined}
+                className={`nav-sweep group font-mono text-xs transition-colors hover:text-gold ${
+                  active ? "active text-gold" : "text-muted"
+                }`}
+              >
+                <span className={`${active ? "text-gold" : "text-ink/35 group-hover:text-gold/50"}`}>{l.num}/</span>
+                {l.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="btn-solid-gold hidden !min-h-9 !px-3.5 !py-2 !text-xs sm:inline-flex">
-            Contact
-          </a>
+          <Link href="/contact" className="btn-solid-gold hidden !min-h-9 !px-3.5 !py-2 !text-xs sm:inline-flex">
+            Hire me
+          </Link>
           <button
             type="button"
             aria-label="Toggle menu"
+            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-ink transition-colors hover:border-gold hover:text-gold md:hidden"
           >
@@ -72,23 +85,22 @@ export function Navbar() {
       {open ? (
         <div className="menu-drop border-t border-white/10 bg-charcoal/95 px-5 py-4 shadow-[0_22px_48px_-32px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4">
-            {LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="font-mono text-sm text-muted transition-colors hover:text-gold"
-              >
-                <span className="text-gold">{l.num}/</span> {l.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="btn-solid-gold !text-sm"
-            >
+            {LINKS.map((l) => {
+              const active = pathname === l.href;
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={`font-mono text-sm transition-colors hover:text-gold ${active ? "text-gold" : "text-muted"}`}
+                >
+                  <span className="text-gold">{l.num}/</span> {l.label}
+                </Link>
+              );
+            })}
+            <Link href="/contact" onClick={() => setOpen(false)} className="btn-solid-gold !text-sm">
               Hire me
-            </a>
+            </Link>
           </div>
         </div>
       ) : null}

@@ -5,13 +5,28 @@ import type { CSSProperties } from "react";
 import { Navbar } from "@/components/Navbar";
 import { PrintButton } from "@/components/PrintButton";
 import { PROFILE, SOCIALS, EXPERIENCE, EDUCATION, CV_SKILLS } from "@/lib/data";
+import { buildMetadata } from "@/lib/seo";
 import projectsData from "@/data/projects.json";
 import type { Project } from "@/lib/types";
 
-export const metadata: Metadata = {
-  title: "CV · Ahmadullah Mukhlis",
-  description: "Resume and cover letter of Ahmadullah Mukhlis.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Resume & CV | Ahmadullah Mukhlis — Full Stack & Fintech Engineer",
+  description:
+    "Printable resume and CV of Ahmadullah Mukhlis, full stack and fintech software engineer: banking, payments, digital banking, web, mobile, and enterprise software experience.",
+  keywords: [
+    "Ahmadullah Mukhlis CV",
+    "Ahmadullah Mukhlis resume",
+    "Full stack developer resume",
+    "Fintech engineer CV",
+    "Payment systems engineer resume",
+    "Software engineer CV Afghanistan",
+    "Resume banking software developer",
+    "Full stack developer cover letter",
+    "Hire full stack developer resume",
+    "Fintech developer CV download",
+  ],
+  path: "/cv",
+});
 
 const PROJECTS = projectsData as Project[];
 const FEATURED_PROJECT_IDS = [

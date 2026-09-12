@@ -12,7 +12,15 @@ import projectsData from "@/data/projects.json";
 const PROJECTS = projectsData as Project[];
 const PAGE_SIZE = 8;
 
-export function Projects() {
+export function Projects({
+  title = "Selected work",
+  index = "02",
+  hint,
+}: {
+  title?: string;
+  index?: string;
+  hint?: string;
+}) {
   const [filter, setFilter] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [selected, setSelected] = useState<Project | null>(null);
@@ -43,9 +51,12 @@ export function Projects() {
     <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:py-24">
       <RevealOnScroll>
         <SectionHeading
-          index="02"
-          title="Selected work"
-          hint={`A curated view across ${PROJECTS.length} shipped projects, including public repositories, private platforms, dashboards, APIs, and mobile work.`}
+          index={index}
+          title={title}
+          hint={
+            hint ??
+            `A curated view across ${PROJECTS.length} shipped projects, including public repositories, private platforms, dashboards, APIs, and mobile work.`
+          }
         />
       </RevealOnScroll>
 

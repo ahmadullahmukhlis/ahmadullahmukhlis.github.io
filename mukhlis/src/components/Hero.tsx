@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { PROFILE, SOCIALS } from "@/lib/data";
 
@@ -52,13 +53,13 @@ export function Hero() {
           </div>
 
           <div className="motion-line mt-9 flex flex-wrap items-center gap-3" style={{ "--line-delay": "580ms" } as CSSProperties}>
-            <a href="#projects" className="btn-solid-gold">
+            <Link href="/projects" className="btn-solid-gold">
               Explore work
               <span aria-hidden="true">→</span>
-            </a>
-            <a href="/cv" className="btn-ghost">
+            </Link>
+            <Link href="/cv" className="btn-ghost">
               View CV
-            </a>
+            </Link>
           </div>
 
           <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3">

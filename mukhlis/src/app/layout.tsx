@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { AmbientCircles } from "@/components/AmbientCircles";
 import { CursorHalo } from "@/components/CursorHalo";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, OG_IMAGE, OG_ALT, TWITTER_IMAGE } from "@/lib/seo";
+import { PROFILE } from "@/lib/data";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -15,90 +18,73 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ahmadullahmukhlis.com"),
+  metadataBase: new URL(SITE_URL),
 
-  title: "Ahmadullah Mukhlis | Full Stack, Fintech & Software Engineer",
+  title: SITE_TITLE,
 
-  description:
-    "Ahmadullah Mukhlis is a Full Stack, Fintech and Software Engineer specializing in web, mobile, desktop, online and offline applications, payment systems, banking platforms, enterprise software, APIs, cloud systems and secure digital products.",
+  description: SITE_DESCRIPTION,
 
-  keywords: [
-    "Ahmadullah Mukhlis",
-    "Ahmad Ullah Mukhlis",
-    "Full Stack Developer",
-    "Full Stack Software Engineer",
-    "Fintech Developer",
-    "Fintech Software Engineer",
-    "Payment Systems Developer",
-    "Banking Software Developer",
-    "Enterprise Software Engineer",
-    "Web Developer",
-    "Mobile App Developer",
-    "Desktop Application Developer",
-    "Flutter Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Laravel Developer",
-    "Spring Boot Developer",
-    "ASP.NET Core Developer",
-    "API Developer",
-    "Microservices Developer",
-    "Cloud Developer",
-    "AWS Developer",
-    "Docker Developer",
-    "Online Application Developer",
-    "Offline Application Developer",
-    "Offline First Applications",
-    "Cross Platform Developer",
-    "Android Developer",
-    "iOS Developer",
-    "Windows Desktop Developer",
-    "Financial Systems Developer",
-    "Digital Payment Developer",
-    "Payment Gateway Integration",
-    "Payment Switch Integration",
-    "ISO 8583 Developer",
-    "Mobile Banking Developer",
-    "USSD Banking Developer",
-    "ERP Developer",
-    "MIS Developer",
-    "Ecommerce Developer",
-    "Secure Software Engineer",
-    "Full Stack Developer Afghanistan",
-    "Software Engineer Afghanistan",
-  ],
+  keywords: SITE_KEYWORDS,
 
-  applicationName: "Ahmadullah Mukhlis",
-  authors: [{ name: "Ahmadullah Mukhlis", url: "https://ahmadullahmukhlis.com" }],
-  creator: "Ahmadullah Mukhlis",
-  publisher: "Ahmadullah Mukhlis",
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   category: "Software Engineering",
 
   alternates: {
-    canonical: "https://ahmadullahmukhlis.com",
+    canonical: SITE_URL,
   },
 
   openGraph: {
-    title: "Ahmadullah Mukhlis | Full Stack, Fintech & Software Engineer",
+    title: SITE_TITLE,
     description:
       "Full Stack and Fintech Software Engineer building secure web, mobile, desktop, online and offline applications, payment systems and enterprise platforms.",
-    url: "https://ahmadullahmukhlis.com",
-    siteName: "Ahmadullah Mukhlis",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: OG_ALT }],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Ahmadullah Mukhlis | Full Stack, Fintech & Software Engineer",
+    title: SITE_TITLE,
     description:
       "Full Stack and Fintech Software Engineer building secure web, mobile, desktop, online and offline applications, payment systems and enterprise platforms.",
+    images: [TWITTER_IMAGE],
   },
 
   robots: {
     index: true,
     follow: true,
   },
+};
+
+const PERSON_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: PROFILE.name,
+  jobTitle: "Full Stack, Fintech & Software Engineer",
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  email: `mailto:${PROFILE.email}`,
+  address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
+  knowsAbout: SITE_KEYWORDS,
+  sameAs: [
+    "https://github.com/ahmadullahmukhlis",
+    "https://www.linkedin.com/in/ahmadullahmukhlis",
+    "https://x.com/ahmadullahmukhi",
+  ],
+};
+
+const WEBSITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: "en",
 };
 
 export default function RootLayout({
@@ -113,6 +99,8 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <body className="aura-bg grain min-h-screen antialiased">
+        <JsonLd data={PERSON_JSONLD} />
+        <JsonLd data={WEBSITE_JSONLD} />
         <AmbientCircles />
         <CursorHalo />
         {children}
