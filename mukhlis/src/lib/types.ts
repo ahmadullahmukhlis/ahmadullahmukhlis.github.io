@@ -10,8 +10,9 @@ export interface Project {
   summary: string;
   details: string;
   tech: string[];
-  features: string[];
+   features: string[];
   images?: string[];
+  video?: string;
 }
 
 export const PROJECT_CATEGORIES = [

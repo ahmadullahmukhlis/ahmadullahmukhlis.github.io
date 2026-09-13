@@ -1,5 +1,53 @@
 [
   {
+    "id": "radsphere",
+    "repo": "radsphere",
+    "title": "RadSphere",
+    "privacy": "Private",
+    "language": "Dart",
+    "updated": "Recent",
+    "categories": [
+      "mobile"
+    ],
+    "local": "/home/mukhlis/Desktop/projects/radsphere",
+    "summary": "Mobile teleradiology and medical imaging case management platform for x-ray, CT, MRI, and ECG workflows with remote radiologist review and PDF reporting.",
+    "details": "RadSphere is a modern mobile-first teleradiology and medical imaging case management platform designed to simplify communication and workflow between healthcare providers, medical imaging centers, radiologists, and system administrators. The application enables medical imaging cases—including X-Ray, CT Scan, MRI, and ECG cases—to be registered, organized, reviewed, interpreted, and reported digitally through a structured mobile workflow. RadSphere is designed especially for healthcare environments where specialists may not always be physically available at the location where diagnostic imaging is performed. Through the platform, medical staff can securely prepare and submit patient imaging cases, while authorized doctors or radiologists can review the case information and provide professional diagnostic reports. The system focuses on providing a simple, efficient, mobile-first, and scalable workflow for remote medical consultation and radiology reporting. Built with Flutter and Dart, it uses Provider for state management, SQLite/sqflite for offline data, and Flutter PDF/printing libraries for professional report generation. Image uploads integrate with Google Apps Script and Google Drive for cloud storage.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Provider",
+      "SQLite / sqflite",
+      "Flutter PDF",
+      "Google Apps Script",
+      "Material Design 3"
+    ],
+    "features": [
+      "Doctor / Radiologist dashboard with case overview",
+      "My Cases list with status filtering (New, Pending, Under Review, Report in Progress, Completed)",
+      "New case registration with patient and examination information",
+      "Structured radiology report editor with findings, impression, and recommendations",
+      "Professional PDF medical report generation and preview",
+      "Medical image upload via Google Apps Script + Google Drive",
+      "Offline SQLite local database for case, patient, and user data",
+      "Case Viewer with patient info, clinical notes, images, and report in one screen",
+      "Subscription management module",
+      "Doctor profile and account settings",
+      "Administrative case management and doctor management",
+      "Support for X-Ray, CT Scan, MRI, and ECG case types",
+      "Material Design 3 mobile-first interface",
+      "Provider state management for scalable data flow",
+      "Role-based access for doctors and administrators"
+    ],
+    "images": [
+      "/projects/Radsphar/login_screen.png",
+      "/projects/Radsphar/home_screen.png",
+      "/projects/Radsphar/case_screen.png",
+      "/projects/Radsphar/profile_screen.png",
+      "/projects/Radsphar/payment_iscreen.png"
+    ],
+    "video": "https://www.youtube.com/watch?v=t3a-3dL6b3E"
+  },
+  {
     "id": "api-gateway",
     "repo": "api_gateway-",
     "title": "Microservices Access Gateway",
@@ -513,7 +561,13 @@
     "images": [
       "/projects/vidbuddy-desktop/home.png",
       "/projects/vidbuddy-desktop/video.png",
-      "/projects/vidbuddy-desktop/player.png"
+      "/projects/vidbuddy-desktop/player.png",
+      "/projects/vidbuddy-desktop/download.png",
+      "/projects/vidbuddy-desktop/music.png",
+      "/projects/vidbuddy-desktop/more.png",
+      "/projects/vidbuddy-desktop/screenshot-1.png",
+      "/projects/vidbuddy-desktop/screenshot-2.png",
+      "/projects/vidbuddy-desktop/screenshot-3.png"
     ]
   },
   {
@@ -1189,6 +1243,9 @@
       "Mobile UI",
       "Cross-platform structure",
       "Service-oriented app design"
+    ],
+    "images": [
+      "/projects/callsense/home_screen.png"
     ]
   },
   {

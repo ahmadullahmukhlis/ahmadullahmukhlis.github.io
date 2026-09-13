@@ -111,11 +111,7 @@ export function Projects({
                         <span className="font-mono text-xs text-muted">
                           {String(i + 1).padStart(2, "0")}/
                         </span>
-                        <span
-                          className="h-2.5 w-2.5 rounded-full transition-transform duration-300 group-hover:scale-125"
-                          style={{ backgroundColor: dot }}
-                          aria-hidden="true"
-                        />
+                        <ProjectIcon dot={dot} />
                       </div>
                       <div>
                         <p className="font-mono text-xs text-gold">Case study</p>
@@ -245,6 +241,28 @@ function ProjectModal({
 
         <p className="mt-6 max-w-2xl text-sm leading-7 text-ink/90">{project.details}</p>
 
+        {project.video ? (
+          <div className="mt-7 flex items-center gap-4">
+            <a
+              href={project.video}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost inline-flex items-center gap-2 !text-xs"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M8 5.14v14.23l11-7.14L8 5.14z" />
+              </svg>
+              Watch Demo
+            </a>
+          </div>
+        ) : null}
+
         {project.images && project.images.length > 0 ? (
           <div className="mt-7 grid gap-4 sm:grid-cols-3">
             {project.images.map((src) => (
@@ -278,6 +296,21 @@ function ProjectModal({
           </ul>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ProjectIcon({ dot }: { dot: string }) {
+  return (
+    <div
+      className="flex h-6 w-6 items-center justify-center rounded-lg"
+      style={{ backgroundColor: `${dot}1a` }}
+      aria-hidden="true"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 3H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" stroke={dot} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 17h6M9 13h6M9 9h2" stroke={dot} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </div>
   );
 }

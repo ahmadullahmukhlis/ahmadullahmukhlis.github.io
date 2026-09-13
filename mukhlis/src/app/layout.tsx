@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import { AmbientCircles } from "@/components/AmbientCircles";
 import { CursorHalo } from "@/components/CursorHalo";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
@@ -103,7 +102,6 @@ export default function RootLayout({
       <body className="aura-bg grain min-h-screen antialiased">
         <JsonLd data={PERSON_JSONLD} />
         <JsonLd data={WEBSITE_JSONLD} />
-        <AmbientCircles />
         <CursorHalo />
         {children}
         <WhatsAppFloat />

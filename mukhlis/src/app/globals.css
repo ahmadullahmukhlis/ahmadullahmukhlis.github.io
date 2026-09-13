@@ -852,19 +852,6 @@ body.aura-bg {
   transform: scale(1.05);
 }
 
-.hover-tilt:hover {
-  transform: translateY(-5px) scale(1.01);
-}
-
-.image-zoom {
-  transition: filter 0.45s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.group:hover .image-zoom {
-  filter: saturate(1.08) contrast(1.04);
-  transform: scale(1.04);
-}
-
 @keyframes pageAura {
   from {
     background-position: 0 0, 0 50%, 0 0;
