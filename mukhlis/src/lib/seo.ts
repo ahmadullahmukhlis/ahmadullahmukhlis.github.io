@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://ahmadullahmukhlis.com";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+export const SITE_URL = (configuredSiteUrl || "https://ahmadullahmukhlis.com").replace(/\/$/, "");
 export const SITE_NAME = "Ahmadullah Mukhlis";
 export const SITE_TITLE =
   "Ahmadullah Mukhlis | Full Stack, Fintech & Software Engineer";
@@ -10,7 +12,20 @@ export const SITE_DESCRIPTION =
 
 export const OG_IMAGE = `${SITE_URL}/opengraph-image.jpg`;
 export const TWITTER_IMAGE = `${SITE_URL}/twitter-image.jpg`;
+export const X_HANDLE = "@ahmadullahmukhi";
 export const OG_ALT = "Ahmadullah Mukhlis - Full Stack, Fintech & Software Engineer";
+
+export const SOCIAL_DESCRIPTION =
+  "Full Stack, Fintech and Software Engineer building secure web, mobile, desktop, online and offline applications, payment systems and enterprise platforms.";
+
+export const SOCIAL_IMAGE = {
+  url: OG_IMAGE,
+  secureUrl: OG_IMAGE,
+  width: 1200,
+  height: 630,
+  alt: OG_ALT,
+  type: "image/jpeg",
+};
 
 export const SITE_KEYWORDS = [
   "Ahmadullah Mukhlis",
@@ -81,14 +96,29 @@ export function buildMetadata({ title, description, keywords, path }: PageSeo): 
       siteName: SITE_NAME,
       type: "website",
       locale: "en_US",
-      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: OG_ALT }],
+      images: [SOCIAL_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [TWITTER_IMAGE],
+      site: X_HANDLE,
+      creator: X_HANDLE,
+      images: {
+        url: TWITTER_IMAGE,
+        alt: OG_ALT,
+      },
     },
-    robots: { index: true, follow: true },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
   };
 }

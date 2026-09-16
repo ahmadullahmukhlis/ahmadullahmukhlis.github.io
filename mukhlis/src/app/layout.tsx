@@ -3,7 +3,18 @@ import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { CursorHalo } from "@/components/CursorHalo";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, OG_IMAGE, OG_ALT, TWITTER_IMAGE } from "@/lib/seo";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SOCIAL_DESCRIPTION,
+  SOCIAL_IMAGE,
+  TWITTER_IMAGE,
+  X_HANDLE,
+  OG_ALT,
+} from "@/lib/seo";
 import { PROFILE } from "@/lib/data";
 import "./globals.css";
 
@@ -38,26 +49,36 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: SITE_TITLE,
-    description:
-      "Full Stack and Fintech Software Engineer building secure web, mobile, desktop, online and offline applications, payment systems and enterprise platforms.",
+    description: SOCIAL_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: OG_ALT }],
+    images: [SOCIAL_IMAGE],
   },
 
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
-    description:
-      "Full Stack and Fintech Software Engineer building secure web, mobile, desktop, online and offline applications, payment systems and enterprise platforms.",
-    images: [TWITTER_IMAGE],
+    description: SOCIAL_DESCRIPTION,
+    site: X_HANDLE,
+    creator: X_HANDLE,
+    images: {
+      url: TWITTER_IMAGE,
+      alt: OG_ALT,
+    },
   },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
