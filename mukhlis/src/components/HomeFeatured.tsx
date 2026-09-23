@@ -41,7 +41,7 @@ export function HomeFeatured() {
           return (
             <RevealOnScroll key={p.id} delay={i % 2 === 0 ? 0 : 90}>
               <Link
-                href="/projects"
+                href={`/projects/${p.id}`}
                 className="card-line glow-card stagger-card group flex h-full w-full flex-col overflow-hidden"
                 style={{ "--card-delay": `${120 + i * 55}ms` } as CSSProperties}
               >

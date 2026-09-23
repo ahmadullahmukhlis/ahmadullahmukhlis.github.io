@@ -13,11 +13,11 @@ const PAGES = [
 ];
 
 const SERVICE_LINKS = [
-  { href: "/services#fintech", label: "Fintech & Payments" },
-  { href: "/services#web", label: "Web Applications" },
-  { href: "/services#mobile", label: "Mobile & Desktop" },
-  { href: "/services#enterprise", label: "Enterprise & APIs" },
-  { href: "/services#cloud", label: "Cloud & DevOps" },
+  { href: "/services/fintech", label: "Fintech & Payments" },
+  { href: "/services/web", label: "Web Applications" },
+  { href: "/services/mobile", label: "Mobile & Desktop" },
+  { href: "/services/enterprise", label: "Enterprise & APIs" },
+  { href: "/services/cloud", label: "Cloud & DevOps" },
 ];
 
 export function Footer() {

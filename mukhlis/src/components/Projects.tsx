@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { PROJECT_CATEGORIES, languageColor, privacyColor } from "@/lib/types";
@@ -23,20 +24,6 @@ export function Projects({
 }) {
   const [filter, setFilter] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
-  const [selected, setSelected] = useState<Project | null>(null);
-
-  useEffect(() => {
-    if (selected) {
-      document.body.style.overflow = "hidden";
-      const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelected(null);
-      window.addEventListener("keydown", onKey);
-      return () => {
-        document.body.style.overflow = "";
-        window.removeEventListener("keydown", onKey);
-      };
-    }
-  }, [selected]);
-
   const filtered = useMemo(
     () =>
       filter === "all"
@@ -89,12 +76,11 @@ export function Projects({
           const preview = p.images?.[0];
           return (
             <RevealOnScroll key={p.id} delay={i % 2 === 0 ? 0 : 90}>
-              <button
-                type="button"
-                onClick={() => setSelected(p)}
+              <Link
+                href={`/projects/${p.id}`}
                 className="card-line glow-card stagger-card group flex h-full w-full flex-col overflow-hidden text-left"
                 style={{ "--card-delay": `${120 + i * 55}ms` } as CSSProperties}
-                aria-label={`Open details for ${p.title}`}
+                aria-label={`Open project page for ${p.title}`}
               >
                 <div className="relative aspect-[16/9] overflow-hidden border-b border-white/10 bg-panel">
                   {preview ? (
@@ -169,7 +155,7 @@ export function Projects({
                     </span>
                   </div>
                 </div>
-              </button>
+              </Link>
             </RevealOnScroll>
           );
         })}
@@ -189,114 +175,7 @@ export function Projects({
         </p>
       ) : null}
 
-      {selected ? (
-        <ProjectModal project={selected} onClose={() => setSelected(null)} />
-      ) : null}
     </section>
-  );
-}
-
-function ProjectModal({
-  project,
-  onClose,
-}: {
-  project: Project;
-  onClose: () => void;
-}) {
-  return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label={project.title}
-      className="fixed inset-0 z-[60] flex items-end justify-center bg-charcoal/85 p-0 backdrop-blur-md md:items-center md:p-6"
-      onClick={onClose}
-    >
-      <div
-        className="card-line stagger-card max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-b-none p-6 md:rounded-xl md:p-9"
-        style={{ "--card-delay": "40ms" } as CSSProperties}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs text-gold">Project detail</span>
-              <span className="font-mono text-xs text-muted">·</span>
-              <span className="font-mono text-xs text-muted">{project.privacy}</span>
-              <span className="font-mono text-xs text-muted">·</span>
-              <span className="font-mono text-xs text-muted">updated {project.updated}</span>
-            </div>
-            <h3 className="mt-3 font-sans text-2xl font-bold text-ink">
-              {project.title}
-            </h3>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 font-mono text-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
-          >
-            ✕
-          </button>
-        </div>
-
-        <p className="mt-6 max-w-2xl text-sm leading-7 text-ink/90">{project.details}</p>
-
-        {project.video ? (
-          <div className="mt-7 flex items-center gap-4">
-            <a
-              href={project.video}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost inline-flex items-center gap-2 !text-xs"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M8 5.14v14.23l11-7.14L8 5.14z" />
-              </svg>
-              Watch Demo
-            </a>
-          </div>
-        ) : null}
-
-        {project.images && project.images.length > 0 ? (
-          <div className="mt-7 grid gap-4 sm:grid-cols-3">
-            {project.images.map((src) => (
-              <div key={src} className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-panel">
-                <Image src={src} alt={`${project.title} screenshot`} fill sizes="256px" className="image-zoom object-cover" />
-              </div>
-            ))}
-          </div>
-        ) : null}
-
-        <div className="mt-7">
-          <p className="mono-label">key features</p>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-            {project.features.map((f) => (
-              <li key={f} className="flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] p-3 font-mono text-xs text-muted transition-colors duration-200 hover:border-gold/20 hover:text-soft">
-                <span className="mt-0.5 text-gold" aria-hidden="true">+</span>
-                {f}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-7 border-t border-white/8 pt-6">
-          <p className="mono-label">stack</p>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {project.tech.map((t) => (
-              <li key={t} className="tag-pill !text-xs !px-3 !py-1">
-                {t}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
   );
 }
 

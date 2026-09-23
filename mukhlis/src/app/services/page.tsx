@@ -82,7 +82,8 @@ export default function ServicesPage() {
           <div className="grid gap-5">
             {SERVICES.map((s, i) => (
               <RevealOnScroll key={s.id} variant={i % 2 === 0 ? "left" : "right"}>
-                <div
+                <Link
+                  href={`/services/${s.id}`}
                   id={s.id}
                   className="card-line glow-card stagger-card group grid scroll-mt-28 gap-6 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-9"
                   style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
@@ -106,7 +107,7 @@ export default function ServicesPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </Link>
               </RevealOnScroll>
             ))}
           </div>

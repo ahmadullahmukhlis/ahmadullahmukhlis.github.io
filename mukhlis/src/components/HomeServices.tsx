@@ -21,7 +21,7 @@ export function HomeServices() {
         {SERVICES.slice(0, VISIBLE).map((s, i) => (
           <RevealOnScroll key={s.id} delay={i * 70}>
             <Link
-              href={`/services#${s.id}`}
+              href={`/services/${s.id}`}
               className="card-line glow-card stagger-card group flex h-full flex-col p-6 md:p-7"
               style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
             >

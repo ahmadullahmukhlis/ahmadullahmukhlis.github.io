@@ -78,10 +78,12 @@ export interface PageSeo {
   description: string;
   keywords: string[];
   path: string;
+  image?: string;
 }
 
-export function buildMetadata({ title, description, keywords, path }: PageSeo): Metadata {
+export function buildMetadata({ title, description, keywords, path, image }: PageSeo): Metadata {
   const canonical = new URL(path, SITE_URL).toString();
+  const socialImage = image ? new URL(image, SITE_URL).toString() : SOCIAL_IMAGE;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -96,7 +98,7 @@ export function buildMetadata({ title, description, keywords, path }: PageSeo): 
       siteName: SITE_NAME,
       type: "website",
       locale: "en_US",
-      images: [SOCIAL_IMAGE],
+      images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",

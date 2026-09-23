@@ -82,7 +82,7 @@ The script uses `ahmadullahmukhlis.com` and `ahmadullahmukhlis2019@gmail.com` by
 For later deployments:
 
 ```bash
-docker compose --profile ssl up --build -d
+docker compose up --build -d
 ```
 
 After renewing certificates, reload Nginx so it reads the renewed files:
