@@ -57,6 +57,7 @@ services:
   certbot-init:
     image: certbot/certbot:latest
     container_name: mukhlis-certbot-init
+    user: "0:0"
     network_mode: none
     environment:
       - NGINX_HOST=${NGINX_HOST:-ahmadullahmukhlis.com}
@@ -80,6 +81,7 @@ services:
   certbot:
     image: certbot/certbot:latest
     container_name: mukhlis-certbot
+    user: "0:0"
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
