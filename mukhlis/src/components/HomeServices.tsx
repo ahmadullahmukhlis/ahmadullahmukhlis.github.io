@@ -4,15 +4,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SERVICES } from "@/lib/data";
 import Image from "next/image";
+import { SERVICE_IMAGES } from "@/lib/brand";
 
 const VISIBLE = 4;
-const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
-  fintech: { src: "/brand/payment-fintech-solutions.png", alt: "Mukhlis Software Solution payment and fintech engineering services" },
-  "web-development": { src: "/brand/web-design-development.png", alt: "Mukhlis Software Solution web design and development services" },
-  "mobile-development": { src: "/brand/mobile-app-development.png", alt: "Mukhlis Software Solution mobile application development services" },
-  "enterprise-software": { src: "/brand/erp-business-solutions.png", alt: "Mukhlis Software Solution ERP and business software services" },
-};
-
 export function HomeServices() {
   return (
     <section className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:py-24">
@@ -32,7 +26,7 @@ export function HomeServices() {
               className="card-line glow-card stagger-card group flex h-full flex-col p-6 md:p-7"
               style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
             >
-              {SERVICE_IMAGES[s.id] && <div className="relative -mx-6 -mt-6 mb-6 aspect-[16/8] overflow-hidden rounded-t-xl border-b border-white/10 md:-mx-7 md:-mt-7"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 550px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"/></div>}
+              {SERVICE_IMAGES[s.id] && <div className="relative -mx-6 -mt-6 mb-6 aspect-square overflow-hidden rounded-t-xl border-b border-white/10 bg-white md:-mx-7 md:-mt-7"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 550px" className="object-contain transition-transform duration-500 group-hover:scale-[1.015]"/></div>}
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-sans text-xl font-bold text-ink transition-colors duration-300 group-hover:text-gold">
                   {s.title}

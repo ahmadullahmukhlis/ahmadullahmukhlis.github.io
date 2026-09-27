@@ -7,6 +7,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { Navbar } from "@/components/Navbar";
 import { PROCESS_STEPS, SERVICES } from "@/lib/data";
 import { SITE_NAME, SITE_URL, buildMetadata } from "@/lib/seo";
+import Image from "next/image";
+import { SERVICE_IMAGES } from "@/lib/brand";
 
 const getService = (slug: string) => SERVICES.find((service) => service.id === slug);
 
@@ -61,6 +63,7 @@ export default async function ServicePage({
   const previous = SERVICES[(index - 1 + SERVICES.length) % SERVICES.length];
   const next = SERVICES[(index + 1) % SERVICES.length];
   const narrative = buildServiceNarrative(service);
+  const serviceImage = SERVICE_IMAGES[service.id];
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -91,19 +94,22 @@ export default async function ServicePage({
               <span className="truncate text-soft">{service.id}</span>
             </nav>
 
-            <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+            <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.82fr] lg:items-center">
               <div>
                 <span className="font-mono text-xs text-gold">{service.num} / {service.tagline}</span>
                 <h1 className="mt-5 max-w-4xl font-sans text-4xl font-bold leading-[1.04] text-ink sm:text-5xl md:text-7xl">{service.title}</h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-muted md:text-lg">{service.description}</p>
               </div>
-              <div className="motion-panel p-5 lg:justify-self-end lg:max-w-sm">
+              <div className="lg:justify-self-end lg:max-w-md">
+                {serviceImage && <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white p-2 shadow-2xl"><div className="relative aspect-square"><Image src={serviceImage.src} alt={serviceImage.alt} fill priority sizes="(max-width: 1024px) 100vw, 440px" className="object-contain"/></div></figure>}
+                <div className="motion-panel mt-4 p-5">
                 <p className="mono-label">engagement profile</p>
                 <div className="mt-5 grid grid-cols-2 gap-4">
                   <div><p className="font-mono text-xs text-muted">Delivery</p><p className="mt-1 text-sm text-ink">End to end</p></div>
                   <div><p className="font-mono text-xs text-muted">Focus</p><p className="mt-1 text-sm text-ink">Production ready</p></div>
                 </div>
                 <a href="mailto:ahmadullahmukhlis2025@gmail.com" className="btn-solid-gold mt-6 inline-flex w-full justify-center !text-xs">Request a proposal <span className="arr" aria-hidden="true">→</span></a>
+                </div>
               </div>
             </div>
           </div>

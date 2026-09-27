@@ -9,6 +9,8 @@ import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, buildMetadata } from "@/lib/seo";
 import { SERVICES, PROCESS_STEPS } from "@/lib/data";
+import Image from "next/image";
+import { SERVICE_IMAGES } from "@/lib/brand";
 
 export const metadata: Metadata = buildMetadata({
   title: "Software Engineering Services | Fintech, Web, Mobile, Enterprise & Cloud",
@@ -89,6 +91,7 @@ export default function ServicesPage() {
                   style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
                 >
                   <div>
+                    {SERVICE_IMAGES[s.id] && <div className="relative mb-6 aspect-video overflow-hidden rounded-xl border border-white/10 bg-white"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 520px" className="object-contain"/></div>}
                     <span className="font-mono text-xs text-gold/75">{s.num}/</span>
                     <h2 className="mt-3 text-xl font-bold leading-snug text-ink transition-colors duration-300 group-hover:text-gold md:text-2xl">
                       {s.title}
