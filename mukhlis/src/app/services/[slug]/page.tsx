@@ -101,7 +101,7 @@ export default async function ServicePage({
                 <p className="mt-6 max-w-2xl text-base leading-8 text-muted md:text-lg">{service.description}</p>
               </div>
               <div className="lg:justify-self-end lg:max-w-md">
-                {serviceImage && <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white p-2 shadow-2xl"><div className="relative aspect-square"><Image src={serviceImage.src} alt={serviceImage.alt} fill priority sizes="(max-width: 1024px) 100vw, 440px" className="object-contain"/></div></figure>}
+                {serviceImage && <figure className="overflow-hidden rounded-2xl border border-white/10 bg-panel shadow-2xl"><div className="relative aspect-square"><Image src={serviceImage.src} alt={serviceImage.alt} fill priority sizes="(max-width: 1024px) 100vw, 440px" className="object-contain"/></div></figure>}
                 <div className="motion-panel mt-4 p-5">
                 <p className="mono-label">engagement profile</p>
                 <div className="mt-5 grid grid-cols-2 gap-4">
