@@ -110,7 +110,7 @@ const WEBSITE_JSONLD = {
   publisher: {
     "@type": "Organization",
     name: "Mukhlis Software Solution",
-    logo: `${SITE_URL}/brand/mukhlis-software-solution-mark.png`,
+    logo: `${SITE_URL}/brand/mukhlis-software-solution-mark-transparent.png`,
   },
 };
 

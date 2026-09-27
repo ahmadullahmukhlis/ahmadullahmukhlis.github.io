@@ -40,8 +40,8 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
         <Link href="/" onClick={close} className="group flex items-center gap-3" aria-label="Mukhlis Software Solution — home">
-          <span className="relative flex h-11 w-36 overflow-hidden rounded-lg border border-white/15 bg-white sm:w-44">
-            <Image src={BRAND.logo} alt="Mukhlis Software Solution" fill sizes="176px" className="object-contain p-1.5" priority />
+          <span className="relative flex h-11 w-36 sm:w-44">
+            <Image src={BRAND.logo} alt="Mukhlis Software Solution" fill sizes="176px" className="object-contain object-left" priority />
           </span>
           <span className="hidden text-left lg:block">
             <span className="block font-mono text-[11px] text-muted">{PROFILE.name}</span>

@@ -30,7 +30,7 @@ export function Footer() {
       <RevealOnScroll>
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_0.8fr_0.9fr_1fr]">
           <div>
-            <div className="max-w-[240px] rounded-xl border border-white/10 bg-white p-2"><Image src={BRAND.logo} alt="Mukhlis Software Solution" width={360} height={90} className="h-auto w-full object-contain"/></div>
+            <div className="max-w-[240px]"><Image src={BRAND.logo} alt="Mukhlis Software Solution" width={360} height={96} className="h-auto w-full object-contain"/></div>
             <p className="mt-3 font-mono text-xs text-muted">Software engineering by {PROFILE.name}</p>
             <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
               Professional software engineering for fintech, payment systems,
