@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   keywords: SITE_KEYWORDS,
 
   applicationName: SITE_NAME,
-  authors: [{ name: SITE_NAME, url: SITE_URL }],
-  creator: SITE_NAME,
+  authors: [{ name: PROFILE.name, url: `${SITE_URL}/author/ahmadullah-mukhlis` }],
+  creator: PROFILE.name,
   publisher: SITE_NAME,
   category: "Software Engineering",
 
@@ -107,6 +107,11 @@ const WEBSITE_JSONLD = {
   url: SITE_URL,
   description: SITE_DESCRIPTION,
   inLanguage: "en",
+  publisher: {
+    "@type": "Organization",
+    name: "Mukhlis Software Solution",
+    logo: `${SITE_URL}/brand/mukhlis-software-solution-mark.png`,
+  },
 };
 
 export default function RootLayout({

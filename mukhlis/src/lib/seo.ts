@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
 export const SITE_URL = (configuredSiteUrl || "https://ahmadullahmukhlis.com").replace(/\/$/, "");
-export const SITE_NAME = "Ahmadullah Mukhlis";
+export const SITE_NAME = "Mukhlis Software Solution";
 export const SITE_TITLE =
-  "Ahmadullah Mukhlis | Full Stack, Fintech & Software Engineer";
+  "Ahmadullah Mukhlis | Mukhlis Software Solution";
 
 export const SITE_DESCRIPTION =
   "Ahmadullah Mukhlis is a Full Stack, Fintech and Software Engineer specializing in web, mobile, desktop, online and offline applications, payment systems, banking platforms, enterprise software, APIs, cloud systems and secure digital products.";
@@ -13,7 +13,7 @@ export const SITE_DESCRIPTION =
 export const OG_IMAGE = `${SITE_URL}/opengraph-image.jpg`;
 export const TWITTER_IMAGE = `${SITE_URL}/twitter-image.jpg`;
 export const X_HANDLE = "@ahmadullahmukhi";
-export const OG_ALT = "Ahmadullah Mukhlis - Full Stack, Fintech & Software Engineer";
+export const OG_ALT = "Mukhlis Software Solution by Ahmadullah Mukhlis";
 
 export const SOCIAL_DESCRIPTION =
   "Full Stack, Fintech and Software Engineer building secure web, mobile, desktop, online and offline applications, payment systems and enterprise platforms.";

@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { PROFILE, SOCIALS } from "@/lib/data";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import Image from "next/image";
 
 const PAGES = [
   { href: "/", label: "Home" },
@@ -28,12 +29,10 @@ export function Footer() {
       <RevealOnScroll>
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_0.8fr_0.9fr_1fr]">
           <div>
-            <p className="font-sans text-base font-bold text-ink">{PROFILE.name}</p>
-            <p className="mt-1 font-mono text-xs text-muted">{PROFILE.role}</p>
+            <div className="flex items-center gap-3"><Image src="/brand/mukhlis-software-solution-mark.png" alt="Mukhlis Software Solution logo" width={44} height={44} className="rounded-lg bg-white"/><div><p className="font-sans text-base font-bold text-ink">Mukhlis Software Solution</p><p className="mt-1 font-mono text-xs text-muted">Led by {PROFILE.name}</p></div></div>
             <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
-              Full-stack and fintech software engineer building secure web,
-              mobile, desktop, online and offline applications, payments, and
-              enterprise platforms.
+              Professional software engineering for fintech, payment systems,
+              web, mobile, desktop, APIs, ERP, cloud, and enterprise platforms.
             </p>
           </div>
 
@@ -102,7 +101,7 @@ export function Footer() {
         <div className="border-t border-white/8">
           <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-5 py-6 md:flex-row md:items-center">
             <p className="motion-line font-mono text-xs text-muted">
-              © {new Date().getFullYear()} {PROFILE.name}. Built with Next.js.
+              © {new Date().getFullYear()} Mukhlis Software Solution · {PROFILE.name}.
             </p>
             <p className="motion-line mono-label" style={{ "--line-delay": "80ms" } as CSSProperties}>
               Design, engineering, deployment

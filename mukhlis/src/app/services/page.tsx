@@ -13,7 +13,7 @@ import { SERVICES, PROCESS_STEPS } from "@/lib/data";
 export const metadata: Metadata = buildMetadata({
   title: "Software Engineering Services | Fintech, Web, Mobile, Enterprise & Cloud",
   description:
-    "Software engineering services by Ahmadullah Mukhlis: fintech and payment systems, web and mobile applications, desktop software, enterprise platforms, APIs, cloud, and DevOps — built secure and production-ready.",
+    "Mukhlis Software Solution provides fintech, payment, web, mobile, desktop, enterprise, API, cloud, and DevOps engineering led by Ahmadullah Mukhlis.",
   keywords: [
     "Software development services",
     "Fintech development services",
@@ -44,7 +44,7 @@ const SERVICES_JSONLD = {
   name: SITE_NAME,
   url: `${SITE_URL}/services`,
   description: "Software engineering services across fintech, web, mobile, desktop, enterprise, and cloud.",
-  provider: { "@type": "Person", name: SITE_NAME },
+  provider: { "@type": "Organization", name: SITE_NAME },
   areaServed: "Worldwide",
   priceRange: "$$",
   makesOffer: SERVICES.map((s) => ({

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PROFILE } from "@/lib/data";
+import Image from "next/image";
 
 const LINKS = [
   { href: "/", label: "Home", num: "00" },
@@ -37,13 +38,13 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
-        <Link href="/" onClick={close} className="group flex items-center gap-3" aria-label="Ahmadullah Mukhlis — home">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/50 bg-gold/10 font-mono text-sm font-bold text-gold transition-colors group-hover:bg-gold group-hover:text-charcoal">
-            {PROFILE.initials}
+        <Link href="/" onClick={close} className="group flex items-center gap-3" aria-label="Mukhlis Software Solution — home">
+          <span className="relative flex h-10 w-10 overflow-hidden rounded-lg border border-white/15 bg-white">
+            <Image src="/brand/mukhlis-software-solution-mark.png" alt="" fill sizes="40px" className="object-cover" priority />
           </span>
           <span className="hidden text-left sm:block">
-            <span className="block text-sm font-semibold text-ink">{PROFILE.name}</span>
-            <span className="block font-mono text-[11px] text-muted">Full-stack · Fintech · Engineer</span>
+            <span className="block text-sm font-semibold text-ink">Mukhlis Software Solution</span>
+            <span className="block font-mono text-[11px] text-muted">{PROFILE.name} · Software Engineer</span>
           </span>
         </Link>
 

@@ -33,6 +33,9 @@ export function Hero() {
           <p className="motion-line mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg" style={{ "--line-delay": "250ms" } as CSSProperties}>
             {PROFILE.blurb}
           </p>
+          <p className="motion-line mt-4 max-w-2xl font-mono text-sm text-gold" style={{ "--line-delay": "290ms" } as CSSProperties}>
+            Engineering services delivered through Mukhlis Software Solution.
+          </p>
 
           <div className="mt-7 flex flex-wrap gap-2.5">
             {SPECIALTIES.map((item, i) => (
