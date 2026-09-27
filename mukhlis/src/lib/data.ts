@@ -3,10 +3,10 @@ export const PROFILE = {
   firstName: "Ahmadullah",
   lastName: "Mukhlis",
   initials: "AM",
-  role: "full-stack engineer · product-minded developer",
+  role: "full-stack engineer · fintech & payment systems engineer",
   tagline: "Secure systems, clean interfaces, and production-ready delivery",
   blurb:
-    "I build full-stack platforms, payment-system integrations, dashboards, and polished web experiences for teams that need reliable software shipped with care.",
+    "I design and build secure, scalable software across fintech, payment systems, enterprise platforms, web applications, mobile applications, and desktop systems.",
   location: "Kabul, Afghanistan",
   email: "ahmadullahmukhlis2025@gmail.com",
   phone: "+93 779 404 681",
@@ -166,9 +166,9 @@ export const SERVICES: {
     keywords: "Fintech developer, payment systems, digital banking, ISO 8583, payment gateway integration, mobile banking",
   },
   {
-    id: "web",
+    id: "web-development",
     num: "02",
-    title: "Web Applications",
+    title: "Full-Stack Web Application Development",
     tagline: "Interfaces that feel invisible",
     description:
       "High-performance web apps and polished marketing sites with React, Next.js, Laravel, and Spring Boot. From design systems to SSR and edge rendering, every interface is built to be fast, accessible, and a pleasure to use.",
@@ -182,9 +182,9 @@ export const SERVICES: {
     keywords: "web developer, react developer, next.js developer, laravel developer, frontend developer, web application development",
   },
   {
-    id: "mobile",
+    id: "mobile-development",
     num: "03",
-    title: "Mobile & Desktop Applications",
+    title: "Flutter Mobile Application Development",
     tagline: "One codebase, every device",
     description:
       "Cross-platform mobile and desktop apps with Flutter and React Native that run offline-first. From Android and iOS to Windows desktop, applications are engineered to work reliably with or without a connection.",
@@ -198,9 +198,9 @@ export const SERVICES: {
     keywords: "flutter developer, mobile app developer, cross platform developer, android developer, ios developer, desktop application developer",
   },
   {
-    id: "enterprise",
+    id: "enterprise-software",
     num: "04",
-    title: "Enterprise Platforms & APIs",
+    title: "Enterprise Software, ERP & MIS Development",
     tagline: "Systems that scale with you",
     description:
       "ERP, MIS, HR, e-commerce, and healthcare platforms backed by clean backend architecture. I design microservices, REST/GraphQL APIs, and internal tools that keep operations reliable, auditable, and ready to grow.",
@@ -215,7 +215,7 @@ export const SERVICES: {
     keywords: "enterprise software engineer, erp developer, mis developer, api developer, microservices developer, backend developer",
   },
   {
-    id: "cloud",
+    id: "cloud-devops",
     num: "05",
     title: "Cloud, DevOps & Security",
     tagline: "Ship safely, deploy often",
@@ -230,6 +230,24 @@ export const SERVICES: {
       "Monitoring and logging",
     ],
     keywords: "cloud developer, aws developer, docker developer, devops engineer, kubernetes, ci/cd, secure software engineer",
+  },
+  {
+    id: "desktop-development",
+    num: "06",
+    title: "Desktop Software Development",
+    tagline: "Reliable business software",
+    description: "I build Windows desktop applications for ERP, POS, inventory, accounting, and operational workflows using Flutter, local databases, controlled synchronization, document generation, and maintainable installer and upgrade processes.",
+    deliverables: ["Flutter Windows applications", "Offline business workflows", "Local database design", "API synchronization", "PDF and document generation", "Installer and release packaging"],
+    keywords: "desktop software development, Flutter Windows, ERP desktop application, POS software, offline application",
+  },
+  {
+    id: "api-development",
+    num: "07",
+    title: "API Development & Integration",
+    tagline: "Clear, secure contracts",
+    description: "I design REST APIs and, where appropriate, GraphQL integrations with authentication, authorization, validation, pagination, rate limiting, webhooks, idempotency, logging, documentation, and production observability.",
+    deliverables: ["REST API architecture", "Authentication and authorization", "Idempotent financial workflows", "Webhooks and integrations", "API documentation", "Monitoring and audit logging"],
+    keywords: "API development, REST API developer, GraphQL integration, webhook development, backend engineer",
   },
 ];
 

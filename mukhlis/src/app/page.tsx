@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Ticker } from "@/components/Ticker";
 import { HomeServices } from "@/components/HomeServices";
 import { HomeFeatured } from "@/components/HomeFeatured";
+import { HomeKnowledge } from "@/components/HomeKnowledge";
 import { HomeExperience } from "@/components/HomeExperience";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABand } from "@/components/CTABand";
@@ -30,6 +31,7 @@ export default function Home() {
         <Hero />
         <Ticker />
         <HomeServices />
+        <HomeKnowledge />
         <HomeFeatured />
         <HomeExperience />
         <Testimonials />

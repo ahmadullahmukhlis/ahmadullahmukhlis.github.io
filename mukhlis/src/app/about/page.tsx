@@ -71,7 +71,7 @@ export default function AboutPage() {
           title="Engineer with a builder's"
           highlight="mindset."
           lead="A full-stack and fintech software engineer turning complex financial and enterprise problems into secure, polished, production-ready software."
-          chips={["Kabul, Afghanistan", "Working worldwide", "5+ years shipping"]}
+          chips={["Kabul, Afghanistan", "Fintech & payments", "Full-stack engineering"]}
         />
 
         <section className="mx-auto max-w-6xl px-5 py-10 md:py-14">
@@ -97,26 +97,26 @@ export default function AboutPage() {
             <RevealOnScroll variant="right">
               <p className="motion-line mono-label text-gold">{`// biography`}</p>
               <h2 className="motion-line mt-4 text-2xl font-bold leading-tight text-ink md:text-4xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
-                I build software that has to work the first time —
-                <span className="gold-shimmer"> especially when money is moving.</span>
+                Architecture and hands-on development for
+                <span className="gold-shimmer"> dependable production software.</span>
               </h2>
               <div className="motion-line mt-6 space-y-5 text-sm leading-7 text-muted md:text-base md:leading-8" style={{ "--line-delay": "170ms" } as CSSProperties}>
                 <p>
-                  I&apos;m Ahmadullah Mukhlis, a full stack and fintech software engineer based in
-                  Kabul, Afghanistan, working with teams worldwide. My work spans web, mobile,
-                  desktop, online and offline applications, payment systems, banking platforms,
-                  enterprise software, APIs, and cloud infrastructure.
+                  I am Ahmadullah Mukhlis, a full-stack software engineer focused on building
+                  reliable applications, financial technology systems, enterprise software,
+                  mobile applications, desktop solutions, APIs, and cloud-deployed platforms.
                 </p>
                 <p>
-                  Since 2024 I have contributed to AFPS — the Afghanistan Payment System at
-                  Da Afghanistan Bank — building microservices that handle over a million
-                  requests per minute, banking gateway integrations, and secure financial
-                  transaction infrastructure.
+                  My work combines software architecture with hands-on development. I enjoy
+                  solving problems that involve multiple systems, complex business rules,
+                  integrations, transaction processing, real-time communication, data
+                  consistency, reliability, and maintainable software design.
                 </p>
                 <p>
-                  Before that I shipped custom platforms for clients across HR, ERP, MIS,
-                  e-commerce, healthcare, and education, both as a full-time developer and as
-                  a freelance engineer with a 100% job success score on Upwork.
+                  Across web, mobile, desktop, APIs, and infrastructure, I favor maintainable
+                  code, explicit security boundaries, correctness, testing, observability,
+                  thoughtful user experience, and production reliability. These principles
+                  matter most when software coordinates financial or operational data.
                 </p>
               </div>
             </RevealOnScroll>

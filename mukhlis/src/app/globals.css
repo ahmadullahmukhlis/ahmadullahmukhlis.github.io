@@ -27,6 +27,14 @@ body {
   overflow-x: hidden;
 }
 
+.article-aside { border: 1px solid rgba(255,255,255,.09); border-radius: 1rem; background: rgba(255,255,255,.02); padding: 1.25rem; }
+.article-copy { color: var(--color-muted); font-size: 1rem; line-height: 1.9; }
+.article-copy h2 { color: var(--color-ink); font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 700; line-height: 1.25; margin: 1.5rem 0 1rem; }
+.article-copy p + p { margin-top: 1rem; }
+.article-copy ul { display: grid; gap: .65rem; margin: 1.25rem 0; padding-left: 1.25rem; }
+.article-copy li { list-style: disc; padding-left: .35rem; }
+.article-copy li::marker { color: var(--color-gold); }
+
 @media (pointer: fine) {
   body.cursor-ready,
   body.cursor-ready a,

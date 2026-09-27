@@ -3,12 +3,6 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { PROFILE, SOCIALS } from "@/lib/data";
 
-const STATS = [
-  { value: "5+", label: "Years shipping software" },
-  { value: "45+", label: "Projects across web, mobile, and APIs" },
-  { value: "1M+", label: "Requests/min platform experience" },
-];
-
 const SPECIALTIES = [
   "Payment systems",
   "Admin dashboards",
@@ -29,11 +23,11 @@ export function Hero() {
           </p>
 
           <h1 className="motion-line mt-6 max-w-4xl font-sans text-4xl font-bold leading-[1.02] text-soft sm:text-5xl md:text-6xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
-            Ahmadullah Mukhlis
+            Ahmadullah Mukhlis — Full-Stack &amp; Fintech Software Engineer
           </h1>
 
           <p className="motion-line mt-4 max-w-2xl text-xl font-semibold leading-snug text-gold md:text-2xl" style={{ "--line-delay": "170ms" } as CSSProperties}>
-            Full-stack engineer for secure systems and polished product interfaces.
+            Secure systems, clear architecture, and production-ready delivery.
           </p>
 
           <p className="motion-line mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg" style={{ "--line-delay": "250ms" } as CSSProperties}>
@@ -92,25 +86,9 @@ export function Hero() {
             ))}
           </div>
 
-          <dl className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
-            {STATS.map((s, i) => (
-              <div
-                key={s.label}
-                className="card-line glow-card stagger-card group relative p-5"
-                style={{ "--card-delay": `${220 + i * 80}ms` } as CSSProperties}
-              >
-                <span
-                  className="absolute left-0 top-0 h-0.5 w-0 rounded-full bg-gold/80 transition-all duration-500 group-hover:w-full"
-                  aria-hidden="true"
-                />
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="font-mono text-3xl font-bold text-gold transition-colors duration-300">
-                  {s.value}
-                </dd>
-                <dd className="mt-2 text-[13px] leading-5 text-muted">{s.label}</dd>
-              </div>
-            ))}
-          </dl>
+          <p className="motion-line mt-9 max-w-2xl text-sm leading-7 text-muted" style={{ "--line-delay": "720ms" } as CSSProperties}>
+            I work across the complete software lifecycle—from architecture and APIs to user interfaces, integrations, deployment, monitoring, and production troubleshooting. My focus includes ISO 8583, Laravel, Next.js, React, Flutter, Docker, AWS, and scalable backend platforms.
+          </p>
         </div>
 
         <div className="rise rise-2 relative mx-auto w-full max-w-[460px] md:justify-self-end">

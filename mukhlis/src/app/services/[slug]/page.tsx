@@ -64,14 +64,14 @@ export default async function ServicePage({
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.title,
-    description: service.description,
-    url: `${SITE_URL}/services/${service.id}`,
-    provider: { "@type": "Person", name: SITE_NAME, url: SITE_URL },
-    areaServed: "Worldwide",
-    serviceType: service.title,
-    category: service.keywords,
+    "@graph": [
+      { "@type": "Service", name: service.title, description: service.description, url: `${SITE_URL}/services/${service.id}`, provider: { "@type": "Person", name: SITE_NAME, url: SITE_URL }, areaServed: "Worldwide", serviceType: service.title, category: service.keywords },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+        { "@type": "ListItem", position: 3, name: service.title, item: `${SITE_URL}/services/${service.id}` },
+      ] },
+    ],
   };
 
   return (

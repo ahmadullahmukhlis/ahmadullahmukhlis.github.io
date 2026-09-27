@@ -7,6 +7,8 @@ const PAGES = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/blog", label: "Articles" },
+  { href: "/knowledge", label: "Knowledge" },
   { href: "/projects", label: "Projects" },
   { href: "/experience", label: "Experience" },
   { href: "/contact", label: "Contact" },
@@ -14,10 +16,10 @@ const PAGES = [
 
 const SERVICE_LINKS = [
   { href: "/services/fintech", label: "Fintech & Payments" },
-  { href: "/services/web", label: "Web Applications" },
-  { href: "/services/mobile", label: "Mobile & Desktop" },
-  { href: "/services/enterprise", label: "Enterprise & APIs" },
-  { href: "/services/cloud", label: "Cloud & DevOps" },
+  { href: "/services/web-development", label: "Web Applications" },
+  { href: "/services/mobile-development", label: "Mobile Applications" },
+  { href: "/services/enterprise-software", label: "Enterprise Software" },
+  { href: "/services/cloud-devops", label: "Cloud & DevOps" },
 ];
 
 export function Footer() {
