@@ -1,5 +1,6 @@
 export const BRAND = {
   name: "Mukhlis Software Solution",
+  logo: "/brand/mukhlis-software-solution-logo-dark.png",
   mark: "/brand/mukhlis-software-solution-mark-transparent.png",
 } as const;
 

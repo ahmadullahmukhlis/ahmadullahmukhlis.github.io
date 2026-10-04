@@ -128,7 +128,7 @@ export const TESTIMONIALS = [
     role: "Founder & CEO",
     org: "StartupHub",
     initials: "EP",
-    color: "#047857",
+    color: "#059669",
   },
 ];
 

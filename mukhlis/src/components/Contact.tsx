@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { PROFILE, SOCIALS } from "@/lib/data";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 
@@ -8,24 +9,24 @@ export function Contact() {
         <div className="big-card hover-tilt overflow-hidden">
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="p-8 md:p-11 lg:p-12">
-              <p className="mono-label flex items-center gap-3">
-                <span className="inline-block h-2 w-2  bg-mint pulsate" />
+              <p className="motion-line mono-label flex items-center gap-3">
+                <span className="inline-block h-2 w-2 rounded-full bg-mint pulsate" />
                 currently available
               </p>
 
-              <h2 className="mt-5 max-w-2xl font-sans text-3xl font-extrabold leading-tight text-ink sm:text-5xl">
+              <h2 className="motion-line mt-5 max-w-2xl font-sans text-3xl font-bold leading-tight text-ink sm:text-5xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                 Let&apos;s build something{" "}
                 <span className="gold-shimmer">
                   worth shipping.
                 </span>
               </h2>
 
-              <p className="mt-5 max-w-xl leading-7 text-muted">
+              <p className="motion-line mt-5 max-w-xl leading-7 text-muted" style={{ "--line-delay": "170ms" } as CSSProperties}>
                 Got a project, a role, or just an idea worth exploring? My inbox is
                 always open — I usually reply within a day.
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="motion-line mt-10 flex flex-wrap items-center gap-4" style={{ "--line-delay": "260ms" } as CSSProperties}>
                 <a href={`mailto:${PROFILE.email}`} className="btn-solid-gold max-w-full break-all">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -55,20 +56,20 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="border-t border-rule bg-panel p-8 md:p-11 lg:border-l lg:border-t-0 lg:p-12">
-              <p className="mono-label text-gold">Contact routes</p>
+            <div className="border-t border-white/10 bg-charcoal/35 p-8 md:p-11 lg:border-l lg:border-t-0 lg:p-12">
+              <p className="motion-line mono-label text-gold">Contact routes</p>
               <div className="mt-7 grid gap-5">
-                <div className="">
+                <div className="motion-line" style={{ "--line-delay": "90ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Email</p>
                   <a href={`mailto:${PROFILE.email}`} className="mt-1.5 block break-all text-sm font-semibold text-ink transition-colors hover:text-gold">
                     {PROFILE.email}
                   </a>
                 </div>
-                <div className="">
+                <div className="motion-line" style={{ "--line-delay": "160ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Location</p>
                   <p className="mt-1.5 text-sm font-semibold text-ink">{PROFILE.location}</p>
                 </div>
-                <div className="">
+                <div className="motion-line" style={{ "--line-delay": "230ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Phone / WhatsApp</p>
                   <a
                     href={PROFILE.whatsapp}
@@ -79,24 +80,25 @@ export function Contact() {
                     {PROFILE.phone}
                   </a>
                 </div>
-                <div className="">
+                <div className="motion-line" style={{ "--line-delay": "300ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Response</p>
                   <p className="mt-1.5 text-sm font-semibold text-ink">Usually within one day</p>
                 </div>
-                <div className="">
+                <div className="motion-line" style={{ "--line-delay": "370ms" } as CSSProperties}>
                   <p className="font-mono text-xs text-muted">Best reached for</p>
                   <p className="mt-1.5 text-sm font-semibold text-ink">New projects, roles, and consultations</p>
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-wrap gap-x-5 gap-y-3 border-t border-rule pt-7">
-                {SOCIALS.map((s) => (
+              <div className="mt-10 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-7">
+                {SOCIALS.map((s, i) => (
                   <a
                     key={s.label}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-arrow text-xs"
+                    className="motion-line link-arrow text-xs"
+                    style={{ "--line-delay": `${300 + i * 50}ms` } as CSSProperties}
                   >
                     {s.label}
                     <span className="arr" aria-hidden="true">↗</span>

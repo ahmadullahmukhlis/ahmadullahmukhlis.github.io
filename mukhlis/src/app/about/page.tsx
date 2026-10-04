@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -77,7 +78,7 @@ export default function AboutPage() {
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <RevealOnScroll variant="left">
               <div className="corners big-card hover-tilt overflow-hidden p-3">
-                <div className="relative aspect-[4/5] overflow-hidden  border border-rule bg-panel">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-panel">
                   <Image
                     src={PROFILE.avatar}
                     alt={`Portrait of ${PROFILE.name}, full stack and fintech software engineer`}
@@ -85,7 +86,7 @@ export default function AboutPage() {
                     sizes="(max-width: 1024px) 100vw, 380px"
                     className="image-zoom object-cover"
                   />
-                  <div className="absolute inset-x-0 bottom-0 border-t border-rule bg-paper/90 p-5">
+                  <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-charcoal/90 p-5 backdrop-blur">
                     <p className="font-mono text-xs text-gold">{PROFILE.location}</p>
                     <p className="mt-1 text-sm font-semibold text-ink">{PROFILE.role}</p>
                   </div>
@@ -94,12 +95,12 @@ export default function AboutPage() {
             </RevealOnScroll>
 
             <RevealOnScroll variant="right">
-              <p className="mono-label text-gold">{`// biography`}</p>
-              <h2 className="mt-4 text-2xl font-extrabold leading-tight text-ink md:text-4xl">
+              <p className="motion-line mono-label text-gold">{`// biography`}</p>
+              <h2 className="motion-line mt-4 text-2xl font-bold leading-tight text-ink md:text-4xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                 Architecture and hands-on development for
                 <span className="gold-shimmer"> dependable production software.</span>
               </h2>
-              <div className="mt-6 space-y-5 text-sm leading-7 text-muted md:text-base md:leading-8">
+              <div className="motion-line mt-6 space-y-5 text-sm leading-7 text-muted md:text-base md:leading-8" style={{ "--line-delay": "170ms" } as CSSProperties}>
                 <p>
                   I am Ahmadullah Mukhlis, a full-stack software engineer focused on building
                   reliable applications, financial technology systems, enterprise software,
@@ -125,8 +126,8 @@ export default function AboutPage() {
         <section className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 md:py-20">
           <RevealOnScroll>
             <div className="section-line mb-10">
-              <span className="mono-label text-gold">{`// principles`}</span>
-              <h2 className="text-2xl font-extrabold text-ink md:text-3xl">
+              <span className="motion-line mono-label text-gold">{`// principles`}</span>
+              <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                 How I work
               </h2>
             </div>
@@ -134,7 +135,7 @@ export default function AboutPage() {
           <div className="grid gap-4 md:grid-cols-3">
             {VALUES.map((v, i) => (
               <RevealOnScroll key={v.num} delay={i * 80}>
-                <div className="card-line group h-full p-6 md:p-7">
+                <div className="card-line glow-card stagger-card group h-full p-6 md:p-7" style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}>
                   <span className="font-mono text-xs text-gold/75">{v.num}/</span>
                   <h3 className="mt-4 font-sans text-lg font-bold text-ink transition-colors duration-300 group-hover:text-gold">
                     {v.title}
@@ -146,14 +147,14 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-y border-rule bg-panel">
+        <section className="border-y border-white/8 bg-white/[0.015]">
           <div className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 md:py-20">
             <div className="grid gap-12 lg:grid-cols-2">
               <div>
                 <RevealOnScroll>
                   <div className="section-line mb-8">
-                    <span className="mono-label text-gold">{`// education`}</span>
-                    <h2 className="text-2xl font-extrabold text-ink md:text-3xl">
+                    <span className="motion-line mono-label text-gold">{`// education`}</span>
+                    <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                       Education
                     </h2>
                   </div>
@@ -161,7 +162,7 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   {EDUCATION.map((e, i) => (
                     <RevealOnScroll key={e.title} delay={i * 70}>
-                      <div className="card-line p-6">
+                      <div className="card-line p-6" style={{ "--card-delay": "120ms" } as CSSProperties}>
                         <h3 className="text-base font-semibold text-ink">{e.title}</h3>
                         <p className="mt-1 font-mono text-xs text-muted">
                           {e.org} · {e.period}
@@ -175,8 +176,8 @@ export default function AboutPage() {
               <div>
                 <RevealOnScroll>
                   <div className="section-line mb-8">
-                    <span className="mono-label text-gold">{`// toolkit`}</span>
-                    <h2 className="text-2xl font-extrabold text-ink md:text-3xl">
+                    <span className="motion-line mono-label text-gold">{`// toolkit`}</span>
+                    <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                       Core skills
                     </h2>
                   </div>
@@ -192,7 +193,7 @@ export default function AboutPage() {
                 <div className="mt-10 grid gap-4 sm:grid-cols-2">
                   {SKILL_GROUPS.slice(0, 4).map((g, gi) => (
                     <RevealOnScroll key={g.id} delay={gi * 70}>
-                      <div className="card-line p-5">
+                      <div className="card-line p-5" style={{ "--card-delay": "120ms" } as CSSProperties}>
                         <p className="font-mono text-xs text-gold/75">{g.id}/ {g.title}</p>
                         <p className="mt-2 text-sm leading-6 text-muted">{g.items.join(" · ")}</p>
                       </div>

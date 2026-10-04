@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { PROFILE } from "@/lib/data";
 
 export function SectionHeading({
@@ -10,14 +11,18 @@ export function SectionHeading({
   hint?: string;
 }) {
   return (
-    <div>
-      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-        <span className="mono-label text-gold">{index}</span>
-        <h2 className="text-3xl font-extrabold leading-none text-ink md:text-4xl">{title}</h2>
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-wrap items-baseline gap-3">
+        <span className="motion-line mono-label text-gold">{`// ${index}`}</span>
+        <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
+          {title}
+        </h2>
       </div>
-      <div className="section-line mt-5" aria-hidden="true" />
+      <div className="motion-line section-line" style={{ "--line-delay": "170ms" } as CSSProperties} aria-hidden="true" />
       {hint ? (
-        <p className="mt-5 max-w-2xl text-sm leading-7 text-muted">{hint}</p>
+        <p className="motion-line -mt-1 max-w-2xl text-sm leading-6 text-muted" style={{ "--line-delay": "250ms" } as CSSProperties}>
+          {hint}
+        </p>
       ) : null}
       <span className="sr-only">{`${PROFILE.name} — ${title}`}</span>
     </div>

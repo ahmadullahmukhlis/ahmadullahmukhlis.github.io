@@ -3,16 +3,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { PROFILE } from "@/lib/data";
 import Image from "next/image";
 import { BRAND } from "@/lib/brand";
 
 const LINKS = [
-  { href: "/", label: "Home", num: "01" },
-  { href: "/about", label: "About", num: "02" },
-  { href: "/services", label: "Services", num: "03" },
+  { href: "/", label: "Home", num: "00" },
+  { href: "/about", label: "About", num: "01" },
+  { href: "/services", label: "Services", num: "02" },
+  { href: "/blog", label: "Articles", num: "03" },
   { href: "/projects", label: "Work", num: "04" },
-  { href: "/blog", label: "Writing", num: "05" },
-  { href: "/contact", label: "Contact", num: "06" },
+  { href: "/contact", label: "Contact", num: "05" },
 ];
 
 export function Navbar() {
@@ -21,7 +22,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,34 +32,24 @@ export function Navbar() {
 
   return (
     <header
-      className={`no-print sticky top-0 z-50 bg-paper transition-[border-color] duration-300 ${
-        scrolled ? "border-b-2 border-ink" : "border-b border-rule"
+      className={`nav-enter no-print fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-white/10 bg-charcoal/90 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.85)] backdrop-blur-xl"
+          : "border-white/5 bg-charcoal/55 backdrop-blur"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-        <Link
-          href="/"
-          onClick={close}
-          className="flex items-center gap-3"
-          aria-label="Mukhlis Software Solution — home"
-        >
-          <span className="relative block h-9 w-9 shrink-0">
-            <Image
-              src={BRAND.mark}
-              alt=""
-              fill
-              sizes="36px"
-              className="object-contain"
-              priority
-            />
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+        <Link href="/" onClick={close} className="group flex items-center gap-3" aria-label="Mukhlis Software Solution — home">
+          <span className="relative flex h-11 w-36 sm:w-44">
+            <Image src={BRAND.logo} alt="Mukhlis Software Solution" fill sizes="176px" className="object-contain object-left" priority />
           </span>
-          <span className="flex flex-col gap-1">
-            <span className="wordmark text-[15px]">Mukhlis</span>
-            <span className="wordmark-sub hidden sm:block">Software Solution</span>
+          <span className="hidden text-left lg:block">
+            <span className="block font-mono text-[11px] text-muted">{PROFILE.name}</span>
+            <span className="block font-mono text-[10px] text-muted/75">Full-stack · Fintech Engineer</span>
           </span>
         </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-5 md:flex">
           {LINKS.map((l) => {
             const active = pathname === l.href;
             return (
@@ -66,22 +57,19 @@ export function Navbar() {
                 key={l.href}
                 href={l.href}
                 aria-current={active ? "page" : undefined}
-                className={`nav-sweep font-mono text-[11px] uppercase tracking-[0.12em] ${
-                  active ? "active text-ink" : "text-muted hover:text-ink"
+                className={`nav-sweep group font-mono text-xs transition-colors hover:text-gold ${
+                  active ? "active text-gold" : "text-muted"
                 }`}
               >
-                <span className={active ? "text-gold" : "text-gold/60"}>{l.num}</span>
-                <span className="ml-1.5">{l.label}</span>
+                <span className={`${active ? "text-gold" : "text-ink/35 group-hover:text-gold/50"}`}>{l.num}/</span>
+                {l.label}
               </Link>
             );
           })}
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="btn-solid-gold hidden !min-h-9 !px-4 !py-2 !text-[11px] !uppercase !tracking-[0.12em] sm:inline-flex"
-          >
+          <Link href="/contact" className="btn-solid-gold hidden !min-h-9 !px-3.5 !py-2 !text-xs sm:inline-flex">
             Hire me
           </Link>
           <button
@@ -89,16 +77,16 @@ export function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center border border-ink text-ink transition-colors hover:bg-ink hover:text-paper md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-ink transition-colors hover:border-gold hover:text-gold md:hidden"
           >
-            {open ? <span className="font-mono text-xs">✕</span> : <span className="font-mono text-xs">☰</span>}
+            {open ? <span className="font-mono">✕</span> : <span className="font-mono">☰</span>}
           </button>
         </div>
       </nav>
 
       {open ? (
-        <div className="menu-drop border-t border-rule bg-paper md:hidden">
-          <div className="mx-auto flex max-w-6xl flex-col px-5">
+        <div className="menu-drop border-t border-white/10 bg-charcoal/95 px-5 py-4 shadow-[0_22px_48px_-32px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden">
+          <div className="flex flex-col gap-4">
             {LINKS.map((l) => {
               const active = pathname === l.href;
               return (
@@ -106,20 +94,13 @@ export function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`flex items-baseline gap-3 border-b border-rule py-4 font-mono text-sm ${
-                    active ? "text-ink" : "text-muted"
-                  }`}
+                  className={`font-mono text-sm transition-colors hover:text-gold ${active ? "text-gold" : "text-muted"}`}
                 >
-                  <span className="text-[10px] text-gold">{l.num}</span>
-                  <span>{l.label}</span>
+                  <span className="text-gold">{l.num}/</span> {l.label}
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="btn-solid-gold my-5 !text-sm"
-            >
+            <Link href="/contact" onClick={() => setOpen(false)} className="btn-solid-gold !text-sm">
               Hire me
             </Link>
           </div>

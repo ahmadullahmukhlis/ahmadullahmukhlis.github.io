@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -71,9 +72,9 @@ export default function ExperiencePage() {
           <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {HIGHLIGHTS.map((s, i) => (
               <RevealOnScroll key={s.label} delay={i * 70}>
-                <div className="card-line group relative p-5">
-                  <span className="absolute left-0 top-0 h-0.5 w-0  bg-gold/80 transition-all duration-500 group-hover:w-full" aria-hidden="true" />
-                  <dd className="font-mono text-3xl font-extrabold text-gold">{s.value}</dd>
+                <div className="card-line glow-card stagger-card group relative p-5" style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}>
+                  <span className="absolute left-0 top-0 h-0.5 w-0 rounded-full bg-gold/80 transition-all duration-500 group-hover:w-full" aria-hidden="true" />
+                  <dd className="font-mono text-3xl font-bold text-gold">{s.value}</dd>
                   <dd className="mt-2 text-[13px] leading-5 text-muted">{s.label}</dd>
                 </div>
               </RevealOnScroll>
@@ -86,8 +87,8 @@ export default function ExperiencePage() {
         <section className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 md:py-20">
           <RevealOnScroll>
             <div className="section-line mb-8">
-              <span className="mono-label text-gold">{`// education`}</span>
-              <h2 className="text-2xl font-extrabold text-ink md:text-3xl">
+              <span className="motion-line mono-label text-gold">{`// education`}</span>
+              <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                 Education & certifications
               </h2>
             </div>
@@ -95,7 +96,7 @@ export default function ExperiencePage() {
           <div className="grid gap-4 md:grid-cols-2">
             {EDUCATION.map((e, i) => (
               <RevealOnScroll key={e.title} delay={i * 70}>
-                <div className="card-line p-6">
+                <div className="card-line glow-card stagger-card p-6" style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}>
                   <h3 className="text-base font-semibold text-ink">{e.title}</h3>
                   <p className="mt-1 font-mono text-xs text-muted">
                     {e.org} · {e.period}

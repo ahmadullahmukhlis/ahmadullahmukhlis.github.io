@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -86,12 +87,13 @@ export default function ServicesPage() {
                 <Link
                   href={`/services/${s.id}`}
                   id={s.id}
-                  className="card-line group grid scroll-mt-28 gap-6 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-9"
+                  className="card-line glow-card stagger-card group grid scroll-mt-28 gap-6 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-9"
+                  style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
                 >
                   <div>
-                    {SERVICE_IMAGES[s.id] && <div className="relative mb-6 aspect-video overflow-hidden  border border-rule bg-panel"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 520px" className="object-contain"/></div>}
+                    {SERVICE_IMAGES[s.id] && <div className="relative mb-6 aspect-video overflow-hidden rounded-xl border border-white/10 bg-panel"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 520px" className="object-contain"/></div>}
                     <span className="font-mono text-xs text-gold/75">{s.num}/</span>
-                    <h2 className="mt-3 text-xl font-extrabold leading-snug text-ink transition-colors duration-300 group-hover:text-gold md:text-2xl">
+                    <h2 className="mt-3 text-xl font-bold leading-snug text-ink transition-colors duration-300 group-hover:text-gold md:text-2xl">
                       {s.title}
                     </h2>
                     <p className="mt-1 font-mono text-xs text-gold">{s.tagline}</p>
@@ -101,7 +103,7 @@ export default function ServicesPage() {
                     <p className="mono-label">What&apos;s included</p>
                     <ul className="mt-4 grid gap-2.5 sm:grid-cols-1">
                       {s.deliverables.map((d) => (
-                        <li key={d} className="flex items-start gap-2  border border-rule bg-panel p-3 font-mono text-xs text-muted transition-colors duration-200 group-hover:border-gold/15 hover:text-soft">
+                        <li key={d} className="flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] p-3 font-mono text-xs text-muted transition-colors duration-200 group-hover:border-gold/15 hover:text-soft">
                           <span className="text-gold" aria-hidden="true">+</span>
                           {d}
                         </li>
@@ -114,12 +116,12 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="border-y border-rule bg-panel">
+        <section className="border-y border-white/8 bg-white/[0.015]">
           <div className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 md:py-20">
             <RevealOnScroll>
               <div className="section-line mb-10">
-                <span className="mono-label text-gold">{`// process`}</span>
-                <h2 className="text-2xl font-extrabold text-ink md:text-3xl">
+                <span className="motion-line mono-label text-gold">{`// process`}</span>
+                <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
                   How a project runs
                 </h2>
               </div>
@@ -127,8 +129,8 @@ export default function ServicesPage() {
             <div className="grid gap-4 md:grid-cols-5">
               {PROCESS_STEPS.map((step, i) => (
                 <RevealOnScroll key={step.num} delay={i * 70}>
-                  <div className="card-line hover-tilt relative h-full p-6">
-                    <span className="font-mono text-2xl font-extrabold text-gold/70">{step.num}</span>
+                  <div className="card-line hover-tilt relative h-full p-6" style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}>
+                    <span className="font-mono text-2xl font-bold text-gold/70">{step.num}</span>
                     <h3 className="mt-4 font-sans text-base font-bold text-ink">{step.title}</h3>
                     <p className="mt-2 text-xs leading-6 text-muted">{step.text}</p>
                   </div>

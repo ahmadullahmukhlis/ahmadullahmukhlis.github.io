@@ -91,7 +91,7 @@ export default async function ProjectPage({
       <main className="page-shell">
         <JsonLd data={projectJsonLd} />
 
-        <section className="relative overflow-hidden pb-14 pt-12 md:pb-20 md:pt-14">
+        <section className="relative overflow-hidden pb-14 pt-28 md:pb-20 md:pt-36">
           <div className="grid-faint pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="relative mx-auto max-w-6xl px-5">
             <nav className="mono-label flex items-center gap-2" aria-label="Breadcrumb">
@@ -106,7 +106,7 @@ export default async function ProjectPage({
               <div>
                 <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
                   <span className="flex items-center gap-2" style={{ color: privacyColor(project.privacy) }}>
-                    <span className="h-2 w-2 " style={{ backgroundColor: privacyColor(project.privacy) }} />
+                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: privacyColor(project.privacy) }} />
                     {project.privacy}
                   </span>
                   <span className="text-muted">·</span>
@@ -114,7 +114,7 @@ export default async function ProjectPage({
                   <span className="text-muted">·</span>
                   <span className="text-muted">updated {project.updated}</span>
                 </div>
-                <h1 className="mt-5 max-w-4xl font-sans text-4xl font-extrabold leading-[1.04] text-ink sm:text-5xl md:text-7xl">
+                <h1 className="mt-5 max-w-4xl font-sans text-4xl font-bold leading-[1.04] text-ink sm:text-5xl md:text-7xl">
                   {project.title}
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-muted md:text-lg">{project.summary}</p>
@@ -176,7 +176,7 @@ export default async function ProjectPage({
               <p className="mono-label">product capabilities</p>
               <ul className="mt-5 grid gap-3">
                 {project.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3  border border-rule bg-panel p-4 text-sm leading-6 text-muted">
+                  <li key={feature} className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.02] p-4 text-sm leading-6 text-muted">
                     <span className="mt-0.5 font-mono text-gold" aria-hidden="true">+</span>{feature}
                   </li>
                 ))}
@@ -188,21 +188,21 @@ export default async function ProjectPage({
               {project.images?.length ? (
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
                   {project.images.map((src, index) => (
-                    <div key={src} className={`group relative overflow-hidden  border border-rule bg-panel ${index === 0 ? "sm:col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
+                    <div key={src} className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-panel ${index === 0 ? "sm:col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
                       <Image src={src} alt={`${project.title} screen ${index + 1}`} fill sizes={index === 0 ? "(max-width: 640px) 100vw, 760px" : "(max-width: 640px) 100vw, 380px"} className="image-zoom object-cover" />
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="project-visual mt-5 flex min-h-64 flex-col justify-between  border border-rule p-6">
+                <div className="project-visual mt-5 flex min-h-64 flex-col justify-between rounded-2xl border border-white/10 p-6">
                   <span className="font-mono text-xs text-muted">visual documentation</span>
-                  <div><p className="font-mono text-xs text-gold">{project.language} build</p><p className="mt-2 text-2xl font-extrabold text-ink">A focused interface for real work.</p></div>
+                  <div><p className="font-mono text-xs text-gold">{project.language} build</p><p className="mt-2 text-2xl font-bold text-ink">A focused interface for real work.</p></div>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="mt-20 grid gap-4 border-t border-rule pt-6 sm:grid-cols-2">
+          <div className="mt-20 grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-2">
             <Link href={`/projects/${previous.id}`} className="card-line group p-5">
               <span className="mono-label">← previous project</span>
               <span className="mt-3 block text-lg font-bold text-ink transition-colors group-hover:text-gold">{previous.title}</span>
