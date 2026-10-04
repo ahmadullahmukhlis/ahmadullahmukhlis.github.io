@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArticleToc } from "@/components/article/ArticleToc";
 import { PROFILE, SOCIALS } from "@/lib/data";
 import type { Article, ArticleSection } from "@/lib/blog";
 import { readingTime } from "@/lib/blog";
@@ -27,7 +28,7 @@ export function ArticleMetadata({ article }: { article: Article }) {
 }
 
 export function TableOfContents({ sections }: { sections: ArticleSection[] }) {
-  return <aside className="article-aside"><p className="mono-label text-gold">On this page</p><ol className="mt-4 space-y-2">{sections.map((s, i) => <li key={s.id}><a className="text-sm leading-5 text-muted hover:text-gold" href={`#${s.id}`}>{String(i + 1).padStart(2,"0")}. {s.title}</a></li>)}</ol></aside>;
+  return <ArticleToc sections={sections} />;
 }
 
 export function CodeBlock({ language, value }: { language: string; value: string }) {
