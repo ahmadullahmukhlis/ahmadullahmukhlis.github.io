@@ -8,7 +8,7 @@ import { CTABand } from "@/components/CTABand";
 import { Experience } from "@/components/Experience";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, SITE_NAME, buildMetadata } from "@/lib/seo";
+import { SITE_URL, PERSON_ID, buildMetadata } from "@/lib/seo";
 import { PROFILE, EDUCATION } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
@@ -39,12 +39,7 @@ const EXPERIENCE_JSONLD = {
   "@type": "ProfilePage",
   name: `${PROFILE.name} — Work Experience`,
   url: `${SITE_URL}/experience`,
-  mainEntity: {
-    "@type": "Person",
-    name: SITE_NAME,
-    jobTitle: "Full Stack, Fintech & Software Engineer",
-    worksFor: SITE_NAME,
-  },
+  mainEntity: { "@id": PERSON_ID },
 };
 
 const HIGHLIGHTS = [
