@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -42,10 +41,9 @@ export function HomeFeatured() {
             <RevealOnScroll key={p.id} delay={i % 2 === 0 ? 0 : 90}>
               <Link
                 href={`/projects/${p.id}`}
-                className="card-line glow-card stagger-card group flex h-full w-full flex-col overflow-hidden"
-                style={{ "--card-delay": `${120 + i * 55}ms` } as CSSProperties}
+                className="card-line group flex h-full w-full flex-col overflow-hidden"
               >
-                <div className="relative aspect-[16/9] overflow-hidden border-b border-white/10 bg-panel">
+                <div className="relative aspect-[16/9] overflow-hidden border-b border-rule bg-panel">
                   {preview ? (
                     <Image
                       src={preview}
@@ -61,14 +59,14 @@ export function HomeFeatured() {
                           {String(i + 1).padStart(2, "0")}/
                         </span>
                         <span
-                          className="h-2.5 w-2.5 rounded-full transition-transform duration-300 group-hover:scale-125"
+                          className="h-2.5 w-2.5  transition-transform duration-300 group-hover:scale-125"
                           style={{ backgroundColor: languageColor(p.language) }}
                           aria-hidden="true"
                         />
                       </div>
                       <div>
                         <p className="font-mono text-xs text-gold">Case study</p>
-                        <p className="mt-2 font-sans text-xl font-bold text-ink">{p.title}</p>
+                        <p className="mt-2 font-sans text-xl font-extrabold text-ink">{p.title}</p>
                       </div>
                     </div>
                   )}
@@ -81,14 +79,14 @@ export function HomeFeatured() {
                       style={{ color: privacyColor(p.privacy) }}
                     >
                       <span
-                        className="inline-block h-2 w-2 rounded-full"
+                        className="inline-block h-2 w-2 "
                         style={{ backgroundColor: privacyColor(p.privacy) }}
                       />
                       {p.privacy}
                     </span>
                     <span className="font-mono text-xs text-muted">{p.language}</span>
                   </div>
-                  <h3 className="mt-4 font-sans text-xl font-bold text-ink transition-colors duration-300 group-hover:text-gold">
+                  <h3 className="mt-4 font-sans text-xl font-extrabold text-ink transition-colors duration-300 group-hover:text-gold">
                     {p.title}
                   </h3>
                   <p className="mt-4 flex-1 text-sm leading-7 text-muted">{p.summary}</p>

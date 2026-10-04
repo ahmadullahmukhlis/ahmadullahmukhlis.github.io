@@ -83,7 +83,7 @@ export default async function ServicePage({
       <main className="page-shell">
         <JsonLd data={serviceJsonLd} />
 
-        <section className="relative overflow-hidden pb-14 pt-28 md:pb-20 md:pt-36">
+        <section className="relative overflow-hidden pb-14 pt-12 md:pb-20 md:pt-14">
           <div className="grid-faint pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="relative mx-auto max-w-6xl px-5">
             <nav className="mono-label flex items-center gap-2" aria-label="Breadcrumb">
@@ -97,11 +97,11 @@ export default async function ServicePage({
             <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.82fr] lg:items-center">
               <div>
                 <span className="font-mono text-xs text-gold">{service.num} / {service.tagline}</span>
-                <h1 className="mt-5 max-w-4xl font-sans text-4xl font-bold leading-[1.04] text-ink sm:text-5xl md:text-7xl">{service.title}</h1>
+                <h1 className="mt-5 max-w-4xl font-sans text-4xl font-extrabold leading-[1.04] text-ink sm:text-5xl md:text-7xl">{service.title}</h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-muted md:text-lg">{service.description}</p>
               </div>
               <div className="lg:justify-self-end lg:max-w-md">
-                {serviceImage && <figure className="overflow-hidden rounded-2xl border border-white/10 bg-panel shadow-2xl"><div className="relative aspect-square"><Image src={serviceImage.src} alt={serviceImage.alt} fill priority sizes="(max-width: 1024px) 100vw, 440px" className="object-contain"/></div></figure>}
+                {serviceImage && <figure className="overflow-hidden  border border-rule bg-panel shadow-2xl"><div className="relative aspect-square"><Image src={serviceImage.src} alt={serviceImage.alt} fill priority sizes="(max-width: 1024px) 100vw, 440px" className="object-contain"/></div></figure>}
                 <div className="motion-panel mt-4 p-5">
                 <p className="mono-label">engagement profile</p>
                 <div className="mt-5 grid grid-cols-2 gap-4">
@@ -126,7 +126,7 @@ export default async function ServicePage({
             <div>
               <p className="mono-label">what&apos;s included</p>
               <ul className="mt-5 grid gap-3">
-                {service.deliverables.map((deliverable) => <li key={deliverable} className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.02] p-4 text-sm leading-6 text-muted"><span className="font-mono text-gold" aria-hidden="true">+</span>{deliverable}</li>)}
+                {service.deliverables.map((deliverable) => <li key={deliverable} className="flex items-start gap-3  border border-rule bg-panel p-4 text-sm leading-6 text-muted"><span className="font-mono text-gold" aria-hidden="true">+</span>{deliverable}</li>)}
               </ul>
             </div>
             <div>
@@ -137,7 +137,7 @@ export default async function ServicePage({
             </div>
           </div>
 
-          <div className="mt-20 grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-2">
+          <div className="mt-20 grid gap-4 border-t border-rule pt-6 sm:grid-cols-2">
             <Link href={`/services/${previous.id}`} className="card-line group p-5"><span className="mono-label">← previous service</span><span className="mt-3 block text-lg font-bold text-ink transition-colors group-hover:text-gold">{previous.title}</span></Link>
             <Link href={`/services/${next.id}`} className="card-line p-5 text-left sm:text-right"><span className="mono-label">next service →</span><span className="mt-3 block text-lg font-bold text-ink transition-colors hover:text-gold">{next.title}</span></Link>
           </div>

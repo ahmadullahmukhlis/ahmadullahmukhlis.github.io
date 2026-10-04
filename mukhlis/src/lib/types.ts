@@ -28,29 +28,29 @@ export const PROJECT_CATEGORIES = [
 export type CategoryKey = (typeof PROJECT_CATEGORIES)[number]["key"];
 
 const LANGUAGE_COLORS: Record<string, string> = {
-  Kotlin: "#7f52ff",
-  Vue: "#42b883",
-  JavaScript: "#f7df1e",
-  Blade: "#ff2d20",
-  TypeScript: "#3178c6",
-  HTML: "#e34c26",
-  PHP: "#777bb4",
-  Dart: "#0175c2",
-  CSS: "#663399",
-  Markdown: "#a6a6a6",
-  "Vue/PHP": "#42b883",
+  Kotlin: "#5b3cc4",
+  Vue: "#2f7d5c",
+  JavaScript: "#8a6d00",
+  Blade: "#c22a1f",
+  TypeScript: "#255f9e",
+  HTML: "#b03a17",
+  PHP: "#5a5d8a",
+  Dart: "#0d5a95",
+  CSS: "#553080",
+  Markdown: "#6f6f6f",
+  "Vue/PHP": "#2f7d5c",
   Less: "#1d365d",
 };
 
 const PRIVACY_COLORS: Record<string, string> = {
-  Public: "#3dd68c",
-  Private: "#98a1b9",
+  Public: "#2f6b4f",
+  Private: "#6d6659",
 };
 
 export function languageColor(lang: string): string {
-  return LANGUAGE_COLORS[lang] ?? "#98a1b9";
+  return LANGUAGE_COLORS[lang] ?? "#6d6659";
 }
 
 export function privacyColor(priv: string): string {
-  return PRIVACY_COLORS[priv] ?? "#98a1b9";
+  return PRIVACY_COLORS[priv] ?? "#6d6659";
 }

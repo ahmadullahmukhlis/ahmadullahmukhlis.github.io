@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import { CursorHalo } from "@/components/CursorHalo";
+import localFont from "next/font/local";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -9,6 +8,7 @@ import {
   SITE_TITLE,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
+  PERSON_NAME_VARIANTS,
   SOCIAL_DESCRIPTION,
   SOCIAL_IMAGE,
   TWITTER_IMAGE,
@@ -18,14 +18,23 @@ import {
 import { PROFILE } from "@/lib/data";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+const archivo = localFont({
+  src: "../fonts/archivo-400-800.woff2",
+  variable: "--font-archivo",
+  weight: "400 800",
+  display: "swap",
+  fallback: ["system-ui", "Arial", "sans-serif"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+const ibmPlexMono = localFont({
+  src: [
+    { path: "../fonts/plexmono-400.woff2", weight: "400" },
+    { path: "../fonts/plexmono-500.woff2", weight: "500" },
+    { path: "../fonts/plexmono-600.woff2", weight: "600" },
+  ],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+  fallback: ["ui-monospace", "SFMono-Regular", "monospace"],
 });
 
 export const metadata: Metadata = {
@@ -86,6 +95,7 @@ const PERSON_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: PROFILE.name,
+  alternateName: PERSON_NAME_VARIANTS.filter((name) => name !== PROFILE.name),
   jobTitle: "Full Stack, Fintech & Software Engineer",
   description: SITE_DESCRIPTION,
   url: SITE_URL,
@@ -123,12 +133,11 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${archivo.variable} ${ibmPlexMono.variable} scroll-smooth`}
     >
-      <body className="aura-bg grain min-h-screen antialiased">
+      <body className="min-h-screen antialiased">
         <JsonLd data={PERSON_JSONLD} />
         <JsonLd data={WEBSITE_JSONLD} />
-        <CursorHalo />
         {children}
         <WhatsAppFloat />
       </body>

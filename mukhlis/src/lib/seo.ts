@@ -27,9 +27,27 @@ export const SOCIAL_IMAGE = {
   type: "image/jpeg",
 };
 
-export const SITE_KEYWORDS = [
+export const PERSON_NAME_VARIANTS = [
   "Ahmadullah Mukhlis",
+  "ahmadullah mukhlis",
+  "AHMADULLAH MUKHLIS",
+  "AHmadullah mukhlis",
+  "ahmad ullah mukhlis",
   "Ahmad Ullah Mukhlis",
+  "AHMAD ULLAH MUKHLIS",
+  "ahmadulla mukhlis",
+  "Ahmadulla mukhlis",
+  "AHMADULLA MUKHLIS",
+  "ahmadull",
+  "AHmadull",
+  "AHMADULL",
+  "ahmad mukhlis",
+  "Ahmad MUkhlis",
+  "AHMAD MUKHLIS",
+];
+
+export const SITE_KEYWORDS = [
+  ...PERSON_NAME_VARIANTS,
   "Full Stack Developer",
   "Full Stack Software Engineer",
   "Fintech Developer",

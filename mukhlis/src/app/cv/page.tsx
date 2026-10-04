@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import { Navbar } from "@/components/Navbar";
 import { PrintButton } from "@/components/PrintButton";
 import { PROFILE, SOCIALS, EXPERIENCE, EDUCATION, CV_SKILLS } from "@/lib/data";
@@ -57,17 +56,17 @@ export default function CvPage() {
   return (
     <>
       <Navbar />
-      <main className="page-shell mx-auto max-w-5xl px-5 pt-28 pb-20 md:pt-32">
-        <div className="motion-line mb-8 flex flex-wrap items-center justify-between gap-4">
+      <main className="page-shell mx-auto max-w-5xl px-5 pt-12 pb-20 md:pt-12">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <Link href="/" className="link-arrow text-xs">
             ← back to home
           </Link>
           <PrintButton />
         </div>
 
-        <div className="big-card stagger-card grid overflow-hidden p-0 md:grid-cols-[310px_1fr]">
-          <aside className="border-b border-white/8 bg-charcoal/35 p-7 md:border-b-0 md:border-r md:p-8">
-            <div className="motion-line mx-auto h-32 w-24 overflow-hidden rounded-lg border border-gold/60 bg-panel">
+        <div className="big-card grid overflow-hidden p-0 md:grid-cols-[310px_1fr]">
+          <aside className="border-b border-rule bg-panel p-7 md:border-b-0 md:border-r md:p-8">
+            <div className="mx-auto h-32 w-24 overflow-hidden  border border-gold/60 bg-panel">
               <Image
                 src={PROFILE.avatar}
                 alt={PROFILE.name}
@@ -76,17 +75,17 @@ export default function CvPage() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <h1 className="motion-line mt-5 text-center font-sans text-2xl font-bold leading-tight text-ink" style={{ "--line-delay": "80ms" } as CSSProperties}>
+            <h1 className="mt-5 text-center font-sans text-2xl font-extrabold leading-tight text-ink">
               {PROFILE.name}
             </h1>
-            <p className="motion-line mt-2 text-center font-mono text-xs text-gold" style={{ "--line-delay": "140ms" } as CSSProperties}>
+            <p className="mt-2 text-center font-mono text-xs text-gold">
               {PROFILE.role}
             </p>
-            <p className="motion-line mt-3 text-center font-mono text-xs text-muted" style={{ "--line-delay": "200ms" } as CSSProperties}>
+            <p className="mt-3 text-center font-mono text-xs text-muted">
               {PROFILE.location} · Working worldwide
             </p>
 
-            <div className="motion-line mt-8" style={{ "--line-delay": "260ms" } as CSSProperties}>
+            <div className="mt-8">
               <CvSection title="Contact" />
               <ul className="space-y-2.5 font-mono text-xs text-muted">
                 <li className="break-all">
@@ -121,7 +120,7 @@ export default function CvPage() {
               </ul>
             </div>
 
-            <div className="motion-line mt-8" style={{ "--line-delay": "320ms" } as CSSProperties}>
+            <div className="mt-8">
               <CvSection title="Skills" />
               <ul className="flex flex-wrap gap-2">
                 {CV_SKILLS.map((s) => (
@@ -132,7 +131,7 @@ export default function CvPage() {
               </ul>
             </div>
 
-            <div className="motion-line mt-8" style={{ "--line-delay": "380ms" } as CSSProperties}>
+            <div className="mt-8">
               <CvSection title="Education" />
               <ul className="space-y-4">
                 {EDUCATION.map((e) => (
@@ -148,17 +147,17 @@ export default function CvPage() {
           </aside>
 
           <div className="p-7 md:p-10">
-            <div className="motion-line mb-9 border-b border-white/10 pb-7">
+            <div className="mb-9 border-b border-rule pb-7">
               <p className="mono-label text-gold">Resume</p>
-              <h2 className="mt-3 text-3xl font-bold leading-tight text-ink">
+              <h2 className="mt-3 text-3xl font-extrabold leading-tight text-ink">
                 Full-stack engineer focused on secure platforms, modern interfaces, and reliable delivery.
               </h2>
             </div>
 
-            <div className="motion-line" style={{ "--line-delay": "100ms" } as CSSProperties}>
+            <div className="">
               <CvSection title="Profile" />
             </div>
-            <p className="motion-line text-sm leading-relaxed text-muted" style={{ "--line-delay": "160ms" } as CSSProperties}>
+            <p className="text-sm leading-relaxed text-muted">
               Experienced in developing secure and high-performance solutions for
               banking, digital payment systems, enterprise management platforms,
               healthcare systems, MIS platforms, e-commerce applications, and
@@ -167,7 +166,7 @@ export default function CvPage() {
               cloud deployment, database optimization, and modern UI/UX
               principles.
             </p>
-            <p className="motion-line mt-4 text-sm leading-relaxed text-muted" style={{ "--line-delay": "220ms" } as CSSProperties}>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
               Currently contributing to AFPS (Afghanistan Payment System) and
               banking gateway integrations — including offline banking
               integrations, digital payment infrastructure, enterprise APIs, and
@@ -177,11 +176,10 @@ export default function CvPage() {
             <div className="mt-10">
               <CvSection title="Experience" />
               <div className="space-y-7">
-                {EXPERIENCE.map((r, i) => (
+                {EXPERIENCE.map((r) => (
                   <div
                     key={r.role}
                     className="stagger-card border-l border-gold/35 pl-5 transition-colors duration-300 hover:border-gold"
-                    style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <h3 className="font-sans text-base font-bold text-ink">
@@ -205,11 +203,10 @@ export default function CvPage() {
             <div className="mt-10">
               <CvSection title="Selected projects" />
               <ul className="grid gap-4">
-                {featured.map((p, i) => (
+                {featured.map((p) => (
                   <li
                     key={p.id}
-                    className="card-line glow-card stagger-card group grid gap-2 p-5"
-                    style={{ "--card-delay": `${180 + i * 55}ms` } as CSSProperties}
+                    className="card-line group grid gap-2 p-5"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <p className="font-sans text-sm font-semibold text-ink transition-colors duration-300 group-hover:text-gold">

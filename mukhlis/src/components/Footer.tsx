@@ -1,7 +1,5 @@
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { PROFILE, SOCIALS } from "@/lib/data";
-import { RevealOnScroll } from "@/components/RevealOnScroll";
 import Image from "next/image";
 import { BRAND } from "@/lib/brand";
 
@@ -26,49 +24,69 @@ const SERVICE_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/8 bg-white/[0.012]">
-      <RevealOnScroll>
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_0.8fr_0.9fr_1fr]">
+    <footer className="border-t border-rule bg-panel">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="grid gap-10 border-b border-rule py-12 md:grid-cols-[1.4fr_0.8fr_0.9fr_1fr]">
           <div>
-            <div className="max-w-[240px]"><Image src={BRAND.logo} alt="Mukhlis Software Solution" width={360} height={96} className="h-auto w-full object-contain"/></div>
-            <p className="mt-3 font-mono text-xs text-muted">Software engineering by {PROFILE.name}</p>
-            <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
-              Professional software engineering for fintech, payment systems,
-              web, mobile, desktop, APIs, ERP, cloud, and enterprise platforms.
+            <div className="flex items-center gap-3">
+              <span className="relative block h-11 w-11 shrink-0">
+                <Image
+                  src={BRAND.mark}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="object-contain"
+                />
+              </span>
+              <span className="flex flex-col gap-1.5">
+                <span className="wordmark text-2xl">Mukhlis</span>
+                <span className="wordmark-sub">Software Solution</span>
+              </span>
+            </div>
+            <p className="mt-5 font-mono text-xs text-muted">
+              Software engineering by {PROFILE.name}
+            </p>
+            <p className="mt-4 max-w-xs text-sm leading-7 text-muted">
+              Professional software engineering for fintech, payment systems, web,
+              mobile, desktop, APIs, ERP, cloud, and enterprise platforms.
             </p>
           </div>
 
-          <div>
-            <p className="mono-label text-gold">Pages</p>
-            <ul className="mt-4 space-y-2.5">
-              {PAGES.map((p) => (
+          <nav aria-label="Pages">
+            <p className="mono-label text-ink">Index</p>
+            <ul className="mt-5 space-y-2.5">
+              {PAGES.map((p, i) => (
                 <li key={p.href}>
                   <Link href={p.href} className="link-arrow text-xs">
+                    <span className="text-[10px] text-gold">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     {p.label}
-                    <span className="arr" aria-hidden="true">→</span>
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <p className="mono-label text-gold">Services</p>
-            <ul className="mt-4 space-y-2.5">
+          <nav aria-label="Services">
+            <p className="mono-label text-ink">Services</p>
+            <ul className="mt-5 space-y-2.5">
               {SERVICE_LINKS.map((s) => (
                 <li key={s.href}>
                   <Link href={s.href} className="link-arrow text-xs">
                     {s.label}
-                    <span className="arr" aria-hidden="true">→</span>
+                    <span className="arr" aria-hidden="true">
+                      →
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           <div>
-            <p className="mono-label text-gold">Connect</p>
-            <ul className="mt-4 space-y-2.5">
+            <p className="mono-label text-ink">Connect</p>
+            <ul className="mt-5 space-y-2.5">
               {SOCIALS.map((s) => (
                 <li key={s.label}>
                   <a
@@ -78,7 +96,9 @@ export function Footer() {
                     className="link-arrow text-xs"
                   >
                     {s.label}
-                    <span className="arr" aria-hidden="true">↗</span>
+                    <span className="arr" aria-hidden="true">
+                      ↗
+                    </span>
                   </a>
                 </li>
               ))}
@@ -87,34 +107,32 @@ export function Footer() {
               href={PROFILE.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block font-mono text-xs text-muted transition-colors hover:text-gold"
+              className="mt-6 block font-mono text-xs text-ink transition-colors hover:text-gold"
             >
               WhatsApp · {PROFILE.phone}
             </a>
             <a
               href={`mailto:${PROFILE.email}`}
-              className="mt-2 block break-all font-mono text-xs text-muted transition-colors hover:text-gold"
+              className="mt-2 block break-all font-mono text-xs text-ink transition-colors hover:text-gold"
             >
               {PROFILE.email}
             </a>
           </div>
         </div>
 
-        <div className="border-t border-white/8">
-          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-5 py-6 md:flex-row md:items-center">
-            <p className="motion-line font-mono text-xs text-muted">
-              © {new Date().getFullYear()} Mukhlis Software Solution · {PROFILE.name}.
-            </p>
-            <p className="motion-line mono-label" style={{ "--line-delay": "80ms" } as CSSProperties}>
-              Design, engineering, deployment
-            </p>
-            <Link href="/" className="motion-line link-arrow text-xs" style={{ "--line-delay": "160ms" } as CSSProperties}>
-              Back to top
-              <span className="arr" aria-hidden="true">↑</span>
-            </Link>
-          </div>
+        <div className="flex flex-col items-start justify-between gap-3 py-6 md:flex-row md:items-center">
+          <p className="font-mono text-xs text-muted">
+            © {new Date().getFullYear()} Mukhlis Software Solution · {PROFILE.name}.
+          </p>
+          <p className="mono-label">Design, engineering, deployment</p>
+          <Link href="/" className="link-arrow text-xs">
+            Back to top
+            <span className="arr" aria-hidden="true">
+              ↑
+            </span>
+          </Link>
         </div>
-      </RevealOnScroll>
+      </div>
     </footer>
   );
 }

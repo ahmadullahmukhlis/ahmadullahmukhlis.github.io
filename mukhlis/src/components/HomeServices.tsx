@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -19,25 +18,38 @@ export function HomeServices() {
       </RevealOnScroll>
 
       <div className="mt-12 grid gap-4 md:grid-cols-2">
-        {SERVICES.slice(0, VISIBLE).map((s, i) => (
-          <RevealOnScroll key={s.id} delay={i * 70}>
+        {SERVICES.slice(0, VISIBLE).map((s) => (
+          <RevealOnScroll key={s.id}>
             <Link
               href={`/services/${s.id}`}
-              className="card-line glow-card stagger-card group flex h-full flex-col p-6 md:p-7"
-              style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
+              className="card-line group flex h-full flex-col p-6 md:p-7"
             >
-              {SERVICE_IMAGES[s.id] && <div className="relative -mx-6 -mt-6 mb-6 aspect-square overflow-hidden rounded-t-xl border-b border-white/10 bg-panel md:-mx-7 md:-mt-7"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 550px" className="object-contain transition-transform duration-500 group-hover:scale-[1.015]"/></div>}
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-sans text-xl font-bold text-ink transition-colors duration-300 group-hover:text-gold">
-                  {s.title}
-                </h3>
-                <span className="font-mono text-xs text-gold/75">{s.num}</span>
+              <div className="flex items-start justify-between gap-6">
+                <span className="mono-label text-gold">{s.num}</span>
+                {SERVICE_IMAGES[s.id] ? (
+                  <figure className="relative h-24 w-24 shrink-0 border border-rule bg-panel">
+                    <Image
+                      src={SERVICE_IMAGES[s.id].src}
+                      alt={SERVICE_IMAGES[s.id].alt}
+                      fill
+                      sizes="96px"
+                      className="object-contain p-1.5 transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </figure>
+                ) : null}
               </div>
-              <p className="mt-1 font-mono text-xs text-gold">{s.tagline}</p>
-              <p className="mt-4 flex-1 text-sm leading-7 text-muted">{s.description}</p>
+
+              <h3 className="mt-5 text-2xl font-extrabold leading-tight text-ink transition-colors duration-300 group-hover:text-gold">
+                {s.title}
+              </h3>
+              <p className="mt-2 font-mono text-xs text-muted">{s.tagline}</p>
+
+              <div className="section-line mt-5" aria-hidden="true" />
+
+              <p className="mt-5 flex-1 text-sm leading-7 text-muted">{s.description}</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {s.deliverables.slice(0, 3).map((d) => (
-                  <span key={d} className="tag-pill !px-3 !py-1 !text-xs">
+                  <span key={d} className="tag-pill">
                     {d}
                   </span>
                 ))}

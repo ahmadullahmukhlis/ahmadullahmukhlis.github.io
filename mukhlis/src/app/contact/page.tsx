@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
@@ -73,8 +72,8 @@ export default function ContactPage() {
         <section className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 md:py-20">
           <RevealOnScroll>
             <div className="section-line mb-8">
-              <span className="motion-line mono-label text-gold">{`// how I can help`}</span>
-              <h2 className="motion-line text-2xl font-bold text-ink md:text-3xl" style={{ "--line-delay": "90ms" } as CSSProperties}>
+              <span className="mono-label text-gold">{`// how I can help`}</span>
+              <h2 className="text-2xl font-extrabold text-ink md:text-3xl">
                 Best reached for
               </h2>
             </div>
@@ -82,7 +81,7 @@ export default function ContactPage() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {COMMON.map((c, i) => (
               <RevealOnScroll key={c.title} delay={i * 70}>
-                <div className="card-line glow-card stagger-card h-full p-6" style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}>
+                <div className="card-line h-full p-6">
                   <h3 className="font-sans text-base font-bold text-ink">{c.title}</h3>
                   <p className="mt-2 text-sm leading-7 text-muted">{c.text}</p>
                 </div>
