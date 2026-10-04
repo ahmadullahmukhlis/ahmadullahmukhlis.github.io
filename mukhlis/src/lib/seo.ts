@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 
-const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-
-export const SITE_URL = (configuredSiteUrl || "https://ahmadullahmukhlis.com").replace(/\/$/, "");
+// Canonicals and structured data always identify the production site.
+export const SITE_URL = "https://ahmadullahmukhlis.com";
+export const PERSON_ID = `${SITE_URL}/#person`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const GA_MEASUREMENT_ID = "G-CXHQDQFNTM";
 export const SITE_NAME = "Mukhlis Software Solution";
 export const SITE_TITLE =
-  "Ahmadullah Mukhlis | Mukhlis Software Solution";
+  "Ahmadullah Mukhlis | Full-Stack & Fintech Software Engineer";
 
 export const SITE_DESCRIPTION =
   "Ahmadullah Mukhlis is a Full Stack, Fintech and Software Engineer specializing in web, mobile, desktop, online and offline applications, payment systems, banking platforms, enterprise software, APIs, cloud systems and secure digital products.";
@@ -27,86 +30,19 @@ export const SOCIAL_IMAGE = {
   type: "image/jpeg",
 };
 
-export const PERSON_NAME_VARIANTS = [
-  "Ahmadullah Mukhlis",
-  "ahmadullah mukhlis",
-  "AHMADULLAH MUKHLIS",
-  "AHmadullah mukhlis",
-  "AhmadullahMukhlis",
-  "ahmadullahmukhlis",
-  "AHMADULLAHMUKHLIS",
-  "Ahmadullah-Mukhlis",
-  "ahmadullah-mukhlis",
-  "Ahmadullah_Mukhlis",
-  "ahmadullah_mukhlis",
-  "ahmad ullah mukhlis",
-  "Ahmad Ullah Mukhlis",
-  "AHMAD ULLAH MUKHLIS",
-  "Ahmad-Ullah-Mukhlis",
-  "ahmad-ullah-mukhlis",
-  "Ahmad_Ullah_Mukhlis",
-  "ahmad_ullah_mukhlis",
-  "ahmadulla mukhlis",
-  "Ahmadulla mukhlis",
-  "AHMADULLA MUKHLIS",
-  "ahmadull",
-  "AHmadull",
-  "AHMADULL",
-  "ahmad mukhlis",
-  "Ahmad MUkhlis",
-  "AHMAD MUKHLIS",
-  "Mukhlis Ahmadullah",
-  "mukhlis ahmadullah",
-  "MUKHLIS AHMADULLAH",
-  "Mukhlis Ahmad Ullah",
-  "mukhlis ahmad ullah",
-  "MUKHLIS AHMAD ULLAH",
+export const PERSON_NAME_VARIANTS = ["Ahmadullah Mukhlis", "Ahmad Ullah Mukhlis"];
+
+export const PROFESSIONAL_TOPICS = [
+  "Full-stack software engineering",
+  "Payment systems and ISO 8583",
+  "Digital banking",
+  "Enterprise software",
+  "Web and mobile application development",
+  "API design and integration",
+  "Cloud infrastructure and CI/CD",
 ];
 
-export const SITE_KEYWORDS = [
-  ...PERSON_NAME_VARIANTS,
-  "Full Stack Developer",
-  "Full Stack Software Engineer",
-  "Fintech Developer",
-  "Fintech Software Engineer",
-  "Payment Systems Developer",
-  "Banking Software Developer",
-  "Enterprise Software Engineer",
-  "Web Developer",
-  "Mobile App Developer",
-  "Desktop Application Developer",
-  "Flutter Developer",
-  "React Developer",
-  "Next.js Developer",
-  "Laravel Developer",
-  "Spring Boot Developer",
-  "ASP.NET Core Developer",
-  "API Developer",
-  "Microservices Developer",
-  "Cloud Developer",
-  "AWS Developer",
-  "Docker Developer",
-  "Online Application Developer",
-  "Offline Application Developer",
-  "Offline First Applications",
-  "Cross Platform Developer",
-  "Android Developer",
-  "iOS Developer",
-  "Windows Desktop Developer",
-  "Financial Systems Developer",
-  "Digital Payment Developer",
-  "Payment Gateway Integration",
-  "Payment Switch Integration",
-  "ISO 8583 Developer",
-  "Mobile Banking Developer",
-  "USSD Banking Developer",
-  "ERP Developer",
-  "MIS Developer",
-  "Ecommerce Developer",
-  "Secure Software Engineer",
-  "Full Stack Developer Afghanistan",
-  "Software Engineer Afghanistan",
-];
+export const SITE_KEYWORDS = ["Ahmadullah Mukhlis", ...PROFESSIONAL_TOPICS];
 
 export interface PageSeo {
   title: string;
@@ -114,35 +50,39 @@ export interface PageSeo {
   keywords: string[];
   path: string;
   image?: string;
+  article?: { publishedTime: string; modifiedTime: string; tags: string[] };
 }
 
-export function buildMetadata({ title, description, keywords, path, image }: PageSeo): Metadata {
+export function buildMetadata({ title, description, keywords, path, image, article }: PageSeo): Metadata {
+  const pageTitle = title.includes("Ahmadullah Mukhlis") ? title : `${title} | Ahmadullah Mukhlis`;
   const canonical = new URL(path, SITE_URL).toString();
   const socialImage = image ? new URL(image, SITE_URL).toString() : SOCIAL_IMAGE;
 
   return {
     metadataBase: new URL(SITE_URL),
-    title,
+    title: pageTitle,
     description,
     keywords,
     alternates: { canonical },
     openGraph: {
-      title,
+      title: pageTitle,
       description,
       url: canonical,
       siteName: SITE_NAME,
-      type: "website",
+      ...(article
+        ? { type: "article" as const, ...article, authors: [`${SITE_URL}/author/ahmadullah-mukhlis`] }
+        : { type: "website" as const }),
       locale: "en_US",
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: pageTitle,
       description,
       site: X_HANDLE,
       creator: X_HANDLE,
       images: {
-        url: TWITTER_IMAGE,
+        url: image ? new URL(image, SITE_URL).toString() : TWITTER_IMAGE,
         alt: OG_ALT,
       },
     },

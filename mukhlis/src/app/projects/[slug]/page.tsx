@@ -8,7 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { languageColor, privacyColor } from "@/lib/types";
 import type { Project } from "@/lib/types";
 import projectsData from "@/data/projects.json";
-import { SITE_NAME, SITE_URL, buildMetadata } from "@/lib/seo";
+import { PERSON_ID, SITE_URL, buildMetadata } from "@/lib/seo";
 
 const PROJECTS = projectsData as Project[];
 
@@ -40,17 +40,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
 
-  if (!project) {
-    return buildMetadata({
-      title: "Project not found",
-      description: "The requested project could not be found.",
-      keywords: ["project not found"],
-      path: `/projects/${slug}`,
-    });
-  }
+  if (!project) notFound();
 
   return buildMetadata({
-    title: `${project.title} | Project Case Study`,
+    title: `${project.title} | Ahmadullah Mukhlis`,
     description: project.summary,
     keywords: project.tech,
     path: `/projects/${project.id}`,
@@ -80,9 +73,9 @@ export default async function ProjectPage({
     name: project.title,
     description: project.details,
     url: `${SITE_URL}/projects/${project.id}`,
-    creator: { "@type": "Person", name: SITE_NAME },
+    creator: { "@id": PERSON_ID },
     keywords: project.tech.join(", "),
-    image: project.images?.map((image) => `${SITE_URL}${image}`),
+    image: project.images?.map((image) => new URL(image, SITE_URL).toString()),
   };
 
   return (

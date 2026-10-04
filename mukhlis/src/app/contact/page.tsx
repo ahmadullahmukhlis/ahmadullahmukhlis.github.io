@@ -6,7 +6,7 @@ import { PageHero } from "@/components/PageHero";
 import { Contact } from "@/components/Contact";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, SITE_NAME, buildMetadata } from "@/lib/seo";
+import { SITE_URL, PERSON_ID, buildMetadata } from "@/lib/seo";
 import { PROFILE } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
@@ -36,13 +36,7 @@ const CONTACT_JSONLD = {
   "@type": "ContactPage",
   name: "Contact",
   url: `${SITE_URL}/contact`,
-  mainEntity: {
-    "@type": "Person",
-    name: SITE_NAME,
-    email: `mailto:${PROFILE.email}`,
-    telephone: `+${PROFILE.phone.replace(/\s/g, "")}`,
-    jobTitle: "Full Stack, Fintech & Software Engineer",
-  },
+  mainEntity: { "@id": PERSON_ID },
 };
 
 const COMMON = [

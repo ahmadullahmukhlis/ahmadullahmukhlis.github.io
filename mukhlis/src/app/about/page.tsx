@@ -7,7 +7,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTABand } from "@/components/CTABand";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, buildMetadata } from "@/lib/seo";
+import { SITE_URL, PERSON_ID, buildMetadata } from "@/lib/seo";
 import { PROFILE, EDUCATION, CV_SKILLS, SKILL_GROUPS } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
@@ -34,12 +34,7 @@ const ABOUT_JSONLD = {
   "@type": "AboutPage",
   name: "About Ahmadullah Mukhlis",
   url: `${SITE_URL}/about`,
-  about: {
-    "@type": "Person",
-    name: PROFILE.name,
-    jobTitle: "Full Stack, Fintech & Software Engineer",
-    description: PROFILE.blurb,
-  },
+  about: { "@id": PERSON_ID },
 };
 
 const VALUES = [

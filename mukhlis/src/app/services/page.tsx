@@ -7,7 +7,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTABand } from "@/components/CTABand";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, SITE_NAME, buildMetadata } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, ORGANIZATION_ID, buildMetadata } from "@/lib/seo";
 import { SERVICES, PROCESS_STEPS } from "@/lib/data";
 import Image from "next/image";
 import { SERVICE_IMAGES } from "@/lib/brand";
@@ -42,16 +42,13 @@ export const metadata: Metadata = buildMetadata({
 
 const SERVICES_JSONLD = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "OfferCatalog",
   name: SITE_NAME,
   url: `${SITE_URL}/services`,
   description: "Software engineering services across fintech, web, mobile, desktop, enterprise, and cloud.",
-  provider: { "@type": "Organization", name: SITE_NAME },
-  areaServed: "Worldwide",
-  priceRange: "$$",
-  makesOffer: SERVICES.map((s) => ({
+  itemListElement: SERVICES.map((s) => ({
     "@type": "Offer",
-    itemOffered: { "@type": "Service", name: s.title, description: s.description },
+    itemOffered: { "@type": "Service", name: s.title, description: s.description, provider: { "@id": ORGANIZATION_ID } },
   })),
 };
 

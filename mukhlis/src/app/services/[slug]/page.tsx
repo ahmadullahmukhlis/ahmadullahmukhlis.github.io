@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Navbar } from "@/components/Navbar";
 import { PROCESS_STEPS, SERVICES } from "@/lib/data";
-import { SITE_NAME, SITE_URL, buildMetadata } from "@/lib/seo";
+import { SITE_URL, ORGANIZATION_ID, buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { SERVICE_IMAGES } from "@/lib/brand";
 
@@ -33,17 +33,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getService(slug);
 
-  if (!service) {
-    return buildMetadata({
-      title: "Service not found",
-      description: "The requested software engineering service could not be found.",
-      keywords: ["software engineering service"],
-      path: `/services/${slug}`,
-    });
-  }
+  if (!service) notFound();
 
   return buildMetadata({
-    title: `${service.title} | ${SITE_NAME}`,
+    title: `${service.title} | Ahmadullah Mukhlis`,
     description: service.description,
     keywords: service.keywords.split(", "),
     path: `/services/${service.id}`,
@@ -68,7 +61,7 @@ export default async function ServicePage({
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Service", name: service.title, description: service.description, url: `${SITE_URL}/services/${service.id}`, provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL }, areaServed: "Worldwide", serviceType: service.title, category: service.keywords },
+      { "@type": "Service", name: service.title, description: service.description, url: `${SITE_URL}/services/${service.id}`, provider: { "@id": ORGANIZATION_ID }, areaServed: "Worldwide", serviceType: service.title, category: service.keywords },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },

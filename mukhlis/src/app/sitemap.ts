@@ -5,6 +5,8 @@ import { SERVICES } from "@/lib/data";
 import { SITE_URL } from "@/lib/seo";
 import { ARTICLES, BLOG_CATEGORIES } from "@/lib/blog";
 
+import { BLOG_TAGS, slugifyTag } from "@/lib/blog-tags";
+
 const PROJECTS = projectsData as Project[];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -35,7 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     ...PROJECTS.map((project) => ({ url: `${SITE_URL}/case-studies/${project.id}`, changeFrequency: "monthly" as const, priority: 0.75 })),
-    ...BLOG_CATEGORIES.map((category) => ({ url: `${SITE_URL}/blog/${category.slug}`, lastModified: new Date("2026-09-27"), changeFrequency: "weekly" as const, priority: 0.8 })),
+    ...BLOG_CATEGORIES.map((category) => ({ url: `${SITE_URL}/blog/${category.slug}`, changeFrequency: "weekly" as const, priority: 0.8 })),
+    ...[...new Set(BLOG_TAGS.map(slugifyTag))].map((tag) => ({ url: `${SITE_URL}/blog/tag/${tag}`, changeFrequency: "monthly" as const, priority: 0.5 })),
     ...ARTICLES.map((article) => ({ url: `${SITE_URL}/blog/${article.slug}`, lastModified: new Date(article.updated), changeFrequency: "monthly" as const, priority: article.featured ? 0.95 : 0.8 })),
   ];
 }

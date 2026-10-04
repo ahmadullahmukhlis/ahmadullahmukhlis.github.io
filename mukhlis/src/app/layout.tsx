@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { CursorHalo } from "@/components/CursorHalo";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
@@ -10,13 +11,18 @@ import {
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   PERSON_NAME_VARIANTS,
+  PROFESSIONAL_TOPICS,
+  PERSON_ID,
+  WEBSITE_ID,
+  ORGANIZATION_ID,
+  GA_MEASUREMENT_ID,
   SOCIAL_DESCRIPTION,
   SOCIAL_IMAGE,
   TWITTER_IMAGE,
   X_HANDLE,
   OG_ALT,
 } from "@/lib/seo";
-import { PROFILE } from "@/lib/data";
+import { PROFILE, SOCIALS } from "@/lib/data";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -43,10 +49,6 @@ export const metadata: Metadata = {
   creator: PROFILE.name,
   publisher: SITE_NAME,
   category: "Software Engineering",
-
-  alternates: {
-    canonical: SITE_URL,
-  },
 
   openGraph: {
     title: SITE_TITLE,
@@ -86,34 +88,38 @@ export const metadata: Metadata = {
 const PERSON_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": PERSON_ID,
   name: PROFILE.name,
   alternateName: PERSON_NAME_VARIANTS.filter((name) => name !== PROFILE.name),
   jobTitle: "Full Stack, Fintech & Software Engineer",
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   email: `mailto:${PROFILE.email}`,
-  telephone: `+${PROFILE.phone.replace(/\s/g, "")}`,
+  telephone: `+${PROFILE.phone.replace(/\D/g, "")}`,
   address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
-  knowsAbout: SITE_KEYWORDS,
-  sameAs: [
-    "https://github.com/ahmadullahmukhlis",
-    "https://www.linkedin.com/in/ahmadullahmukhlis",
-    "https://x.com/ahmadullahmukhi",
-  ],
+  knowsAbout: PROFESSIONAL_TOPICS,
+  sameAs: SOCIALS.filter(({ label }) => ["GitHub", "LinkedIn", "X"].includes(label)).map(({ href }) => href),
 };
 
 const WEBSITE_JSONLD = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
   inLanguage: "en",
-  publisher: {
-    "@type": "Organization",
-    name: "Mukhlis Software Solution",
-    logo: `${SITE_URL}/brand/mukhlis-software-solution-mark-transparent.png`,
-  },
+  creator: { "@id": PERSON_ID },
+  publisher: { "@id": ORGANIZATION_ID },
+};
+
+const ORGANIZATION_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": ORGANIZATION_ID,
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/brand/mukhlis-software-solution-mark-transparent.png`,
 };
 
 export default function RootLayout({
@@ -128,24 +134,13 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <body className="aura-bg grain min-h-screen antialiased">
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXHQDQFNTM" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CXHQDQFNTM');
-`,
-          }}
-        />
         <JsonLd data={PERSON_JSONLD} />
         <JsonLd data={WEBSITE_JSONLD} />
+        <JsonLd data={ORGANIZATION_JSONLD} />
         <CursorHalo />
         {children}
         <WhatsAppFloat />
+        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
       </body>
     </html>
   );
