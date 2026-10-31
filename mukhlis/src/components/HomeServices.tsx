@@ -3,8 +3,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SERVICES } from "@/lib/data";
-import Image from "next/image";
-import { SERVICE_IMAGES } from "@/lib/brand";
+import { ServiceImage } from "@/components/ServiceImage";
 
 const VISIBLE = 4;
 export function HomeServices() {
@@ -23,10 +22,10 @@ export function HomeServices() {
           <RevealOnScroll key={s.id} delay={i * 70}>
             <Link
               href={`/services/${s.id}`}
-              className="card-line glow-card stagger-card group flex h-full flex-col p-6 md:p-7"
+              className="card-line glow-card stagger-card group flex h-full flex-col overflow-hidden p-6 md:p-7"
               style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
             >
-              {SERVICE_IMAGES[s.id] && <div className="relative -mx-6 -mt-6 mb-6 aspect-square overflow-hidden rounded-t-xl border-b border-white/10 bg-panel md:-mx-7 md:-mt-7"><Image src={SERVICE_IMAGES[s.id].src} alt={SERVICE_IMAGES[s.id].alt} fill sizes="(max-width: 768px) 100vw, 550px" className="object-contain transition-transform duration-500 group-hover:scale-[1.015]"/></div>}
+              <ServiceImage id={s.id} sizes="(max-width: 768px) 100vw, 550px" className="-mx-6 -mt-6 mb-6 aspect-[16/10] border-b border-white/[0.07] md:-mx-7 md:-mt-7" />
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-sans text-xl font-bold text-ink transition-colors duration-300 group-hover:text-gold">
                   {s.title}
@@ -42,7 +41,7 @@ export function HomeServices() {
                   </span>
                 ))}
               </div>
-              <span className="link-arrow mt-6 text-xs">
+              <span className="link-arrow mt-6 border-t border-white/[0.07] pt-4 text-xs group-hover:text-gold">
                 View service
                 <span className="arr" aria-hidden="true">→</span>
               </span>

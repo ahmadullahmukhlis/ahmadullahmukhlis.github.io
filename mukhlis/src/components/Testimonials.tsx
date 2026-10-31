@@ -22,16 +22,9 @@ export function Testimonials() {
               className="card-line glow-card stagger-card group relative flex h-full flex-col overflow-hidden p-7"
               style={{ "--card-delay": `${120 + i * 80}ms` } as CSSProperties}
             >
-              <span
-                className="pointer-events-none absolute right-5 top-4 font-mono text-5xl font-bold leading-none text-gold/10 transition-opacity duration-300 group-hover:text-gold/20"
-                aria-hidden="true"
-              >
-                &ldquo;
-              </span>
-
               <div className="relative flex items-center justify-between">
                 <span
-                  className="flex h-12 w-12 items-center justify-center rounded-full font-mono text-sm font-bold text-charcoal ring-2 ring-white/10 transition-transform duration-300 group-hover:scale-110"
+                  className="flex h-12 w-12 items-center justify-center rounded-full font-mono text-sm font-bold text-charcoal ring-2 ring-white/10 transition-transform duration-300 "
                   style={{ backgroundColor: t.color }}
                   aria-hidden="true"
                 >
@@ -43,8 +36,11 @@ export function Testimonials() {
                 </span>
               </div>
 
-              <blockquote className="relative mt-6 flex-1 text-sm leading-7 text-soft">
-                “{t.quote}”
+              <svg className="mt-6 h-6 w-6 text-gold/40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M9.6 5C5.9 6.3 3.5 9.4 3.5 13.3c0 3 1.8 5.2 4.4 5.2 2.2 0 3.8-1.6 3.8-3.7 0-2-1.4-3.5-3.3-3.6.4-1.9 1.9-3.5 4-4.4L9.6 5Zm9.7 0c-3.7 1.3-6.1 4.4-6.1 8.3 0 3 1.8 5.2 4.4 5.2 2.2 0 3.8-1.6 3.8-3.7 0-2-1.4-3.5-3.3-3.6.4-1.9 1.9-3.5 4-4.4L19.3 5Z" />
+              </svg>
+              <blockquote className="relative mt-3 flex-1 text-[15px] leading-7 text-soft">
+                {t.quote}
               </blockquote>
 
               <figcaption className="mt-7 border-t border-white/8 pt-5">

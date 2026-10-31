@@ -22,14 +22,15 @@ export function HomeExperience() {
           {EXPERIENCE.slice(0, VISIBLE).map((role, i) => (
             <RevealOnScroll key={role.key} delay={i * 80}>
               <div
-                className="card-line glow-card stagger-card group grid gap-4 p-6 md:grid-cols-[150px_1fr] md:p-7"
+                className="card-line glow-card stagger-card group grid gap-4 p-6 md:grid-cols-[180px_1fr] md:gap-7 md:p-7"
                 style={{ "--card-delay": `${120 + i * 70}ms` } as CSSProperties}
               >
-                <div className="flex items-center gap-3 md:block">
-                  <span className="block h-3 w-3 rounded-full bg-gold shadow-[0_0_12px_rgba(240,184,92,0.7)] transition-transform duration-300 group-hover:scale-125" aria-hidden="true" />
-                  <span className="font-mono text-xs text-muted md:mt-4 md:block">
-                    {String(i + 1).padStart(2, "0")} / {role.period}
+                <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-2 md:border-r md:border-white/[0.07] md:pr-6">
+                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-gold/80">
+                    <span className="h-2 w-2 rounded-full bg-gold shadow-[0_0_10px_rgba(240,184,92,0.6)]" aria-hidden="true" />
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+                  <span className="font-mono text-xs leading-5 text-muted">{role.period}</span>
                 </div>
                 <div>
                   <div className="flex flex-wrap items-baseline justify-between gap-3">

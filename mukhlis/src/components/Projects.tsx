@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
-import { PROJECT_CATEGORIES, languageColor, privacyColor } from "@/lib/types";
+import { ProjectCard } from "@/components/ProjectCard";
+import { PROJECT_CATEGORIES } from "@/lib/types";
 import type { Project } from "@/lib/types";
 import projectsData from "@/data/projects.json";
 
@@ -71,94 +70,11 @@ export function Projects({
       </div>
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        {shown.map((p, i) => {
-          const dot = languageColor(p.language);
-          const preview = p.images?.[0];
-          return (
-            <RevealOnScroll key={p.id} delay={i % 2 === 0 ? 0 : 90}>
-              <Link
-                href={`/projects/${p.id}`}
-                className="card-line glow-card stagger-card group flex h-full w-full flex-col overflow-hidden text-left"
-                style={{ "--card-delay": `${120 + i * 55}ms` } as CSSProperties}
-                aria-label={`Open project page for ${p.title}`}
-              >
-                <div className="relative aspect-[16/9] overflow-hidden border-b border-white/10 bg-panel">
-                  {preview ? (
-                    <Image
-                      src={preview}
-                      alt={`${p.title} preview`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 560px"
-                      className="image-zoom object-cover"
-                    />
-                  ) : (
-                    <div className="project-visual flex h-full flex-col justify-between p-5">
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs text-muted">
-                          {String(i + 1).padStart(2, "0")}/
-                        </span>
-                        <ProjectIcon dot={dot} />
-                      </div>
-                      <div>
-                        <p className="font-mono text-xs text-gold">Case study</p>
-                        <p className="mt-2 max-w-sm text-xl font-bold text-ink">{p.title}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center justify-between gap-3">
-                    <span
-                      className="flex items-center gap-2 font-mono text-xs"
-                      style={{ color: privacyColor(p.privacy) }}
-                    >
-                      <span
-                        className="inline-block h-2 w-2 rounded-full"
-                        style={{ backgroundColor: privacyColor(p.privacy) }}
-                      />
-                      {p.privacy}
-                    </span>
-                    <span className="font-mono text-xs text-muted">Case study</span>
-                  </div>
-
-                  <h3 className="mt-4 font-sans text-xl font-bold text-ink transition-colors duration-300 group-hover:text-gold">
-                    {p.title}
-                  </h3>
-                  <p className="mt-1 font-mono text-xs text-muted">
-                    Updated {p.updated}
-                  </p>
-
-                  <p className="mt-4 flex-1 text-sm leading-7 text-muted">
-                    {p.summary}
-                  </p>
-
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {p.tech.slice(0, 3).map((t) => (
-                      <li key={t} className="tag-pill !px-3 !py-1 !text-xs">
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex items-center justify-between border-t border-white/8 pt-4">
-                    <span className="link-arrow text-xs">
-                      Details
-                      <span className="arr" aria-hidden="true">→</span>
-                    </span>
-                    <span
-                      className="font-mono text-xs"
-                      style={{ color: dot }}
-                      aria-hidden="true"
-                    >
-                      ●
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </RevealOnScroll>
-          );
-        })}
+        {shown.map((p, i) => (
+          <RevealOnScroll key={p.id} delay={i % 2 === 0 ? 0 : 90}>
+            <ProjectCard project={p} index={i} />
+          </RevealOnScroll>
+        ))}
       </div>
 
       {filtered.length > visible ? (
@@ -176,20 +92,5 @@ export function Projects({
       ) : null}
 
     </section>
-  );
-}
-
-function ProjectIcon({ dot }: { dot: string }) {
-  return (
-    <div
-      className="flex h-6 w-6 items-center justify-center rounded-lg"
-      style={{ backgroundColor: `${dot}1a` }}
-      aria-hidden="true"
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 3H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" stroke={dot} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M9 17h6M9 13h6M9 9h2" stroke={dot} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
   );
 }
