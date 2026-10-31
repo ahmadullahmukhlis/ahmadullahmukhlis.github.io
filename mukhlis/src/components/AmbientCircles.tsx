@@ -12,7 +12,7 @@ const circles = [
   {
     id: "three",
     eyebrow: "LinkedIn",
-    label: "linkedin.com/in/ahmadullahmukhlis",
+    label: "linkedin.com/in/ahmadullah-mukhlis",
   },
   {
     id: "four",

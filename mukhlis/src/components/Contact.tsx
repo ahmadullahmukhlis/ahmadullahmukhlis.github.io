@@ -53,6 +53,14 @@ export function Contact() {
                 >
                   GitHub →
                 </a>
+                <a
+                  href="https://www.linkedin.com/in/ahmadullah-mukhlis/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  LinkedIn →
+                </a>
               </div>
             </div>
 
