@@ -38,7 +38,7 @@ export function Testimonials() {
                   {review.rating ? (
                     <div className="mt-6 flex gap-1 text-gold" aria-label={`${review.rating} out of 5 stars`}>
                       {Array.from({ length: 5 }, (_, star) => (
-                        <span key={star} className={star < review.rating ? "opacity-100" : "opacity-25"} aria-hidden="true">★</span>
+                        <span key={star} className={star < (review.rating ?? 0) ? "opacity-100" : "opacity-25"} aria-hidden="true">★</span>
                       ))}
                     </div>
                   ) : null}
