@@ -11,7 +11,7 @@ export function Testimonials() {
           <SectionHeading
             index="04"
             title="Client proof"
-            hint="Real Google reviews for Mukhlis Software Solutions. Read feedback from clients in their own words."
+            hint="What clients have said about Mukhlis Software Solutions on Google, in their own words."
           />
         </RevealOnScroll>
 
@@ -35,17 +35,30 @@ export function Testimonials() {
                     </span>
                   </div>
 
-                  <div className="mt-6 flex gap-1 text-gold" aria-label={`${review.rating} out of 5 stars`}>
-                    {Array.from({ length: 5 }, (_, star) => (
-                      <span key={star} className={star < review.rating ? "opacity-100" : "opacity-25"} aria-hidden="true">★</span>
-                    ))}
-                  </div>
+                  {review.rating ? (
+                    <div className="mt-6 flex gap-1 text-gold" aria-label={`${review.rating} out of 5 stars`}>
+                      {Array.from({ length: 5 }, (_, star) => (
+                        <span key={star} className={star < review.rating ? "opacity-100" : "opacity-25"} aria-hidden="true">★</span>
+                      ))}
+                    </div>
+                  ) : null}
                   <svg className="mt-5 h-6 w-6 text-gold/40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M9.6 5C5.9 6.3 3.5 9.4 3.5 13.3c0 3 1.8 5.2 4.4 5.2 2.2 0 3.8-1.6 3.8-3.7 0-2-1.4-3.5-3.3-3.6.4-1.9 1.9-3.5 4-4.4L9.6 5Zm9.7 0c-3.7 1.3-6.1 4.4-6.1 8.3 0 3 1.8 5.2 4.4 5.2 2.2 0 3.8-1.6 3.8-3.7 0-2-1.4-3.5-3.3-3.6.4-1.9 1.9-3.5 4-4.4L19.3 5Z" />
                   </svg>
                   <blockquote className="relative mt-3 flex-1 whitespace-pre-line text-[15px] leading-7 text-soft">
                     {review.text}
                   </blockquote>
+                  {review.excerpt ? (
+                    <a
+                      href={GOOGLE_REVIEWS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 font-mono text-xs text-gold transition-colors hover:text-ink"
+                      aria-label={`Read the full Google review by ${review.name}`}
+                    >
+                      Review excerpt · Read the full review <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : null}
                   <figcaption className="mt-7 border-t border-white/8 pt-5">
                     <p className="font-sans text-sm font-semibold text-ink">{review.name}</p>
                     <p className="mt-1 font-mono text-xs text-muted">
@@ -70,6 +83,22 @@ export function Testimonials() {
             </div>
           </RevealOnScroll>
         )}
+        {GOOGLE_REVIEWS.length > 0 ? (
+          <RevealOnScroll>
+            <p className="mt-8 text-center text-sm text-muted">
+              Showing {GOOGLE_REVIEWS.length} reviews shared from our Google profile.
+              {" "}
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-ink"
+              >
+                View all 8 reviews on Google ↗
+              </a>
+            </p>
+          </RevealOnScroll>
+        ) : null}
       </div>
     </section>
   );
