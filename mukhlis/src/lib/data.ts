@@ -105,33 +105,6 @@ export const EXPERIENCE = [
   },
 ];
 
-export const TESTIMONIALS = [
-  {
-    quote: "Ahmadullah delivers exceptional code with a designer's eye. A true full-stack professional.",
-    name: "Sarah Chen",
-    role: "Chief Technology Officer",
-    org: "TechVista",
-    initials: "SC",
-    color: "#2563eb",
-  },
-  {
-    quote: "His ability to bridge frontend and backend is rare. He elevated our entire platform.",
-    name: "Michael Rodriguez",
-    role: "Product Lead",
-    org: "Codelogic",
-    initials: "MR",
-    color: "#7c3aed",
-  },
-  {
-    quote: "Fast, clean, and thoughtful. Ahmadullah is the engineer you want on your team.",
-    name: "Emily Park",
-    role: "Founder & CEO",
-    org: "StartupHub",
-    initials: "EP",
-    color: "#059669",
-  },
-];
-
 export const EDUCATION = [
   { title: "Bachelor in Computer Science", org: "Nangarhar University · Jalalabad", period: "2019 – 2023" },
   { title: "Digital Payment Implementation", org: "Da Afghanistan Bank (central bank)", period: "Certification" },
