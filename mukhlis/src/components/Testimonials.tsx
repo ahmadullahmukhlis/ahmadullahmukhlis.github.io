@@ -1,58 +1,94 @@
-import type { CSSProperties } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
-import { TESTIMONIALS } from "@/lib/data";
+
+// Owner-reported count on 4 November 2026. See Google for the latest count.
+const REVIEW_COUNT = 8;
+const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=5007930972502664073";
 
 export function Testimonials() {
   return (
     <section id="words" className="scroll-mt-24 border-y border-white/8 bg-white/[0.015]">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
-      <RevealOnScroll>
-        <SectionHeading
-          index="04"
-          title="Client proof"
-          hint="Short signals from collaborators who value clean execution, reliable delivery, and thoughtful product engineering."
-        />
-      </RevealOnScroll>
+        <RevealOnScroll>
+          <SectionHeading
+            index="04"
+            title="Client proof"
+            hint="Feedback about Mukhlis Software Solutions (MSS), directly from our public Google Business Profile."
+          />
+        </RevealOnScroll>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {TESTIMONIALS.map((t, i) => (
-          <RevealOnScroll key={t.name} delay={i * 90} variant={i % 3 === 1 ? "scale" : "up"}>
-            <figure
-              className="card-line glow-card stagger-card group relative flex h-full flex-col overflow-hidden p-7"
-              style={{ "--card-delay": `${120 + i * 80}ms` } as CSSProperties}
-            >
-              <div className="relative flex items-center justify-between">
-                <span
-                  className="flex h-12 w-12 items-center justify-center rounded-full font-mono text-sm font-bold text-charcoal ring-2 ring-white/10 transition-transform duration-300 "
-                  style={{ backgroundColor: t.color }}
-                  aria-hidden="true"
-                >
-                  {t.initials}
+        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <RevealOnScroll variant="scale" className="h-full">
+            <div className="card-line glow-card flex h-full flex-col overflow-hidden p-7 md:p-9">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="font-mono text-xs uppercase tracking-[0.13em] text-soft">
+                  Google Business Profile
                 </span>
-                <span className="flex items-center gap-1.5 rounded-full border border-gold/25 bg-gold/[0.06] px-3 py-1 font-mono text-[11px] text-gold" aria-hidden="true">
-                  <span className="h-1.5 w-1.5 rounded-full bg-mint" />
-                  Verified
+                <span className="rounded-full border border-gold/25 bg-gold/[0.06] px-3 py-1 font-mono text-[11px] text-gold">
+                  Public reviews
                 </span>
               </div>
 
-              <svg className="mt-6 h-6 w-6 text-gold/40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M9.6 5C5.9 6.3 3.5 9.4 3.5 13.3c0 3 1.8 5.2 4.4 5.2 2.2 0 3.8-1.6 3.8-3.7 0-2-1.4-3.5-3.3-3.6.4-1.9 1.9-3.5 4-4.4L9.6 5Zm9.7 0c-3.7 1.3-6.1 4.4-6.1 8.3 0 3 1.8 5.2 4.4 5.2 2.2 0 3.8-1.6 3.8-3.7 0-2-1.4-3.5-3.3-3.6.4-1.9 1.9-3.5 4-4.4L19.3 5Z" />
-              </svg>
-              <blockquote className="relative mt-3 flex-1 text-[15px] leading-7 text-soft">
-                {t.quote}
-              </blockquote>
+              <div className="mt-10 flex flex-wrap items-end gap-5">
+                <span className="font-sans text-7xl font-bold leading-none tracking-tight text-ink md:text-8xl">
+                  {REVIEW_COUNT}
+                </span>
+                <div className="pb-1">
+                  <h3 className="font-sans text-2xl font-bold text-ink">Google reviews</h3>
+                  <p className="mt-2 font-mono text-xs text-muted">Mukhlis Software Solutions</p>
+                </div>
+              </div>
 
-              <figcaption className="mt-7 border-t border-white/8 pt-5">
-                <p className="font-sans text-sm font-semibold text-ink">{t.name}</p>
-                <p className="mt-1 font-mono text-xs text-muted">
-                  {t.role} · <span className="text-gold/70">{t.org}</span>
-                </p>
-              </figcaption>
-            </figure>
+              <p className="mt-7 max-w-lg text-sm leading-7 text-soft">
+                Read the original customer feedback on Google, including reviewer names
+                and the full text of each review.
+              </p>
+              <div className="mt-auto pt-8">
+                <a
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-solid-gold inline-flex items-center gap-2"
+                >
+                  Read reviews on Google <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
           </RevealOnScroll>
-        ))}
-      </div>
+
+          <RevealOnScroll delay={120} className="h-full">
+            <div className="card-line glow-card flex h-full flex-col overflow-hidden p-7 md:p-9">
+              <p className="mono-label text-gold">From the source</p>
+              <h3 className="mt-5 font-sans text-2xl font-bold leading-tight text-ink md:text-3xl">
+                Real feedback. In their own words.
+              </h3>
+              <p className="mt-5 text-sm leading-7 text-soft">
+                We link directly to the MSS Google Business Profile rather than
+                publishing unattributed quotes or unconfirmed star ratings.
+                Explore the reviews and judge the feedback for yourself.
+              </p>
+              <div className="mt-auto border-t border-white/8 pt-7">
+                <p className="font-mono text-xs uppercase tracking-[0.13em] text-muted">
+                  Have you worked with MSS?
+                </p>
+                <p className="mt-2 text-sm leading-6 text-soft">
+                  Your honest feedback helps other customers.
+                </p>
+                <a
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost mt-5 inline-flex items-center gap-2"
+                >
+                  Visit our Google profile <span className="arr" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </RevealOnScroll>
+        </div>
+        <p className="mt-5 text-xs leading-5 text-muted">
+          8 reviews reported on 4 November 2026; check Google for the latest count.
+        </p>
       </div>
     </section>
   );
