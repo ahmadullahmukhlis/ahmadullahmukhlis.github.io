@@ -21,14 +21,14 @@ export const GOOGLE_REVIEWS: GoogleReview[] = [
     id: "hamdullah-hamdard",
     name: "Hamdullah Hamdard",
     initials: "HH",
-    text: "I had a great experience with Mukhlis Software Solutions. Their team is professional, responsive, and really knows what they’re doing.…",
+    text: "I had a great experience with Mukhlis Software Solutions. Their team is professional, responsive, and really knows what they’re doing.",
     excerpt: true,
   },
   {
     id: "samiullah-samim",
     name: "Samiullah samim",
     initials: "SS",
-    text: "Excellent experience with Mukhlis Software Solutions! Their team is highly professional, responsive, and skilled.…",
+    text: "Excellent experience with Mukhlis Software Solutions! Their team is highly professional, responsive, and skilled.",
     excerpt: true,
   },
   {
