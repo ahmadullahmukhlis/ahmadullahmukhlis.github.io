@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Vercel uses a Next.js deployment adapter and does not need standalone output.
+  // Keep standalone output for the existing Docker deployment.
+  output: process.env.VERCEL ? undefined : "standalone",
   async redirects() {
     return [
       { source: "/services/web", destination: "/services/web-development", permanent: true },
