@@ -13,13 +13,18 @@ const LINKS = [
   { href: "/services", label: "Services", num: "02" },
   { href: "/blog", label: "Articles", num: "03" },
   { href: "/projects", label: "Work", num: "04" },
-  { href: "/contact", label: "Contact", num: "05" },
+  { href: "/experience", label: "Career", num: "05" },
+  { href: "/contact", label: "Contact", num: "06" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const activeHref = LINKS.find(({ href }) =>
+    pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)),
+  )?.href;
+  const current = pathname === activeHref ? "page" : "location";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -51,12 +56,12 @@ export function Navbar() {
 
         <div className="hidden items-center gap-5 md:flex">
           {LINKS.map((l) => {
-            const active = pathname === l.href;
+            const active = activeHref === l.href;
             return (
               <Link
                 key={l.href}
                 href={l.href}
-                aria-current={active ? "page" : undefined}
+                aria-current={active ? current : undefined}
                 className={`nav-sweep group font-mono text-xs transition-colors ${
                   active ? "text-gold" : "text-muted hover:text-ink"
                 }`}
@@ -88,13 +93,13 @@ export function Navbar() {
         <div className="menu-drop border-t border-white/10 bg-charcoal/95 px-5 py-4 shadow-[0_22px_48px_-32px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4">
             {LINKS.map((l) => {
-              const active = pathname === l.href;
+              const active = activeHref === l.href;
               return (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={active ? current : undefined}
                   className={`font-mono text-sm transition-colors ${active ? "text-gold" : "text-muted hover:text-ink"}`}
                 >
                   <span className={active ? "text-gold" : "text-ink/35"}>{l.num}/</span> {l.label}
