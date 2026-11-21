@@ -59,6 +59,14 @@ export const SKILL_GROUPS: { id: string; title: string; items: string[] }[] = [
 
 export const EXPERIENCE = [
   {
+    key: "kopo-pay",
+    role: "Senior Backend & Payments Engineer",
+    org: "Kopo Pay · Full-time · United States (Remote)",
+    period: "Oct 2026 – Present",
+    accent: "gold",
+    detail: "Database design and back-end web development.",
+  },
+  {
     key: "dab-aps",
     role: "Full-Stack Developer",
     org: "Da Afghanistan Bank (APS)",

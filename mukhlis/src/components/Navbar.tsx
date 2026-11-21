@@ -57,11 +57,11 @@ export function Navbar() {
                 key={l.href}
                 href={l.href}
                 aria-current={active ? "page" : undefined}
-                className={`nav-sweep group font-mono text-xs transition-colors hover:text-gold ${
-                  active ? "active text-gold" : "text-muted"
+                className={`nav-sweep group font-mono text-xs transition-colors ${
+                  active ? "text-gold" : "text-muted hover:text-ink"
                 }`}
               >
-                <span className={`${active ? "text-gold" : "text-ink/35 group-hover:text-gold/50"}`}>{l.num}/</span>
+                <span className={active ? "text-gold" : "text-ink/35 group-hover:text-ink/70"}>{l.num}/</span>
                 {l.label}
               </Link>
             );
@@ -94,9 +94,10 @@ export function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`font-mono text-sm transition-colors hover:text-gold ${active ? "text-gold" : "text-muted"}`}
+                  aria-current={active ? "page" : undefined}
+                  className={`font-mono text-sm transition-colors ${active ? "text-gold" : "text-muted hover:text-ink"}`}
                 >
-                  <span className="text-gold">{l.num}/</span> {l.label}
+                  <span className={active ? "text-gold" : "text-ink/35"}>{l.num}/</span> {l.label}
                 </Link>
               );
             })}

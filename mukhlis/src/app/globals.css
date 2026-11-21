@@ -812,8 +812,7 @@ a.big-card:focus-visible {
   width: 100%;
 }
 
-.nav-sweep:hover::after,
-.nav-sweep.active::after {
+.nav-sweep[aria-current="page"]::after {
   transform: scaleX(1);
 }
 
