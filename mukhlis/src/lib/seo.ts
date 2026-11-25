@@ -5,7 +5,7 @@ export const SITE_URL = "https://ahmadullahmukhlis.com";
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
-export const GA_MEASUREMENT_ID = "G-CXHQDQFNTM";
+export const GA_MEASUREMENT_ID = "G-CJYZ5SYMX0";
 export const SITE_NAME = "Mukhlis Software Solution";
 export const SITE_TITLE =
   "Ahmadullah Mukhlis | Full-Stack & Fintech Software Engineer";
